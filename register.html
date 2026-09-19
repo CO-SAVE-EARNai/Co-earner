@@ -171,3 +171,73 @@
 
 </body>
 </html>
+<style>
+/* Bigger and more spacious Register form */
+
+.register-card {
+    max-width: 560px !important;
+    padding: 45px 42px !important;
+}
+
+#registerForm {
+    width: 100% !important;
+}
+
+/* More space between each field */
+#registerForm .form-group {
+    margin-bottom: 27px !important;
+}
+
+/* More space between labels and boxes */
+#registerForm label {
+    display: block !important;
+    margin-bottom: 11px !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+}
+
+/* Bigger input boxes */
+#registerForm input {
+    width: 100% !important;
+    height: 60px !important;
+    padding: 0 20px !important;
+    font-size: 16px !important;
+    border-radius: 14px !important;
+}
+
+/* Bigger text inside the boxes */
+#registerForm input::placeholder {
+    font-size: 15px !important;
+}
+
+/* Bigger register button */
+#registerForm button {
+    width: 100% !important;
+    min-height: 60px !important;
+    padding: 15px 20px !important;
+    font-size: 17px !important;
+    border-radius: 14px !important;
+    margin-top: 5px !important;
+}
+
+/* Give the selected saving bank box more breathing room */
+.selected-bank,
+.bank-selection,
+.selected-plan {
+    padding: 18px 20px !important;
+    margin-bottom: 28px !important;
+    line-height: 1.7 !important;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .register-card {
+        padding: 35px 22px !important;
+    }
+
+    #registerForm input {
+        height: 60px !important;
+        font-size: 16px !important;
+    }
+}
+</style>
