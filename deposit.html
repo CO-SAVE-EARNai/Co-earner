@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Money | Co Earner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">Co<span>Earner</span></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="saving-banks.html">Saving Banks</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+
+<section class="money-page-header">
+    <span>CO EARNER</span>
+    <h1>Deposit Money</h1>
+    <p>Add money to your selected Saving Bank.</p>
+</section>
+
+
+<section class="deposit-layout">
+
+    <div class="payment-panel">
+
+        <div class="secure-badge">
+            🔒 Secure Payment
+        </div>
+
+        <h2>Make Your Deposit</h2>
+
+        <p class="payment-instructions">
+            Follow the payment instructions below, then submit your transaction details.
+        </p>
+
+
+        <div class="paycode-box">
+            <span class="paycode-label">CO EARNER PAY CODE</span>
+
+            <strong>Pay Code Coming Soon</strong>
+
+            <small>
+                The official payment code will be displayed here.
+            </small>
+        </div>
+
+
+        <div class="payment-instructions">
+
+            <div class="instruction">
+                <span>01</span>
+                <p>Choose your preferred payment method.</p>
+            </div>
+
+            <div class="instruction">
+                <span>02</span>
+                <p>Make your payment using the official Co Earner payment details.</p>
+            </div>
+
+            <div class="instruction">
+                <span>03</span>
+                <p>Enter your transaction/reference number below.</p>
+            </div>
+
+        </div>
+
+
+        <form class="money-form" id="depositForm">
+
+            <label for="amount">Deposit Amount</label>
+
+            <input
+                type="number"
+                id="amount"
+                name="amount"
+                class="money-input"
+                min="20000"
+                placeholder="Minimum 20,000"
+                required
+            >
+
+
+            <label for="reference">Transaction / Reference Number</label>
+
+            <input
+                type="text"
+                id="reference"
+                name="reference"
+                class="money-input"
+                placeholder="Enter transaction number"
+                required
+            >
+
+
+            <label for="method">Payment Method</label>
+
+            <select id="method" name="method" class="money-input" required>
+                <option value="">Select payment method</option>
+                <option value="mobile-money">Mobile Money</option>
+                <option value="bank-transfer">Bank Transfer</option>
+            </select>
+
+
+            <label class="confirmation-check">
+                <input type="checkbox" required>
+                <span>
+                    I confirm that I have made the payment using the correct
+                    payment details.
+                </span>
+            </label>
+
+
+            <button type="submit" class="auth-btn">
+                I Have Made the Payment
+            </button>
+
+        </form>
+
+
+        <div class="demo-notice">
+            <strong>Important</strong>
+            <p>
+                This page is currently a prototype. Payments are not processed
+                through this GitHub Pages website.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="deposit-status-panel">
+
+        <h2>Payment Status</h2>
+
+        <div class="transaction-status pending">
+            <span class="status-icon">⏳</span>
+
+            <div>
+                <strong>Pending</strong>
+                <p>Your deposit will appear here once it has been reviewed.</p>
+            </div>
+        </div>
+
+
+        <div class="transaction-status confirmed">
+            <span class="status-icon">✓</span>
+
+            <div>
+                <strong>Approved</strong>
+                <p>Approved deposits will be reflected in your account.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <div class="logo">Co<span>Earner</span></div>
+    <p>Save More. Grow Together.</p>
+</footer>
+
+
+<script>
+    document.getElementById("depositForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        alert("Deposit submitted for review. This is currently a prototype.");
+    });
+</script>
+
+</body>
+  </html>
