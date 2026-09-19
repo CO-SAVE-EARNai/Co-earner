@@ -1,314 +1,867 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saving Banks | Co Earner</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saving Banks | Co Earner</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f8f6;
+    color: #17231c;
+    line-height: 1.6;
+}
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5ebe7;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #087443;
+}
+
+.logo span {
+    color: #c99a25;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #34423a;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #087443;
+}
+
+.get-started {
+    background: #087443;
+    color: white !important;
+    padding: 11px 18px;
+    border-radius: 10px;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #063f27, #087443);
+    color: white;
+    padding: 75px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 850px;
+    margin: auto;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 46px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: #e3bd55;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #e2eee7;
+    font-size: 17px;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 65px 20px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 31px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #68756e;
+}
+
+/* CYCLE */
+
+.cycle-section {
+    margin-bottom: 70px;
+}
+
+.cycle-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.cycle-title h2 {
+    font-size: 28px;
+}
+
+.cycle-line {
+    height: 3px;
+    flex: 1;
+    background: #dce7e0;
+    border-radius: 10px;
+}
+
+/* CARDS */
+
+.bank-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.bank-card {
+    background: white;
+    border: 1px solid #e1e9e4;
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(17, 53, 36, 0.06);
+    transition: 0.3s ease;
+}
+
+.bank-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 35px rgba(17, 53, 36, 0.13);
+}
+
+.bank-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: #087443;
+}
+
+.bank-card.featured::before {
+    background: #c99a25;
+}
+
+.bank-label {
+    color: #087443;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.bank-card.featured .bank-label {
+    color: #a07810;
+}
+
+.bank-card h3 {
+    font-size: 27px;
+    margin: 7px 0 3px;
+}
+
+.duration {
+    color: #7b867f;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.amount-box {
+    background: #f2f8f4;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 16px;
+}
+
+.amount-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.amount-row span:first-child {
+    color: #6c776f;
+}
+
+.amount-row strong {
+    color: #17231c;
+}
+
+.earnings {
+    color: #087443 !important;
+}
+
+.total-box {
+    border-top: 1px solid #e2e9e4;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.total-label {
+    font-size: 12px;
+    color: #6d786f;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.total {
+    font-size: 25px;
+    font-weight: 800;
+    color: #087443;
+}
+
+.choose-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+    background: #087443;
+    color: white;
+    padding: 13px;
+    border-radius: 11px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.choose-btn:hover {
+    background: #065d35;
+}
+
+.featured .choose-btn {
+    background: #b68b1e;
+}
+
+.featured .choose-btn:hover {
+    background: #947014;
+}
+
+.popular {
+    position: absolute;
+    top: 16px;
+    right: -34px;
+    background: #c99a25;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 6px 38px;
+    transform: rotate(45deg);
+}
+
+/* INFO */
+
+.info-section {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    margin-top: 20px;
+    box-shadow: 0 8px 25px rgba(17, 53, 36, 0.05);
+}
+
+.info-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-number {
+    width: 45px;
+    height: 45px;
+    background: #e7f3ec;
+    color: #087443;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-weight: 800;
+}
+
+.step h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.step p {
+    color: #737e77;
+    font-size: 13px;
+}
+
+/* NOTE */
+
+.note {
+    text-align: center;
+    margin-top: 35px;
+    padding: 18px;
+    background: #fff9e8;
+    border: 1px solid #f0dfaa;
+    border-radius: 13px;
+    color: #69551c;
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #063f27;
+    color: #dce9e1;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 30px;
+}
+
+footer strong {
+    color: white;
+}
+
+/* MOBILE */
+
+@media (max-width: 950px) {
+    .bank-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .bank-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .cycle-line {
+        display: none;
+    }
+
+    .cycle-title {
+        justify-content: center;
+    }
+
+    .info-section {
+        padding: 25px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<header class="navbar">
-    <div class="logo">Co<span>Earner</span></div>
+<header>
+    <div class="navbar">
+        <div class="logo">Co<span>Earner</span></div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="saving-banks.html" class="active">Saving Banks</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="login.html">Login</a>
-        <a href="register.html" class="nav-btn">Get Started</a>
-    </nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="saving-banks.html">Saving Banks</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="login.html">Login</a>
+            <a href="register.html" class="get-started">Get Started</a>
+        </nav>
+    </div>
 </header>
 
+<section class="hero">
+    <div class="hero-content">
 
-<section class="saving-banks-hero">
-    <div class="saving-banks-hero-content">
-        <span class="hero-badge">SMART SAVING</span>
+        <div class="hero-badge">
+            CO EARNER SAVING BANKS
+        </div>
 
-        <h1>Choose a Saving Bank and Grow Your Money.</h1>
+        <h1>
+            Choose a Bank.<br>
+            <span>Save. Earn. Grow.</span>
+        </h1>
 
         <p>
-            Select a saving plan that matches your target and cycle.
-            Save, stay consistent and watch your money grow.
+            Select a saving bank that matches your amount and cycle.
+            Your selected package will be carried into your registration.
         </p>
-    </div>
-</section>
-
-
-<!-- 20 DAYS -->
-<section class="saving-cycle">
-    <div class="cycle-heading">
-        <span>SHORT TERM</span>
-        <h2>20 DAYS</h2>
-        <p>Save for 20 days and receive your total at the end of the cycle.</p>
-    </div>
-
-    <div class="saving-banks-grid">
-
-        <div class="saving-bank-card bank-starter">
-            <div class="bank-number">20,000</div>
-            <div class="bank-duration">20 DAYS</div>
-
-            <div class="bank-details">
-                <p>Daily earning</p>
-                <strong>1,750</strong>
-
-                <p>Total earned</p>
-                <strong>35,000</strong>
-
-                <div class="maturity">
-                    <span>Total after cycle</span>
-                    <strong>55,000</strong>
-                </div>
-            </div>
-
-            <a href="register.html?bank=20000-20days" class="choose-bank-btn">
-                Choose Bank
-            </a>
-        </div>
-
-
-        <div class="saving-bank-card bank-growth">
-            <div class="bank-number">30,000</div>
-            <div class="bank-duration">20 DAYS</div>
-
-            <div class="bank-details">
-                <p>Daily earning</p>
-                <strong>2,750</strong>
-
-                <p>Total earned</p>
-                <strong>55,000</strong>
-
-                <div class="maturity">
-                    <span>Total after cycle</span>
-                    <strong>85,000</strong>
-                </div>
-            </div>
-
-            <a href="register.html?bank=30000-20days" class="choose-bank-btn">
-                Choose Bank
-            </a>
-        </div>
-
-
-        <div class="saving-bank-card bank-popular">
-            <div class="popular-tag">POPULAR</div>
-
-            <div class="bank-number">50,000</div>
-            <div class="bank-duration">20 DAYS</div>
-
-            <div class="bank-details">
-                <p>Daily earning</p>
-                <strong>4,250</strong>
-
-                <p>Total earned</p>
-                <strong>85,000</strong>
-
-                <div class="maturity">
-                    <span>Total after cycle</span>
-                    <strong>135,000</strong>
-                </div>
-            </div>
-
-            <a href="register.html?bank=50000-20days" class="choose-bank-btn">
-                Choose Bank
-            </a>
-        </div>
-
-
-        <div class="saving-bank-card bank-premium">
-            <div class="bank-number">100,000</div>
-            <div class="bank-duration">20 DAYS</div>
-
-            <div class="bank-details">
-                <p>Daily earning</p>
-                <strong>7,750</strong>
-
-                <p>Total earned</p>
-                <strong>155,000</strong>
-
-                <div class="maturity">
-                    <span>Total after cycle</span>
-                    <strong>255,000</strong>
-                </div>
-            </div>
-
-            <a href="register.html?bank=100000-20days" class="choose-bank-btn">
-                Choose Bank
-            </a>
-        </div>
 
     </div>
 </section>
 
+<main class="container">
 
-<!-- 30 DAYS -->
-<section class="saving-cycle">
-    <div class="cycle-heading">
-        <span>GROWTH PLAN</span>
-        <h2>30 DAYS</h2>
-        <p>Choose a longer cycle and build your savings consistently.</p>
+    <div class="section-heading">
+        <h2>Our Saving Banks</h2>
+        <p>Choose from the available Co Earner saving packages.</p>
     </div>
 
-    <div class="saving-banks-grid">
 
-        <div class="saving-bank-card bank-starter">
-            <div class="bank-number">20,000</div>
-            <div class="bank-duration">30 DAYS</div>
+    <!-- 20 DAYS -->
 
-            <div class="bank-details">
-                <p>Daily earning</p>
-                <strong>1,667</strong>
+    <section class="cycle-section">
 
-                <p>Total earned</p>
-                <strong>50,000</strong>
-
-                <div class="maturity">
-                    <span>Total after cycle</span>
-                    <strong>70,000</strong>
-                </div>
-            </div>
-
-            <a href="register.html?bank=20000-30days" class="choose-bank-btn">
-                Choose Bank
-            </a>
+        <div class="cycle-title">
+            <h2>20 DAYS</h2>
+            <div class="cycle-line"></div>
         </div>
 
+        <div class="bank-grid">
 
-        <div class="saving-bank-card bank-growth">
-            <div class="bank-number">30,000</div>
-            <div class="bank-duration">30 DAYS</div>
+            <!-- 20,000 -->
 
-            <div class="bank-details">
-                <p>Daily earning</p>
-                <strong>3,000</strong>
+            <div class="bank-card">
 
-                <p>Total earned</p>
-                <strong>90,000</strong>
+                <div class="bank-label">Starter Bank</div>
 
-                <div class="maturity">
-                    <span>Total after cycle</span>
-                    <strong>120,000</strong>
+                <h3>20,000</h3>
+
+                <div class="duration">
+                    20 DAY SAVING CYCLE
                 </div>
+
+                <div class="amount-box">
+
+                    <div class="amount-row">
+                        <span>Starting Amount</span>
+                        <strong>20,000</strong>
+                    </div>
+
+                    <div class="amount-row">
+                        <span>Earn</span>
+                        <strong class="earnings">35,000</strong>
+                    </div>
+
+                    <div class="total-box">
+                        <div class="total-label">Total at Maturity</div>
+                        <div class="total">55,000</div>
+                    </div>
+
+                </div>
+
+                <a href="register.html?bank=20000-20days"
+                   class="choose-btn">
+                    Choose Bank
+                </a>
+
             </div>
 
-            <a href="register.html?bank=30000-30days" class="choose-bank-btn">
-                Choose Bank
-            </a>
-        </div>
 
+            <!-- 30,000 -->
 
-        <div class="saving-bank-card bank-popular">
-            <div class="popular-tag">POPULAR</div>
+            <div class="bank-card">
 
-            <div class="bank-number">50,000</div>
-            <div class="bank-duration">30 DAYS</div>
+                <div class="bank-label">Growth Bank</div>
 
-            <div class="bank-details">
-                <p>Daily earning</p>
-                <strong>4,500</strong>
+                <h3>30,000</h3>
 
-                <p>Total earned</p>
-                <strong>135,000</strong>
-
-                <div class="maturity">
-                    <span>Total after cycle</span>
-                    <strong>185,000</strong>
+                <div class="duration">
+                    20 DAY SAVING CYCLE
                 </div>
+
+                <div class="amount-box">
+
+                    <div class="amount-row">
+                        <span>Starting Amount</span>
+                        <strong>30,000</strong>
+                    </div>
+
+                    <div class="amount-row">
+                        <span>Earn</span>
+                        <strong class="earnings">55,000</strong>
+                    </div>
+
+                    <div class="total-box">
+                        <div class="total-label">Total at Maturity</div>
+                        <div class="total">85,000</div>
+                    </div>
+
+                </div>
+
+                <a href="register.html?bank=30000-20days"
+                   class="choose-btn">
+                    Choose Bank
+                </a>
+
             </div>
 
-            <a href="register.html?bank=50000-30days" class="choose-bank-btn">
-                Choose Bank
-            </a>
-        </div>
 
+            <!-- 50,000 -->
 
-        <div class="saving-bank-card bank-premium">
-            <div class="bank-number">100,000</div>
-            <div class="bank-duration">30 DAYS</div>
+            <div class="bank-card featured">
 
-            <div class="bank-details">
-                <p>Daily earning</p>
-                <strong>7,333</strong>
+                <div class="popular">POPULAR</div>
 
-                <p>Total earned</p>
-                <strong>220,000</strong>
+                <div class="bank-label">Popular Bank</div>
 
-                <div class="maturity">
-                    <span>Total after cycle</span>
-                    <strong>320,000</strong>
+                <h3>50,000</h3>
+
+                <div class="duration">
+                    20 DAY SAVING CYCLE
                 </div>
+
+                <div class="amount-box">
+
+                    <div class="amount-row">
+                        <span>Starting Amount</span>
+                        <strong>50,000</strong>
+                    </div>
+
+                    <div class="amount-row">
+                        <span>Earn</span>
+                        <strong class="earnings">85,000</strong>
+                    </div>
+
+                    <div class="total-box">
+                        <div class="total-label">Total at Maturity</div>
+                        <div class="total">135,000</div>
+                    </div>
+
+                </div>
+
+                <a href="register.html?bank=50000-20days"
+                   class="choose-btn">
+                    Choose Bank
+                </a>
+
             </div>
 
-            <a href="register.html?bank=100000-30days" class="choose-bank-btn">
-                Choose Bank
-            </a>
+
+            <!-- 100,000 -->
+
+            <div class="bank-card">
+
+                <div class="bank-label">Premium Bank</div>
+
+                <h3>100,000</h3>
+
+                <div class="duration">
+                    20 DAY SAVING CYCLE
+                </div>
+
+                <div class="amount-box">
+
+                    <div class="amount-row">
+                        <span>Starting Amount</span>
+                        <strong>100,000</strong>
+                    </div>
+
+                    <div class="amount-row">
+                        <span>Earn</span>
+                        <strong class="earnings">155,000</strong>
+                    </div>
+
+                    <div class="total-box">
+                        <div class="total-label">Total at Maturity</div>
+                        <div class="total">255,000</div>
+                    </div>
+
+                </div>
+
+                <a href="register.html?bank=100000-20days"
+                   class="choose-btn">
+                    Choose Bank
+                </a>
+
+            </div>
+
         </div>
 
+    </section>
+
+
+    <!-- 30 DAYS -->
+
+    <section class="cycle-section">
+
+        <div class="cycle-title">
+            <h2>30 DAYS</h2>
+            <div class="cycle-line"></div>
+        </div>
+
+        <div class="bank-grid">
+
+            <!-- 20,000 -->
+
+            <div class="bank-card">
+
+                <div class="bank-label">Starter Bank</div>
+
+                <h3>20,000</h3>
+
+                <div class="duration">
+                    30 DAY SAVING CYCLE
+                </div>
+
+                <div class="amount-box">
+
+                    <div class="amount-row">
+                        <span>Starting Amount</span>
+                        <strong>20,000</strong>
+                    </div>
+
+                    <div class="amount-row">
+                        <span>Earn</span>
+                        <strong class="earnings">50,000</strong>
+                    </div>
+
+                    <div class="total-box">
+                        <div class="total-label">Total at Maturity</div>
+                        <div class="total">70,000</div>
+                    </div>
+
+                </div>
+
+                <a href="register.html?bank=20000-30days"
+                   class="choose-btn">
+                    Choose Bank
+                </a>
+
+            </div>
+
+
+            <!-- 30,000 -->
+
+            <div class="bank-card">
+
+                <div class="bank-label">Growth Bank</div>
+
+                <h3>30,000</h3>
+
+                <div class="duration">
+                    30 DAY SAVING CYCLE
+                </div>
+
+                <div class="amount-box">
+
+                    <div class="amount-row">
+                        <span>Starting Amount</span>
+                        <strong>30,000</strong>
+                    </div>
+
+                    <div class="amount-row">
+                        <span>Earn</span>
+                        <strong class="earnings">90,000</strong>
+                    </div>
+
+                    <div class="total-box">
+                        <div class="total-label">Total at Maturity</div>
+                        <div class="total">120,000</div>
+                    </div>
+
+                </div>
+
+                <a href="register.html?bank=30000-30days"
+                   class="choose-btn">
+                    Choose Bank
+                </a>
+
+            </div>
+
+
+            <!-- 50,000 -->
+
+            <div class="bank-card featured">
+
+                <div class="popular">POPULAR</div>
+
+                <div class="bank-label">Popular Bank</div>
+
+                <h3>50,000</h3>
+
+                <div class="duration">
+                    30 DAY SAVING CYCLE
+                </div>
+
+                <div class="amount-box">
+
+                    <div class="amount-row">
+                        <span>Starting Amount</span>
+                        <strong>50,000</strong>
+                    </div>
+
+                    <div class="amount-row">
+                        <span>Earn</span>
+                        <strong class="earnings">135,000</strong>
+                    </div>
+
+                    <div class="total-box">
+                        <div class="total-label">Total at Maturity</div>
+                        <div class="total">185,000</div>
+                    </div>
+
+                </div>
+
+                <a href="register.html?bank=50000-30days"
+                   class="choose-btn">
+                    Choose Bank
+                </a>
+
+            </div>
+
+
+            <!-- 100,000 -->
+
+            <div class="bank-card">
+
+                <div class="bank-label">Premium Bank</div>
+
+                <h3>100,000</h3>
+
+                <div class="duration">
+                    30 DAY SAVING CYCLE
+                </div>
+
+                <div class="amount-box">
+
+                    <div class="amount-row">
+                        <span>Starting Amount</span>
+                        <strong>100,000</strong>
+                    </div>
+
+                    <div class="amount-row">
+                        <span>Earn</span>
+                        <strong class="earnings">220,000</strong>
+                    </div>
+
+                    <div class="total-box">
+                        <div class="total-label">Total at Maturity</div>
+                        <div class="total">320,000</div>
+                    </div>
+
+                </div>
+
+                <a href="register.html?bank=100000-30days"
+                   class="choose-btn">
+                    Choose Bank
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROCESS -->
+
+    <section class="info-section">
+
+        <h2>How Co Earner Saving Banks Work</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Choose</h3>
+                <p>Select the saving bank that suits you.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Register</h3>
+                <p>Create your Co Earner account.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Deposit</h3>
+                <p>Make your deposit according to your selected bank.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Grow</h3>
+                <p>Track your saving bank from your dashboard.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="note">
+        Saving banks and displayed returns are currently part of the Co Earner website prototype.
     </div>
-</section>
 
-
-<!-- HOW IT WORKS -->
-<section class="saving-process">
-    <div class="cycle-heading">
-        <span>SIMPLE PROCESS</span>
-        <h2>How It Works</h2>
-    </div>
-
-    <div class="process-grid">
-
-        <div class="process-card">
-            <div class="process-number">01</div>
-            <h3>Choose a Bank</h3>
-            <p>Select the saving amount and cycle that you want.</p>
-        </div>
-
-        <div class="process-card">
-            <div class="process-number">02</div>
-            <h3>Create Your Account</h3>
-            <p>Register your Co Earner account to continue.</p>
-        </div>
-
-        <div class="process-card">
-            <div class="process-number">03</div>
-            <h3>Save</h3>
-            <p>Follow the instructions and make your deposit.</p>
-        </div>
-
-        <div class="process-card">
-            <div class="process-number">04</div>
-            <h3>Complete Your Cycle</h3>
-            <p>Keep your savings active until your selected cycle ends.</p>
-        </div>
-
-    </div>
-</section>
-
-
-<section class="saving-banks-note">
-    <h3>Choose the plan that fits your target.</h3>
-    <p>
-        Your selected bank will be connected to your registration process.
-    </p>
-</section>
+</main>
 
 
 <footer>
-    <div class="logo">Co<span>Earner</span></div>
-    <p>Save More. Grow Together.</p>
-</footer>
-
-</body>
-  </html>
-      
-
-
-      
-          
-
-      
-
-
-    
+    <strong>Co Earner</strong><br>
+    Save More
