@@ -435,3 +435,331 @@ footer {
     margin-top: 20px;
   }
     }
+/* ================================
+PREMIUM REGISTER PAGE
+================================ */
+
+.back-home {
+text-decoration: none;
+color: #08784f;
+font-weight: 700;
+padding: 10px 18px;
+border: 1px solid #cde5da;
+border-radius: 25px;
+background: white;
+}
+
+/* REGISTER BACKGROUND */
+
+.auth-page {
+min-height: calc(100vh - 81px);
+padding: 70px 20px;
+display: flex;
+align-items: center;
+
+background:
+radial-gradient(circle at 15% 20%, #dff8ec, transparent 30%),
+radial-gradient(circle at 90% 80%, #fff2c7, transparent 25%),
+linear-gradient(135deg, #f7fffb, #eef8f3);
+}
+
+/* MAIN REGISTER LAYOUT */
+
+.auth-container {
+width: 100%;
+max-width: 1100px;
+margin: auto;
+
+display: grid;
+grid-template-columns: 1fr 460px;
+gap: 70px;
+align-items: center;
+}
+
+/* LEFT CONTENT */
+
+.auth-intro h1 {
+font-size: 52px;
+line-height: 1.05;
+margin: 20px 0;
+max-width: 600px;
+}
+
+.auth-intro h1 span {
+display: block;
+color: #09a66d;
+}
+
+.auth-intro > p {
+max-width: 540px;
+color: #66766f;
+font-size: 17px;
+line-height: 1.7;
+}
+
+/* BENEFITS */
+
+.register-benefits {
+margin-top: 35px;
+display: flex;
+flex-direction: column;
+gap: 18px;
+}
+
+.benefit {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+.benefit-icon {
+width: 48px;
+height: 48px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: white;
+border-radius: 15px;
+
+box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+
+font-size: 22px;
+}
+
+.benefit strong {
+display: block;
+color: #16372b;
+margin-bottom: 4px;
+}
+
+.benefit small {
+color: #7a8982;
+}
+
+/* REGISTER CARD */
+
+.auth-card {
+background: rgba(255,255,255,0.97);
+
+padding: 42px;
+
+border-radius: 28px;
+
+border: 1px solid #e1eee8;
+
+box-shadow:
+0 25px 70px rgba(12,75,52,0.13);
+}
+
+/* FORM HEADING */
+
+.auth-heading {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.auth-icon {
+width: 58px;
+height: 58px;
+
+margin: 0 auto 15px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 18px;
+
+background: #dcf7e9;
+
+font-size: 25px;
+}
+
+.auth-heading h2 {
+font-size: 28px;
+margin-bottom: 8px;
+color: #10251d;
+}
+
+.auth-heading p {
+color: #7a8982;
+}
+
+/* INPUTS */
+
+.input-group {
+margin-bottom: 18px;
+}
+
+.input-group label {
+display: block;
+margin-bottom: 8px;
+
+font-size: 14px;
+font-weight: 700;
+
+color: #29483c;
+}
+
+.input-group input {
+width: 100%;
+
+padding: 15px 16px;
+
+border: 1px solid #d9e8e1;
+
+border-radius: 13px;
+
+outline: none;
+
+font-size: 15px;
+
+background: #fbfdfc;
+
+transition: 0.25s;
+}
+
+.input-group input:focus {
+border-color: #09a66d;
+
+box-shadow:
+0 0 0 4px rgba(9,166,109,0.10);
+
+background: white;
+}
+
+.input-group input::placeholder {
+color: #a2aea8;
+}
+
+/* REGISTER BUTTON */
+
+.auth-button {
+width: 100%;
+
+margin-top: 8px;
+
+padding: 16px;
+
+border: none;
+
+border-radius: 14px;
+
+background:
+linear-gradient(135deg, #0dbb7a, #087653);
+
+color: white;
+
+font-size: 16px;
+
+font-weight: 800;
+
+cursor: pointer;
+
+box-shadow:
+0 12px 25px rgba(9,166,109,0.25);
+
+transition: 0.25s;
+}
+
+.auth-button:hover {
+transform: translateY(-2px);
+
+box-shadow:
+0 16px 30px rgba(9,166,109,0.32);
+}
+
+/* LOGIN LINK */
+
+.auth-footer {
+text-align: center;
+
+margin-top: 22px;
+
+color: #788780;
+
+font-size: 14px;
+}
+
+.auth-footer a {
+color: #08a36b;
+
+font-weight: 800;
+
+text-decoration: none;
+}
+
+/* BOTTOM FOOTER */
+
+.auth-footer-bottom {
+text-align: center;
+
+padding: 22px;
+
+background: #052e21;
+
+color: #91a49c;
+
+font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+.auth-container {
+grid-template-columns: 1fr;
+gap: 40px;
+}
+
+.auth-intro {
+text-align: center;
+}
+
+.auth-intro h1 {
+font-size: 42px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.auth-intro > p {
+margin-left: auto;
+margin-right: auto;
+}
+
+.register-benefits {
+text-align: left;
+max-width: 400px;
+margin-left: auto;
+margin-right: auto;
+}
+
+}
+
+@media (max-width: 500px) {
+
+.auth-page {
+padding: 40px 15px;
+}
+
+.auth-card {
+padding: 28px 20px;
+border-radius: 22px;
+}
+
+.auth-intro h1 {
+font-size: 36px;
+}
+
+.auth-heading h2 {
+font-size: 24px;
+}
+
+.back-home {
+padding: 8px 12px;
+font-size: 13px;
+}
+
+  }
