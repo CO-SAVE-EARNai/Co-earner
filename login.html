@@ -114,11 +114,12 @@
 
 
 <script>
+    
     document.getElementById("loginForm").addEventListener("submit", function(event) {
-        event.preventDefault();
+    event.preventDefault();
 
-        alert("Login is currently a prototype. Real account authentication has not been connected yet.");
-    });
+    window.location.href = "dashboard.html";
+});
 
     function showForgotMessage() {
         alert("Password recovery will be available when secure account authentication is connected.");
