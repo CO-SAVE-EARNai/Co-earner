@@ -1,0 +1,437 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f8f5;
+  color: #10251d;
+}
+
+.container {
+  width: 90%;
+  max-width: 1150px;
+  margin: auto;
+}
+
+/* NAVIGATION */
+
+.navbar {
+  background: rgba(255,255,255,0.96);
+  padding: 20px 0;
+  border-bottom: 1px solid #e5eee9;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+  color: #103d2e;
+}
+
+.logo span {
+  color: #09a66d;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #385047;
+  font-weight: 600;
+}
+
+.nav-btn {
+  background: #09a66d;
+  color: white !important;
+  padding: 12px 22px;
+  border-radius: 30px;
+}
+
+
+/* HERO */
+
+.hero {
+  padding: 90px 0;
+  background:
+    radial-gradient(circle at 80% 20%, #dff8ec, transparent 35%),
+    linear-gradient(135deg, #f7fffb, #eaf8f1);
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.badge {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 30px;
+  background: #d9f6e8;
+  color: #08784f;
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: 62px;
+  line-height: 1.02;
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+  color: #08a36b;
+}
+
+.hero-text > p {
+  font-size: 18px;
+  color: #66766f;
+  max-width: 550px;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 15px 27px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.primary-btn {
+  background: #09a66d;
+  color: white;
+  box-shadow: 0 10px 25px rgba(9,166,109,0.25);
+}
+
+.secondary-btn {
+  background: white;
+  color: #08784f;
+  border: 1px solid #cde5da;
+}
+
+.trust {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #718078;
+}
+
+
+/* BEAUTIFUL SAVINGS CARD */
+
+.savings-preview {
+  width: 410px;
+  min-height: 430px;
+  padding: 32px;
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255,255,255,0.2), transparent 25%),
+    linear-gradient(145deg, #0dbb7a, #056a49);
+
+  color: white;
+
+  box-shadow:
+    0 25px 60px rgba(0,105,70,0.25);
+}
+
+.savings-preview::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  top: -60px;
+  right: -50px;
+}
+
+.savings-preview::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255,211,72,0.12);
+  bottom: -40px;
+  left: -30px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.savings-preview h2 {
+  font-size: 40px;
+  margin-top: 35px;
+}
+
+.small-text {
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+.progress-container {
+  margin-top: 30px;
+}
+
+.progress-bar {
+  height: 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 65%;
+  height: 100%;
+  background: #ffd34a;
+  border-radius: 20px;
+  box-shadow: 0 0 12px rgba(255,211,74,0.6);
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.saving-stats {
+  display: flex;
+  gap: 35px;
+  margin-top: 35px;
+}
+
+.saving-stats div {
+  display: flex;
+  flex-direction: column;
+}
+
+.saving-stats strong {
+  font-size: 17px;
+}
+
+.saving-stats small {
+  opacity: 0.65;
+  margin-top: 4px;
+}
+
+
+/* SAVINGS SECTION */
+
+.savings-section {
+  padding: 100px 0;
+  background: white;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 55px;
+}
+
+.section-heading span {
+  color: #09a66d;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.section-heading h2 {
+  font-size: 42px;
+  margin: 12px 0;
+}
+
+.section-heading p {
+  color: #718078;
+}
+
+
+/* SAVING CARDS */
+
+.saving-cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+}
+
+.saving-card {
+  padding: 35px;
+  border-radius: 22px;
+  background: #f8fcfa;
+  border: 1px solid #e3eee8;
+  transition: 0.3s;
+}
+
+.saving-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.saving-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: #dcf7e9;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.saving-card h3 {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.saving-card p {
+  color: #6d7b75;
+}
+
+
+/* HOW IT WORKS */
+
+.how-section {
+  padding: 100px 0;
+  background: #f3f8f5;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+}
+
+.step {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+}
+
+.step-number {
+  color: #09a66d;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+
+/* CTA */
+
+.cta {
+  padding: 100px 20px;
+  text-align: center;
+  background: linear-gradient(135deg,#064a34,#087653);
+  color: white;
+}
+
+.cta h2 {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.cta p {
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+
+/* FOOTER */
+
+footer {
+  background: #052e21;
+  color: white;
+  padding: 45px 0 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 22px;
+}
+
+.footer-links a {
+  color: #c9d8d2;
+  text-decoration: none;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #91a49c;
+  font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  nav {
+    display: none;
+  }
+
+  .hero-content {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .savings-preview {
+    width: 100%;
+  }
+
+  .saving-cards,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+    }
