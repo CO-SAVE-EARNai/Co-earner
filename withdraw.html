@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Withdraw Money | Co Earner</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="dashboard-nav">
+    <div class="dashboard-container">
+
+      <a href="dashboard.html" class="logo">
+        <span>Co</span> Earner
+      </a>
+
+      <a href="dashboard.html" class="back-dashboard">
+        ← Dashboard
+      </a>
+
+    </div>
+  </header>
+
+
+  <main class="dashboard-main">
+
+    <div class="dashboard-container">
+
+      <section class="money-page-header">
+
+        <span class="dashboard-label">
+          TAKE OUT MONEY
+        </span>
+
+        <h1>
+          Withdraw Money 💸
+        </h1>
+
+        <p>
+          Request a withdrawal from your Co Earner savings account.
+        </p>
+
+      </section>
+
+
+      <section class="withdraw-layout">
+
+        <div class="dashboard-panel">
+
+          <div class="panel-heading">
+
+            <div>
+              <span class="panel-label">
+                WITHDRAWAL REQUEST
+              </span>
+
+              <h2>
+                Request a Withdrawal
+              </h2>
+            </div>
+
+            <span class="secure-badge">
+              🔒 Secure
+            </span>
+
+          </div>
+
+
+          <form class="money-form">
+
+            <div class="input-group">
+
+              <label for="withdrawAmount">
+                Withdrawal Amount
+              </label>
+
+              <div class="money-input">
+
+                <span>UGX</span>
+
+                <input
+                  type="number"
+                  id="withdrawAmount"
+                  name="withdrawAmount"
+                  min="20000"
+                  placeholder="20,000"
+                  required
+                >
+
+              </div>
+
+              <small>
+                Minimum withdrawal: UGX 20,000
+              </small>
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="withdrawMethod">
+                Withdrawal Method
+              </label>
+
+              <select
+                id="withdrawMethod"
+                name="withdrawMethod"
+                required
+              >
+
+                <option value="">
+                  Select withdrawal method
+                </option>
+
+                <option value="mobile-money">
+                  Mobile Money
+                </option>
+
+                <option value="bank">
+                  Bank Account
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="accountName">
+                Account / Recipient Name
+              </label>
+
+              <input
+                type="text"
+                id="accountName"
+                name="accountName"
+                placeholder="Enter account name"
+                required
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="accountNumber">
+                Phone Number / Account Number
+              </label>
+
+              <input
+                type="text"
+                id="accountNumber"
+                name="accountNumber"
+                placeholder="Enter phone or account number"
+                required
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="withdrawNote">
+                Note <span>(Optional)</span>
+              </label>
+
+              <textarea
+                id="withdrawNote"
+                name="withdrawNote"
+                rows="4"
+                placeholder="Add any information about this withdrawal..."
+              ></textarea>
+
+            </div>
+
+
+            <label class="confirmation-check">
+
+              <input
+                type="checkbox"
+                required
+              >
+
+              <span>
+                I confirm that the withdrawal details I have
+                provided are correct.
+              </span>
+
+            </label>
+
+
+            <button
+              type="submit"
+              class="auth-button"
+            >
+              Submit Withdrawal Request →
+            </button>
+
+            <p class="demo-notice">
+              Withdrawal requests are reviewed before payment is made.
+            </p>
+
+          </form>
+
+        </div>
+
+
+        <div class="dashboard-panel withdrawal-info-panel">
+
+          <div class="panel-heading">
+
+            <div>
+              <span class="panel-label">
+                WITHDRAWAL PROCESS
+              </span>
+
+              <h2>
+                What happens next?
+              </h2>
+            </div>
+
+          </div>
+
+
+          <div class="withdraw-steps">
+
+            <div class="withdraw-step">
+
+              <span>01</span>
+
+              <div>
+                <strong>Request Submitted</strong>
+                <p>
+                  Your withdrawal request is sent for review.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="withdraw-step">
+
+              <span>02</span>
+
+              <div>
+                <strong>Under Review</strong>
+                <p>
+                  Your request and account details are checked.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="withdraw-step">
+
+              <span>03</span>
+
+              <div>
+                <strong>Approved</strong>
+                <p>
+                  Your withdrawal is approved for payment.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="withdraw-step">
+
+              <span>04</span>
+
+              <div>
+                <strong>Paid</strong>
+                <p>
+                  The money is sent to your selected account.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="withdraw-warning">
+
+            <strong>Important</strong>
+
+            <p>
+              Make sure your account details are correct before
+              submitting your request.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="dashboard-panel withdrawal-status-panel">
+
+        <div class="panel-heading">
+
+          <div>
+            <span class="panel-label">
+              WITHDRAWAL STATUS
+            </span>
+
+            <h2>
+              Your Latest Request
+            </h2>
+          </div>
+
+          <span class="transaction-status pending">
+            Pending
+          </span>
+
+        </div>
+
+
+        <div class="withdrawal-status">
+
+          <div>
+            <span>Amount</span>
+            <strong>UGX 0</strong>
+          </div>
+
+          <div>
+            <span>Method</span>
+            <strong>—</strong>
+          </div>
+
+          <div>
+            <span>Status</span>
+            <strong>Awaiting review</strong>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <div class="money-page-footer">
+
+        <a href="dashboard.html">
+          ← Back to Dashboard
+        </a>
+
+        <span>
+          Co Earner • Save. Earn. Grow.
+        </span>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+          </html>
