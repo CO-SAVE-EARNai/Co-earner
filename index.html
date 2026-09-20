@@ -1116,3 +1116,25 @@ document.querySelectorAll(".nav-item").forEach(function(item) {
 });
 
   </script>
+<script>
+function removeDashboardCard(text) {
+  document.querySelectorAll("*").forEach(function(element) {
+    if (
+      element.children.length === 0 &&
+      element.textContent.trim() === text
+    ) {
+      let card = element.parentElement;
+
+      for (let i = 0; i < 3 && card; i++) {
+        card = card.parentElement;
+      }
+
+      if (card) card.style.display = "none";
+    }
+  });
+}
+
+removeDashboardCard("Total Savings");
+removeDashboardCard("This Month");
+removeDashboardCard("Active Goals");
+</script>
