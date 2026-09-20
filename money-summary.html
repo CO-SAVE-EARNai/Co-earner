@@ -783,3 +783,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
                     </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const active = localStorage.getItem("coBankActive");
+    const bank = localStorage.getItem("coSelectedBank");
+
+    if (active !== "true" || !bank) return;
+
+    const dailyEarnings = {
+        "20000-20days": 1750,
+        "30000-20days": 2750,
+        "50000-20days": 4250,
+        "100000-20days": 7750,
+
+        "20000-30days": 1667,
+        "30000-30days": 3000,
+        "50000-30days": 4500,
+        "100000-30days": 7333
+    };
+
+    const daily = dailyEarnings[bank] || 0;
+
+    const today = new Date().toISOString().split("T")[0];
+    const lastDate = localStorage.getItem("coLastEarningDate");
+
+    let totalEarned = Number(
+        localStorage.getItem("coTotalEarned") || 0
+    );
+
+    if (!lastDate) {
+        localStorage.setItem("coLastEarningDate", today);
+        return;
+    }
+
+    if (lastDate !== today) {
+
+        const last = new Date(lastDate);
+        const current = new Date(today);
+
+        const daysPassed = Math.floor(
+            (current - last) / (1000 * 60 * 60 * 24)
+        );
+
+        if (daysPassed > 0) {
+
+            totalEarned += daily * daysPassed;
+
+            localStorage.setItem(
+                "coTotalEarned",
+                totalEarned
+            );
+
+            localStorage.setItem(
+                "coDailyEarned",
+                daily
+            );
+
+            localStorage.setItem(
+                "coLastEarningDate",
+                today
+            );
+        }
+    }
+
+});
+            </script>
