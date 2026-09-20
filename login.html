@@ -204,3 +204,47 @@ function loginUser() {
     }
 }
 </style>
+<!-- CO SAVE & EARN LOGIN FIX -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* Find the login form automatically */
+    const form = document.querySelector("form");
+
+    if (form) {
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            /* Mark the user as logged in */
+            localStorage.setItem("coLoggedIn", "true");
+
+            /* Go to the dashboard */
+            window.location.href = "dashboard.html";
+        });
+    }
+
+    /* Also make any Login button work */
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach(function(button) {
+
+        if (
+            button.textContent.toLowerCase().includes("login") ||
+            button.textContent.toLowerCase().includes("log in")
+        ) {
+
+            button.addEventListener("click", function () {
+
+                localStorage.setItem("coLoggedIn", "true");
+
+                window.location.href = "dashboard.html";
+
+            });
+
+        }
+
+    });
+
+});
+</script>
