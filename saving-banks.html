@@ -1327,3 +1327,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const joinButton = document.getElementById("coPopupJoin");
+
+    if (!joinButton) return;
+
+    const oldJoin = joinButton.onclick;
+
+    joinButton.onclick = function () {
+
+        if (typeof oldJoin === "function") {
+            oldJoin.call(this);
+        }
+
+        const active = localStorage.getItem("coBankActive");
+        const startDate = localStorage.getItem("coBankStartDate");
+
+        if (active === "true" && !startDate) {
+
+            localStorage.setItem(
+                "coBankStartDate",
+                new Date().toISOString()
+            );
+
+            localStorage.setItem(
+                "coBankCompleted",
+                "false"
+            );
+        }
+    };
+
+});
+</script>
