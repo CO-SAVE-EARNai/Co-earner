@@ -590,3 +590,14 @@ document.querySelectorAll(".nav-item").forEach(item => {
   }
 });
 </script>
+<script>
+document.querySelectorAll(".nav-item").forEach(item => {
+  if (item.innerText.includes("Savings")) {
+    item.onclick = function() {
+      document.querySelector(".save-slider").scrollIntoView({
+        behavior: "smooth"
+      });
+    };
+  }
+});
+</script>
