@@ -865,3 +865,259 @@ footer strong {
 <footer>
     <strong>Co Earner</strong><br>
     Save More
+<!-- ==========================================
+     CO EARNER SAVING BANK DETAILS
+     PASTE AT THE VERY END OF saving-banks.html
+========================================== -->
+
+<style>
+
+.co-bank-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0,0,0,.65);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.co-bank-popup-box {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    border-radius: 26px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+.co-bank-popup-box h2 {
+    margin: 0 0 8px;
+    color: #075b35;
+}
+
+.co-bank-popup-box p {
+    color: #68756d;
+    margin: 8px 0;
+}
+
+.co-bank-popup-value {
+    font-size: 30px;
+    font-weight: 900;
+    color: #087443;
+    margin: 18px 0;
+}
+
+.co-bank-popup-button {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 15px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.co-bank-join {
+    background: #087443;
+    color: white;
+}
+
+.co-bank-close {
+    background: #edf2ee;
+    color: #26352d;
+}
+
+</style>
+
+
+<!-- POPUP -->
+
+<div id="coBankPopup" class="co-bank-popup">
+
+    <div class="co-bank-popup-box">
+
+        <h2 id="coPopupTitle">
+            Saving Bank
+        </h2>
+
+        <p id="coPopupDays"></p>
+
+        <div class="co-bank-popup-value"
+             id="coPopupAmount">
+            0
+        </div>
+
+        <p id="coPopupEarning"></p>
+
+        <p id="coPopupTotal"></p>
+
+
+        <button
+            class="co-bank-popup-button co-bank-join"
+            id="coPopupJoin">
+            Join This Saving Bank
+        </button>
+
+
+        <button
+            class="co-bank-popup-button co-bank-close"
+            onclick="closeCoBankPopup()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const coBankDetails = {
+
+    "20000-20days": {
+        title: "20,000 Saving Bank",
+        days: "20 Days",
+        amount: "20,000",
+        earning: "35,000",
+        total: "55,000"
+    },
+
+    "30000-20days": {
+        title: "30,000 Saving Bank",
+        days: "20 Days",
+        amount: "30,000",
+        earning: "55,000",
+        total: "85,000"
+    },
+
+    "50000-20days": {
+        title: "50,000 Saving Bank",
+        days: "20 Days",
+        amount: "50,000",
+        earning: "85,000",
+        total: "135,000"
+    },
+
+    "100000-20days": {
+        title: "100,000 Saving Bank",
+        days: "20 Days",
+        amount: "100,000",
+        earning: "155,000",
+        total: "255,000"
+    },
+
+    "20000-30days": {
+        title: "20,000 Saving Bank",
+        days: "30 Days",
+        amount: "20,000",
+        earning: "50,000",
+        total: "70,000"
+    },
+
+    "30000-30days": {
+        title: "30,000 Saving Bank",
+        days: "30 Days",
+        amount: "30,000",
+        earning: "90,000",
+        total: "120,000"
+    },
+
+    "50000-30days": {
+        title: "50,000 Saving Bank",
+        days: "30 Days",
+        amount: "50,000",
+        earning: "135,000",
+        total: "185,000"
+    },
+
+    "100000-30days": {
+        title: "100,000 Saving Bank",
+        days: "30 Days",
+        amount: "100,000",
+        earning: "220,000",
+        total: "320,000"
+    }
+
+};
+
+
+/* OPEN BANK DETAILS */
+
+function openCoBankDetails(bank) {
+
+    const data = coBankDetails[bank];
+
+    if (!data) return;
+
+    document.getElementById("coPopupTitle").textContent =
+        data.title;
+
+    document.getElementById("coPopupDays").textContent =
+        data.days;
+
+    document.getElementById("coPopupAmount").textContent =
+        data.amount;
+
+    document.getElementById("coPopupEarning").textContent =
+        "Earnings: " + data.earning;
+
+    document.getElementById("coPopupTotal").textContent =
+        "Total after completion: " + data.total;
+
+
+    document.getElementById("coPopupJoin").onclick =
+        function() {
+            window.location.href =
+                "register.html?bank=" + bank;
+        };
+
+
+    document.getElementById("coBankPopup").style.display =
+        "flex";
+
+}
+
+
+/* CLOSE */
+
+function closeCoBankPopup() {
+
+    document.getElementById("coBankPopup").style.display =
+        "none";
+
+}
+
+
+/* INTERCEPT EXISTING BANK LINKS */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    document.querySelectorAll(
+        'a[href*="register.html?bank="]'
+    ).forEach(function(link) {
+
+        const url =
+            new URL(link.href, window.location.href);
+
+        const bank =
+            url.searchParams.get("bank");
+
+        if (!bank) return;
+
+        link.addEventListener("click", function(event) {
+
+            event.preventDefault();
+
+            openCoBankDetails(bank);
+
+        });
+
+    });
+
+});
+
+    </script>
