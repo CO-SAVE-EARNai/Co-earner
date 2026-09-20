@@ -632,3 +632,15 @@ document.querySelectorAll(".nav-item").forEach(item => {
   }
 });
 </script>
+<script>
+document.querySelectorAll(".nav-item").forEach(item => {
+  if (item.innerText.includes("Home")) {
+    item.onclick = function() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    };
+  }
+});
+        </script>
