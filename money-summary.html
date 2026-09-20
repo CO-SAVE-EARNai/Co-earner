@@ -1091,3 +1091,79 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 Save it.
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const active = localStorage.getItem("coBankActive");
+    const bank = localStorage.getItem("coSelectedBank");
+    const startDate = localStorage.getItem("coBankStartDate");
+
+    if (active !== "true" || !bank || !startDate) return;
+
+    const bankDays = {
+        "20000-20days": 20,
+        "30000-20days": 20,
+        "50000-20days": 20,
+        "100000-20days": 20,
+
+        "20000-30days": 30,
+        "30000-30days": 30,
+        "50000-30days": 30,
+        "100000-30days": 30
+    };
+
+    const dailyEarnings = {
+        "20000-20days": 1750,
+        "30000-20days": 2750,
+        "50000-20days": 4250,
+        "100000-20days": 7750,
+
+        "20000-30days": 1667,
+        "30000-30days": 3000,
+        "50000-30days": 4500,
+        "100000-30days": 7333
+    };
+
+    const totalDays = bankDays[bank];
+    const daily = dailyEarnings[bank];
+
+    if (!totalDays || !daily) return;
+
+    const start = new Date(startDate);
+    const now = new Date();
+
+    const daysPassed = Math.floor(
+        (now - start) / (1000 * 60 * 60 * 24)
+    );
+
+    const earningDays = Math.min(
+        Math.max(daysPassed, 0),
+        totalDays
+    );
+
+    const totalEarned = daily * earningDays;
+
+    localStorage.setItem(
+        "coTotalEarned",
+        totalEarned
+    );
+
+    localStorage.setItem(
+        "coDailyEarned",
+        daily
+    );
+
+    if (daysPassed >= totalDays) {
+        localStorage.setItem(
+            "coBankCompleted",
+            "true"
+        );
+
+        localStorage.setItem(
+            "coDailyEarned",
+            "0"
+        );
+    }
+
+});
+                          </script>
