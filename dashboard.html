@@ -1385,3 +1385,1225 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
       </script>
+<!-- =========================================================
+     CO EARNER SAVING BANKS
+     Paste this entire block at the VERY END of dashboard.html
+========================================================= -->
+
+<style>
+
+/* ---------- SAVING BANKS BUTTON ---------- */
+
+.co-save-entry {
+    margin: 30px 0;
+}
+
+.co-save-entry button {
+    width: 100%;
+    border: 0;
+    border-radius: 22px;
+    padding: 22px 25px;
+    background: linear-gradient(135deg, #087443, #0aa866);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(8,116,67,.20);
+}
+
+.co-save-entry .save-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.co-save-entry strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.co-save-entry span {
+    font-size: 14px;
+    opacity: .9;
+}
+
+
+/* ---------- FULL SAVING BANKS SCREEN ---------- */
+
+#coSavingBanks {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #f3f9f5;
+    overflow-y: auto;
+}
+
+
+/* ---------- TOP BAR ---------- */
+
+.co-banks-header {
+    background: linear-gradient(135deg,#087443,#09985a);
+    color: white;
+    padding: 18px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    box-shadow: 0 5px 20px rgba(0,0,0,.12);
+}
+
+.co-banks-header-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.co-banks-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.co-banks-brand-icon {
+    font-size: 38px;
+}
+
+.co-banks-brand h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.co-banks-brand p {
+    margin: 3px 0 0;
+    font-size: 13px;
+    opacity: .9;
+}
+
+.co-banks-close {
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+
+/* ---------- MAIN AREA ---------- */
+
+.co-banks-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 20px 60px;
+}
+
+.co-banks-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.co-banks-title h1 {
+    color: #12372a;
+    margin: 0 0 8px;
+    font-size: 34px;
+}
+
+.co-banks-title p {
+    color: #68776f;
+    margin: 0;
+}
+
+
+/* ---------- CYCLE ---------- */
+
+.co-cycle {
+    background: white;
+    border-radius: 28px;
+    padding: 25px;
+    margin-bottom: 35px;
+    box-shadow: 0 10px 35px rgba(25,70,45,.08);
+}
+
+.co-cycle-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.co-cycle-heading .calendar {
+    font-size: 30px;
+}
+
+.co-cycle-heading h2 {
+    color: #087443;
+    font-size: 30px;
+    margin: 0;
+}
+
+.co-cycle-heading p {
+    color: #6c7a72;
+    margin: 3px 0 0;
+}
+
+
+/* ---------- BANK GRID ---------- */
+
+.co-bank-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+}
+
+
+/* ---------- CARD ---------- */
+
+.co-bank-card {
+    border-radius: 22px;
+    padding: 14px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(0,0,0,.05);
+    transition: transform .25s, box-shadow .25s;
+}
+
+.co-bank-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.12);
+}
+
+
+/* DIFFERENT CARD COLORS */
+
+.bank-green {
+    background: linear-gradient(180deg,#e4f8e9,#d5f0dc);
+}
+
+.bank-blue {
+    background: linear-gradient(180deg,#e4f3ff,#d5ebfa);
+}
+
+.bank-gold {
+    background: linear-gradient(180deg,#fff6d9,#fff0b9);
+}
+
+.bank-black {
+    background: linear-gradient(180deg,#f0f2f3,#e2e6e8);
+}
+
+.bank-pink {
+    background: linear-gradient(180deg,#ffe7ee,#ffd9e4);
+}
+
+.bank-leaf {
+    background: linear-gradient(180deg,#e5f7e9,#d7f0dc);
+}
+
+.bank-purple {
+    background: linear-gradient(180deg,#f0e8ff,#e3d5fa);
+}
+
+.bank-teal {
+    background: linear-gradient(180deg,#e2f7fa,#d4edf1);
+}
+
+
+/* ---------- ART AREA ---------- */
+
+.co-bank-art {
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+/* COIN */
+
+.co-coin {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: linear-gradient(145deg,#ffe27a,#d89b00);
+    border: 3px solid #b77b00;
+    color: #805800;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    animation: coinDrop 1.7s infinite ease-in;
+}
+
+@keyframes coinDrop {
+
+    0% {
+        transform: translate(-50%, -12px);
+        opacity: 1;
+    }
+
+    65% {
+        transform: translate(-50%, 125px);
+        opacity: 1;
+    }
+
+    75% {
+        transform: translate(-50%, 140px);
+        opacity: .25;
+    }
+
+    76% {
+        transform: translate(-50%, -12px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -12px);
+        opacity: 1;
+    }
+}
+
+
+/* ARROWS */
+
+.co-coin-arrow {
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #087443;
+    font-size: 25px;
+    font-weight: bold;
+    z-index: 4;
+}
+
+
+/* ---------- TINS ---------- */
+
+.co-tin {
+    width: 155px;
+    height: 145px;
+    border-radius: 25px 25px 18px 18px;
+    position: relative;
+    margin-top: 45px;
+    box-shadow:
+        inset 8px 0 15px rgba(255,255,255,.22),
+        inset -10px 0 15px rgba(0,0,0,.15),
+        0 15px 20px rgba(0,0,0,.14);
+}
+
+
+/* TIN LID */
+
+.co-tin::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 5px;
+    width: 145px;
+    height: 24px;
+    border-radius: 50%;
+    background: inherit;
+    border: 3px solid rgba(0,0,0,.12);
+}
+
+
+/* SLOT */
+
+.co-tin::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 8px;
+    border-radius: 10px;
+    background: #222;
+    z-index: 3;
+}
+
+
+/* TIN COLORS */
+
+.tin-green {
+    background: linear-gradient(135deg,#159447,#056535);
+}
+
+.tin-gold {
+    background: linear-gradient(135deg,#f8c62f,#c88b00);
+}
+
+.tin-black {
+    background: linear-gradient(135deg,#303536,#080909);
+}
+
+.tin-leaf {
+    background: linear-gradient(135deg,#237d48,#124f2d);
+}
+
+.tin-teal {
+    background: linear-gradient(135deg,#139ab0,#076679);
+}
+
+
+/* TIN WORDS */
+
+.co-tin-text {
+    color: white;
+    text-align: center;
+    font-weight: 900;
+    font-size: 19px;
+    line-height: 1.25;
+    padding-top: 45px;
+}
+
+
+/* ---------- ELEPHANTS ---------- */
+
+.co-elephant {
+    position: relative;
+    width: 165px;
+    height: 130px;
+    margin-top: 60px;
+}
+
+
+/* BODY */
+
+.co-elephant-body {
+    position: absolute;
+    width: 125px;
+    height: 95px;
+    border-radius: 48% 48% 42% 42%;
+    right: 5px;
+    top: 25px;
+    box-shadow:
+        inset 10px 0 15px rgba(255,255,255,.25),
+        inset -10px -5px 15px rgba(0,0,0,.15),
+        0 14px 20px rgba(0,0,0,.12);
+}
+
+
+/* HEAD */
+
+.co-elephant-head {
+    position: absolute;
+    width: 72px;
+    height: 75px;
+    border-radius: 50%;
+    left: 5px;
+    top: 28px;
+    z-index: 3;
+}
+
+
+/* EAR */
+
+.co-elephant-ear {
+    position: absolute;
+    width: 45px;
+    height: 58px;
+    border-radius: 50%;
+    left: -20px;
+    top: 8px;
+    opacity: .9;
+}
+
+
+/* TRUNK */
+
+.co-elephant-trunk {
+    position: absolute;
+    width: 45px;
+    height: 20px;
+    border-radius: 20px;
+    left: -32px;
+    top: 57px;
+    transform: rotate(-12deg);
+    z-index: 5;
+}
+
+
+/* EYE */
+
+.co-elephant-eye {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #111;
+    border-radius: 50%;
+    right: 18px;
+    top: 26px;
+    z-index: 8;
+}
+
+
+/* LEGS */
+
+.co-leg {
+    position: absolute;
+    width: 20px;
+    height: 45px;
+    border-radius: 12px;
+    bottom: -12px;
+}
+
+.leg1 { left: 38px; }
+.leg2 { left: 68px; }
+.leg3 { right: 22px; }
+
+
+/* ELEPHANT COLORS */
+
+.ele-blue .co-elephant-body,
+.ele-blue .co-elephant-head,
+.ele-blue .co-elephant-ear,
+.ele-blue .co-elephant-trunk,
+.ele-blue .co-leg {
+    background: #168bd0;
+}
+
+.ele-pink .co-elephant-body,
+.ele-pink .co-elephant-head,
+.ele-pink .co-elephant-ear,
+.ele-pink .co-elephant-trunk,
+.ele-pink .co-leg {
+    background: #f06c9d;
+}
+
+.ele-purple .co-elephant-body,
+.ele-purple .co-elephant-head,
+.ele-purple .co-elephant-ear,
+.ele-purple .co-elephant-trunk,
+.ele-purple .co-leg {
+    background: #7545c7;
+}
+
+.ele-gold .co-elephant-body,
+.ele-gold .co-elephant-head,
+.ele-gold .co-elephant-ear,
+.ele-gold .co-elephant-trunk,
+.ele-gold .co-leg {
+    background: #e5aa12;
+}
+
+.ele-black .co-elephant-body,
+.ele-black .co-elephant-head,
+.ele-black .co-elephant-ear,
+.ele-black .co-elephant-trunk,
+.ele-black .co-leg {
+    background: #202425;
+}
+
+
+/* ELEPHANT SLOT */
+
+.co-elephant-slot {
+    position: absolute;
+    width: 48px;
+    height: 8px;
+    background: #111;
+    border-radius: 8px;
+    top: 12px;
+    right: 42px;
+    z-index: 10;
+}
+
+
+/* ---------- CARD INFORMATION ---------- */
+
+.co-bank-info {
+    background: rgba(255,255,255,.86);
+    border-radius: 18px;
+    padding: 15px;
+    text-align: center;
+}
+
+.co-bank-amount {
+    font-size: 25px;
+    font-weight: 900;
+    color: #17231c;
+    margin-bottom: 7px;
+}
+
+.co-bank-earn {
+    color: #087443;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.co-bank-total {
+    color: #34443b;
+    font-size: 15px;
+    margin: 7px 0 14px;
+}
+
+
+/* ---------- CHOOSE BUTTON ---------- */
+
+.co-choose {
+    width: 100%;
+    border: 0;
+    border-radius: 13px;
+    padding: 13px;
+    background: #087443;
+    color: white;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.co-choose:hover {
+    filter: brightness(.92);
+}
+
+.bank-gold .co-choose {
+    background: #d39a00;
+}
+
+.bank-pink .co-choose {
+    background: #d63370;
+}
+
+.bank-purple .co-choose {
+    background: #6940b4;
+}
+
+.bank-blue .co-choose {
+    background: #147db9;
+}
+
+
+/* ---------- POPULAR ---------- */
+
+.co-popular {
+    position: absolute;
+    top: 12px;
+    right: -35px;
+    transform: rotate(38deg);
+    background: #c89217;
+    color: white;
+    padding: 6px 38px;
+    font-size: 10px;
+    font-weight: 900;
+    z-index: 10;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:950px) {
+
+    .co-bank-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .co-banks-title h1 {
+        font-size: 27px;
+    }
+
+    .co-cycle {
+        padding: 15px;
+    }
+
+    .co-bank-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .co-bank-art {
+        height: 220px;
+    }
+
+}
+
+</style>
+
+
+<!-- =========================================
+     SAVING BANKS BUTTON
+========================================= -->
+
+<div class="co-save-entry">
+
+    <button onclick="openCoSavingBanks()">
+
+        <div class="save-icon">
+            🐘
+        </div>
+
+        <div>
+            <strong>Saving Banks</strong>
+
+            <span>
+                Choose from Co Earner's available saving plans
+            </span>
+        </div>
+
+    </button>
+
+</div>
+
+
+<!-- =========================================
+     SAVING BANKS PAGE
+========================================= -->
+
+<div id="coSavingBanks">
+
+    <div class="co-banks-header">
+
+        <div class="co-banks-header-inner">
+
+            <div class="co-banks-brand">
+
+                <div class="co-banks-brand-icon">
+                    🐘
+                </div>
+
+                <div>
+                    <h2>Saving Banks</h2>
+                    <p>Choose your preferred saving plan</p>
+                </div>
+
+            </div>
+
+            <button
+                class="co-banks-close"
+                onclick="closeCoSavingBanks()">
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="co-banks-container">
+
+        <div class="co-banks-title">
+
+            <h1>Co Earner Saving Banks</h1>
+
+            <p>
+                Save today, grow tomorrow.
+            </p>
+
+        </div>
+
+
+        <!-- =================================
+             20 DAYS
+        ================================== -->
+
+        <div class="co-cycle">
+
+            <div class="co-cycle-heading">
+
+                <div class="calendar">📅</div>
+
+                <div>
+                    <h2>20 DAYS</h2>
+                    <p>Small steps, big dreams</p>
+                </div>
+
+            </div>
+
+
+            <div class="co-bank-grid">
+
+
+                <!-- 20,000 TIN -->
+
+                <div class="co-bank-card bank-green">
+
+                    <div class="co-bank-art">
+
+                        <div class="co-coin">20</div>
+
+                        <div class="co-coin-arrow">↓</div>
+
+                        <div class="co-tin tin-green">
+
+                            <div class="co-tin-text">
+                                Small<br>
+                                Steps<br>
+                                Big Dreams
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="co-bank-info">
+
+                        <div class="co-bank-amount">
+                            20,000
+                        </div>
+
+                        <div class="co-bank-earn">
+                            Earn 35,000
+                        </div>
+
+                        <div class="co-bank-total">
+                            Total: 55,000
+                        </div>
+
+                        <button
+                            class="co-choose"
+                            onclick="coSelectBank('20000-20days')">
+                            Choose Bank →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 30,000 ELEPHANT -->
+
+                <div class="co-bank-card bank-blue">
+
+                    <div class="co-bank-art">
+
+                        <div class="co-coin">30</div>
+
+                        <div class="co-coin-arrow">↓</div>
+
+                        <div class="co-elephant ele-blue">
+
+                            <div class="co-elephant-body"></div>
+                            <div class="co-elephant-head"></div>
+                            <div class="co-elephant-ear"></div>
+                            <div class="co-elephant-trunk"></div>
+                            <div class="co-elephant-eye"></div>
+
+                            <div class="co-leg leg1"></div>
+                            <div class="co-leg leg2"></div>
+                            <div class="co-leg leg3"></div>
+
+                            <div class="co-elephant-slot"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="co-bank-info">
+
+                        <div class="co-bank-amount">
+                            30,000
+                        </div>
+
+                        <div class="co-bank-earn">
+                            Earn 55,000
+                        </div>
+
+                        <div class="co-bank-total">
+                            Total: 85,000
+                        </div>
+
+                        <button
+                            class="co-choose"
+                            onclick="coSelectBank('30000-20days')">
+                            Choose Bank →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 50,000 GOLD TIN -->
+
+                <div class="co-bank-card bank-gold">
+
+                    <div class="co-popular">
+                        POPULAR
+                    </div>
+
+                    <div class="co-bank-art">
+
+                        <div class="co-coin">50</div>
+
+                        <div class="co-coin-arrow">↓</div>
+
+                        <div class="co-tin tin-gold">
+
+                            <div class="co-tin-text">
+                                Good<br>
+                                Things<br>
+                                Take Time
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="co-bank-info">
+
+                        <div class="co-bank-amount">
+                            50,000
+                        </div>
+
+                        <div class="co-bank-earn">
+                            Earn 85,000
+                        </div>
+
+                        <div class="co-bank-total">
+                            Total: 135,000
+                        </div>
+
+                        <button
+                            class="co-choose"
+                            onclick="coSelectBank('50000-20days')">
+                            Choose Bank →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 100,000 BLACK ELEPHANT -->
+
+                <div class="co-bank-card bank-black">
+
+                    <div class="co-bank-art">
+
+                        <div class="co-coin">100</div>
+
+                        <div class="co-coin-arrow">↓</div>
+
+                        <div class="co-elephant ele-black">
+
+                            <div class="co-elephant-body"></div>
+                            <div class="co-elephant-head"></div>
+                            <div class="co-elephant-ear"></div>
+                            <div class="co-elephant-trunk"></div>
+                            <div class="co-elephant-eye"></div>
+
+                            <div class="co-leg leg1"></div>
+                            <div class="co-leg leg2"></div>
+                            <div class="co-leg leg3"></div>
+
+                            <div class="co-elephant-slot"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="co-bank-info">
+
+                        <div class="co-bank-amount">
+                            100,000
+                        </div>
+
+                        <div class="co-bank-earn">
+                            Earn 155,000
+                        </div>
+
+                        <div class="co-bank-total">
+                            Total: 255,000
+                        </div>
+
+                        <button
+                            class="co-choose"
+                            onclick="coSelectBank('100000-20days')">
+                            Choose Bank →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             30 DAYS
+        ================================== -->
+
+        <div class="co-cycle">
+
+            <div class="co-cycle-heading">
+
+                <div class="calendar">📅</div>
+
+                <div>
+                    <h2>30 DAYS</h2>
+                    <p>Save today, enjoy tomorrow</p>
+                </div>
+
+            </div>
+
+
+            <div class="co-bank-grid">
+
+
+                <!-- 20,000 PINK ELEPHANT -->
+
+                <div class="co-bank-card bank-pink">
+
+                    <div class="co-bank-art">
+
+                        <div class="co-coin">20</div>
+
+                        <div class="co-coin-arrow">↓</div>
+
+                        <div class="co-elephant ele-pink">
+
+                            <div class="co-elephant-body"></div>
+                            <div class="co-elephant-head"></div>
+                            <div class="co-elephant-ear"></div>
+                            <div class="co-elephant-trunk"></div>
+                            <div class="co-elephant-eye"></div>
+
+                            <div class="co-leg leg1"></div>
+                            <div class="co-leg leg2"></div>
+                            <div class="co-leg leg3"></div>
+
+                            <div class="co-elephant-slot"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="co-bank-info">
+
+                        <div class="co-bank-amount">
+                            20,000
+                        </div>
+
+                        <div class="co-bank-earn">
+                            Earn 50,000
+                        </div>
+
+                        <div class="co-bank-total">
+                            Total: 70,000
+                        </div>
+
+                        <button
+                            class="co-choose"
+                            onclick="coSelectBank('20000-30days')">
+                            Choose Bank →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 30,000 GREEN TIN -->
+
+                <div class="co-bank-card bank-leaf">
+
+                    <div class="co-bank-art">
+
+                        <div class="co-coin">30</div>
+
+                        <div class="co-coin-arrow">↓</div>
+
+                        <div class="co-tin tin-leaf">
+
+                            <div class="co-tin-text">
+                                Save<br>
+                                Build<br>
+                                Achieve
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="co-bank-info">
+
+                        <div class="co-bank-amount">
+                            30,000
+                        </div>
+
+                        <div class="co-bank-earn">
+                            Earn 90,000
+                        </div>
+
+                        <div class="co-bank-total">
+                            Total: 120,000
+                        </div>
+
+                        <button
+                            class="co-choose"
+                            onclick="coSelectBank('30000-30days')">
+                            Choose Bank →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 50,000 PURPLE ELEPHANT -->
+
+                <div class="co-bank-card bank-purple">
+
+                    <div class="co-popular">
+                        POPULAR
+                    </div>
+
+                    <div class="co-bank-art">
+
+                        <div class="co-coin">50</div>
+
+                        <div class="co-coin-arrow">↓</div>
+
+                        <div class="co-elephant ele-purple">
+
+                            <div class="co-elephant-body"></div>
+                            <div class="co-elephant-head"></div>
+                            <div class="co-elephant-ear"></div>
+                            <div class="co-elephant-trunk"></div>
+                            <div class="co-elephant-eye"></div>
+
+                            <div class="co-leg leg1"></div>
+                            <div class="co-leg leg2"></div>
+                            <div class="co-leg leg3"></div>
+
+                            <div class="co-elephant-slot"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="co-bank-info">
+
+                        <div class="co-bank-amount">
+                            50,000
+                        </div>
+
+                        <div class="co-bank-earn">
+                            Earn 135,000
+                        </div>
+
+                        <div class="co-bank-total">
+                            Total: 185,000
+                        </div>
+
+                        <button
+                            class="co-choose"
+                            onclick="coSelectBank('50000-30days')">
+                            Choose Bank →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 100,000 BLUE TIN -->
+
+                <div class="co-bank-card bank-teal">
+
+                    <div class="co-bank-art">
+
+                        <div class="co-coin">100</div>
+
+                        <div class="co-coin-arrow">↓</div>
+
+                        <div class="co-tin tin-teal">
+
+                            <div class="co-tin-text">
+                                Big<br>
+                                Goals
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="co-bank-info">
+
+                        <div class="co-bank-amount">
+                            100,000
+                        </div>
+
+                        <div class="co-bank-earn">
+                            Earn 220,000
+                        </div>
+
+                        <div class="co-bank-total">
+                            Total: 320,000
+                        </div>
+
+                        <button
+                            class="co-choose"
+                            onclick="coSelectBank('100000-30days')">
+                            Choose Bank →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* OPEN SAVING BANKS */
+
+function openCoSavingBanks() {
+
+    document.getElementById("coSavingBanks").style.display = "block";
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+/* CLOSE SAVING BANKS */
+
+function closeCoSavingBanks() {
+
+    document.getElementById("coSavingBanks").style.display = "none";
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* CHOOSE BANK */
+
+function coSelectBank(bank) {
+
+    window.location.href = "register.html?bank=" + bank;
+
+}
+
+  </script>
