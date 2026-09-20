@@ -2633,3 +2633,35 @@ document.addEventListener("touchend", function(event) {
 });
 
 </script>
+<!-- ==========================================
+     CO EARNER SAVING BANKS SWIPE NAVIGATION
+========================================== -->
+
+<script>
+
+let coDashboardTouchStartX = 0;
+
+document.addEventListener("touchstart", function(event) {
+    coDashboardTouchStartX = event.touches[0].clientX;
+});
+
+document.addEventListener("touchend", function(event) {
+
+    let coDashboardTouchEndX = event.changedTouches[0].clientX;
+
+    let coDashboardSwipeDistance =
+        coDashboardTouchEndX - coDashboardTouchStartX;
+
+
+    /*
+       SWIPE RIGHT
+       Dashboard → Saving Banks
+    */
+
+    if (coDashboardSwipeDistance > 80) {
+        window.location.href = "saving-banks.html";
+    }
+
+});
+
+</script>
