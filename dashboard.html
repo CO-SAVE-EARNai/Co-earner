@@ -1883,3 +1883,58 @@ setInterval(
 );
 
             </script>
+<script>
+
+/* ==============================
+   OPEN PROFILE PAGE
+============================== */
+
+function openCoProfile(){
+
+    window.location.href =
+        "profile.html";
+
+}
+
+
+/* Find the existing Profile
+   button/card and make it clickable */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const elements =
+            document.querySelectorAll(
+                "a, button, div"
+            );
+
+        elements.forEach(function(element){
+
+            const text =
+                element.textContent
+                    .trim()
+                    .toLowerCase();
+
+            if(text === "profile"){
+
+                element.style.cursor =
+                    "pointer";
+
+                element.addEventListener(
+                    "click",
+                    function(){
+
+                        openCoProfile();
+
+                    }
+                );
+
+            }
+
+        });
+
+    }
+);
+
+</script>
