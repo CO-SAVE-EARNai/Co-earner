@@ -632,3 +632,846 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<!-- =====================================================
+     CO SAVE & EARN — COMPLETE MONEY CONNECTION
+     Connects:
+     DEPOSIT → BALANCE → ELEPHANT/TIN → COMPLETION → WITHDRAWAL
+     ===================================================== -->
+
+<style>
+.co-money-status{
+    width:92%;
+    max-width:650px;
+    margin:20px auto;
+    padding:18px;
+    background:#0b302c;
+    border:1px solid #176e5d;
+    border-radius:18px;
+    color:white;
+}
+
+.co-money-status h3{
+    margin:0 0 12px;
+}
+
+.co-money-row{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    color:#a9c5bf;
+    font-size:13px;
+}
+
+.co-money-row strong{
+    color:#20d69b;
+}
+</style>
+
+<script>
+
+/* =====================================================
+   1. COMMON MONEY STORAGE
+   ===================================================== */
+
+const CO_MIN_WITHDRAWAL = 20000;
+
+
+/* Get wallet balance */
+
+function coGetBalance(){
+
+    return Number(
+        localStorage.getItem("coBalance")
+    ) || 0;
+
+}
+
+
+/* Save wallet balance */
+
+function coSetBalance(amount){
+
+    localStorage.setItem(
+        "coBalance",
+        String(
+            Math.max(0, Number(amount) || 0)
+        )
+    );
+
+}
+
+
+/* Get transactions */
+
+function coGetTransactions(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(
+                "coTransactions"
+            ) || "[]"
+        );
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+/* Save transaction */
+
+function coAddTransaction(data){
+
+    const transactions =
+        coGetTransactions();
+
+    transactions.unshift({
+
+        ...data,
+
+        date:
+            new Date()
+            .toLocaleDateString(),
+
+        time:
+            new Date()
+            .toLocaleTimeString()
+
+    });
+
+    localStorage.setItem(
+        "coTransactions",
+        JSON.stringify(
+            transactions
+        )
+    );
+
+}
+
+
+/* =====================================================
+   2. FIND ELEPHANT/TIN PLANS
+   ===================================================== */
+
+function coGetPlan(storageKey){
+
+    const saved =
+        localStorage.getItem(
+            storageKey
+        );
+
+    if(!saved){
+        return null;
+    }
+
+    try{
+
+        return JSON.parse(saved);
+
+    }catch(error){
+
+        return null;
+
+    }
+
+}
+
+
+/* =====================================================
+   3. CHECK WHETHER A SAVING CYCLE IS COMPLETE
+   ===================================================== */
+
+function coCheckPlan(storageKey){
+
+    const plan =
+        coGetPlan(storageKey);
+
+    if(!plan){
+        return null;
+    }
+
+
+    const start =
+        new Date(
+            plan.started
+        );
+
+
+    if(
+        !plan.started ||
+        isNaN(start.getTime())
+    ){
+
+        return plan;
+
+    }
+
+
+    const cycleDays =
+        Number(
+            plan.days
+        ) || 0;
+
+
+    const now =
+        new Date();
+
+
+    const elapsed =
+        Math.floor(
+            (
+                now.getTime() -
+                start.getTime()
+            ) /
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
+        );
+
+
+    if(elapsed >= cycleDays){
+
+        if(!plan.completed){
+
+            plan.completed = true;
+
+            plan.completedDate =
+                now.toLocaleDateString();
+
+
+            localStorage.setItem(
+                storageKey,
+                JSON.stringify(
+                    plan
+                )
+            );
+
+        }
+
+    }
+
+
+    return plan;
+
+}
+
+
+/* =====================================================
+   4. CHECK BOTH SAVINGS PLANS
+   ===================================================== */
+
+function coCheckAllSavings(){
+
+    const elephant =
+        coCheckPlan(
+            "activeElephantPlan"
+        );
+
+
+    const tin =
+        coCheckPlan(
+            "activeTinPlan"
+        );
+
+
+    return {
+        elephant: elephant,
+        tin: tin
+    };
+
+}
+
+
+/* =====================================================
+   5. IMPORTANT:
+      RELEASE COMPLETED SAVINGS INTO COMMON BALANCE
+   ===================================================== */
+
+function coReleaseCompletedPlan(
+    storageKey,
+    planType
+){
+
+    const plan =
+        coGetPlan(
+            storageKey
+        );
+
+
+    if(!plan){
+        return 0;
+    }
+
+
+    /*
+       Check completion again.
+       This means the user does NOT
+       have to open dashboard first.
+    */
+
+    coCheckPlan(
+        storageKey
+    );
+
+
+    const updatedPlan =
+        coGetPlan(
+            storageKey
+        );
+
+
+    if(
+        !updatedPlan ||
+        !updatedPlan.completed
+    ){
+
+        return 0;
+
+    }
+
+
+    /*
+       Prevent the same plan from
+       being released twice.
+    */
+
+    if(updatedPlan.released){
+
+        return 0;
+
+    }
+
+
+    const amount =
+        Number(
+            updatedPlan.amount
+        ) || 0;
+
+
+    if(amount <= 0){
+
+        localStorage.removeItem(
+            storageKey
+        );
+
+        return 0;
+
+    }
+
+
+    /*
+       Add the saved principal back
+       to the common balance.
+    */
+
+    const oldBalance =
+        coGetBalance();
+
+
+    const newBalance =
+        oldBalance +
+        amount;
+
+
+    coSetBalance(
+        newBalance
+    );
+
+
+    /*
+       Mark the plan as released
+       BEFORE removing it.
+       This prevents duplicate release.
+    */
+
+    updatedPlan.released = true;
+
+    updatedPlan.releasedDate =
+        new Date()
+        .toLocaleDateString();
+
+
+    /*
+       Record the release.
+    */
+
+    coAddTransaction({
+
+        type:
+            "Savings Completed",
+
+        source:
+            planType,
+
+        amount:
+            amount,
+
+        description:
+            planType +
+            " cycle completed and funds released"
+
+    });
+
+
+    /*
+       Remove the active plan because
+       its principal is now in coBalance.
+    */
+
+    localStorage.removeItem(
+        storageKey
+    );
+
+
+    return amount;
+
+}
+
+
+/* =====================================================
+   6. RELEASE ALL COMPLETED SAVINGS
+   ===================================================== */
+
+function coReleaseAllCompletedSavings(){
+
+    let released =
+        0;
+
+
+    released +=
+        coReleaseCompletedPlan(
+            "activeElephantPlan",
+            "Saving Elephant"
+        );
+
+
+    released +=
+        coReleaseCompletedPlan(
+            "activeTinPlan",
+            "Saving Tin"
+        );
+
+
+    return released;
+
+}
+
+
+/* =====================================================
+   7. AUTOMATICALLY CHECK COMPLETION
+   ===================================================== */
+
+function coRunSavingsCheck(){
+
+    coCheckAllSavings();
+
+}
+
+
+/*
+   Check immediately.
+*/
+
+coRunSavingsCheck();
+
+
+/*
+   Check every minute.
+*/
+
+setInterval(
+    coRunSavingsCheck,
+    60000
+);
+
+
+/* =====================================================
+   8. DASHBOARD BALANCE DISPLAY
+   ===================================================== */
+
+function coUpdateBalanceDisplays(){
+
+    const balance =
+        coGetBalance();
+
+
+    const possibleIds = [
+
+        "coBalance",
+
+        "availableBalance",
+
+        "dashboardBalance",
+
+        "currentBalance",
+
+        "walletBalance"
+
+    ];
+
+
+    possibleIds.forEach(
+        function(id){
+
+            const element =
+                document.getElementById(
+                    id
+                );
+
+
+            if(element){
+
+                element.textContent =
+                    "UGX " +
+                    balance.toLocaleString();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   9. AUTOMATICALLY UPDATE BALANCE
+   ===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        coUpdateBalanceDisplays();
+
+    }
+);
+
+
+/* =====================================================
+   10. WITHDRAWAL FUNCTION
+   ===================================================== */
+
+function coWithdraw(amount){
+
+    amount =
+        Number(amount);
+
+
+    /*
+       Minimum withdrawal.
+    */
+
+    if(
+        !amount ||
+        amount < CO_MIN_WITHDRAWAL
+    ){
+
+        alert(
+            "Minimum withdrawal is UGX 20,000."
+        );
+
+        return false;
+
+    }
+
+
+    /*
+       Release completed Elephant
+       and Tin money first.
+    */
+
+    coReleaseAllCompletedSavings();
+
+
+    /*
+       Get the final available balance.
+    */
+
+    const balance =
+        coGetBalance();
+
+
+    /*
+       Prevent withdrawing money
+       that doesn't exist.
+    */
+
+    if(amount > balance){
+
+        alert(
+            "Insufficient available balance.\n\n" +
+            "Available: UGX " +
+            balance.toLocaleString()
+        );
+
+        return false;
+
+    }
+
+
+    /*
+       Deduct withdrawal.
+    */
+
+    const newBalance =
+        balance -
+        amount;
+
+
+    coSetBalance(
+        newBalance
+    );
+
+
+    /*
+       Record withdrawal.
+    */
+
+    coAddTransaction({
+
+        type:
+            "Withdrawal",
+
+        amount:
+            amount,
+
+        description:
+            "Withdrawal from available Co Save & Earn balance",
+
+        balanceAfter:
+            newBalance
+
+    });
+
+
+    coUpdateBalanceDisplays();
+
+
+    alert(
+        "Withdrawal successful!\n\n" +
+        "Amount: UGX " +
+        amount.toLocaleString() +
+        "\n\n" +
+        "Remaining balance: UGX " +
+        newBalance.toLocaleString()
+    );
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   11. DEPOSIT FUNCTION
+   ===================================================== */
+
+function coDeposit(amount){
+
+    amount =
+        Number(amount);
+
+
+    if(
+        !amount ||
+        amount < 20000
+    ){
+
+        alert(
+            "Minimum deposit is UGX 20,000."
+        );
+
+        return false;
+
+    }
+
+
+    const oldBalance =
+        coGetBalance();
+
+
+    const newBalance =
+        oldBalance +
+        amount;
+
+
+    coSetBalance(
+        newBalance
+    );
+
+
+    coAddTransaction({
+
+        type:
+            "Deposit",
+
+        amount:
+            amount,
+
+        description:
+            "Money deposited into Co Save & Earn balance",
+
+        balanceAfter:
+            newBalance
+
+    });
+
+
+    coUpdateBalanceDisplays();
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   12. SAFETY CHECK
+      NEVER LET ACTIVE SAVINGS BE WITHDRAWN
+   ===================================================== */
+
+function coCanWithdrawFromPlan(
+    storageKey
+){
+
+    const plan =
+        coGetPlan(
+            storageKey
+        );
+
+
+    if(!plan){
+
+        return false;
+
+    }
+
+
+    coCheckPlan(
+        storageKey
+    );
+
+
+    const updated =
+        coGetPlan(
+            storageKey
+        );
+
+
+    if(
+        !updated ||
+        !updated.completed
+    ){
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   13. SHOW MONEY STATUS IF ELEMENT EXISTS
+   ===================================================== */
+
+function coShowMoneyStatus(){
+
+    const container =
+        document.getElementById(
+            "coMoneyStatus"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    const balance =
+        coGetBalance();
+
+
+    const elephant =
+        coGetPlan(
+            "activeElephantPlan"
+        );
+
+
+    const tin =
+        coGetPlan(
+            "activeTinPlan"
+        );
+
+
+    container.innerHTML = `
+
+        <div class="co-money-status">
+
+            <h3>
+                💰 Money Summary
+            </h3>
+
+            <div class="co-money-row">
+                <span>Available Balance</span>
+                <strong>
+                    UGX ${balance.toLocaleString()}
+                </strong>
+            </div>
+
+            <div class="co-money-row">
+                <span>Saving Elephant</span>
+                <strong>
+                    ${
+                        elephant
+                        ?
+                        "Active"
+                        :
+                        "None"
+                    }
+                </strong>
+            </div>
+
+            <div class="co-money-row">
+                <span>Saving Tin</span>
+                <strong>
+                    ${
+                        tin
+                        ?
+                        "Active"
+                        :
+                        "None"
+                    }
+                </strong>
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   14. RUN STATUS
+   ===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        coShowMoneyStatus();
+
+    }
+);
+
+  </script>
