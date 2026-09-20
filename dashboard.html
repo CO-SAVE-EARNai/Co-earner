@@ -2607,3 +2607,29 @@ function coSelectBank(bank) {
 }
 
   </script>
+<!-- CO EARNER: SWIPE LEFT TO MONEY SUMMARY -->
+
+<script>
+
+let coDashboardStartX = 0;
+
+document.addEventListener("touchstart", function(event) {
+    coDashboardStartX = event.touches[0].clientX;
+});
+
+document.addEventListener("touchend", function(event) {
+
+    let coDashboardEndX = event.changedTouches[0].clientX;
+
+    let coDashboardDistance =
+        coDashboardEndX - coDashboardStartX;
+
+    /* Swipe LEFT */
+
+    if (coDashboardDistance < -80) {
+        window.location.href = "money-summary.html";
+    }
+
+});
+
+</script>
