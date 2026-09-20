@@ -1175,3 +1175,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* Restore the start page */
+    document.body.style.display = "";
+
+    /* Restore all hidden page elements */
+    document.querySelectorAll("*").forEach(function (element) {
+        if (element.style.display === "none") {
+            element.style.display = "";
+        }
+    });
+
+});
+</script>
