@@ -1644,3 +1644,93 @@ if (bankContainer) {
 }
 
 </script>
+<script>
+
+/* =========================================
+   CO SAVE & EARN — DEPOSIT SYSTEM
+   ========================================= */
+
+(function () {
+
+  /* Get saved balance */
+  let balance = Number(localStorage.getItem("coBalance")) || 0;
+
+  /* Find the deposit form */
+  const form = document.querySelector("form");
+
+  if (!form) {
+    return;
+  }
+
+  form.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    /* Find the amount entered by the user */
+    const amountInput =
+      form.querySelector(
+        'input[type="number"], input[name="amount"], input[id="amount"]'
+      );
+
+    if (!amountInput) {
+      alert("Please enter an amount.");
+      return;
+    }
+
+    const amount = Number(amountInput.value);
+
+    /* Check amount */
+    if (!amount || amount <= 0) {
+      alert("Please enter a valid amount.");
+      return;
+    }
+
+    /* Get selected bank */
+    const selectedBank =
+      localStorage.getItem("selectedBank") || "Saving Bank";
+
+    /* Update balance */
+    balance += amount;
+
+    localStorage.setItem(
+      "coBalance",
+      balance
+    );
+
+    /* Get existing transactions */
+    let transactions =
+      JSON.parse(
+        localStorage.getItem("coTransactions") || "[]"
+      );
+
+    /* Add new transaction */
+    transactions.unshift({
+      type: "Deposit",
+      bank: selectedBank,
+      amount: amount,
+      date: new Date().toLocaleString()
+    });
+
+    /* Save transactions */
+    localStorage.setItem(
+      "coTransactions",
+      JSON.stringify(transactions)
+    );
+
+    /* Confirmation */
+    alert(
+      "UGX " +
+      amount.toLocaleString() +
+      " has been added to your " +
+      selectedBank +
+      "."
+    );
+
+    /* Go back to dashboard */
+    window.location.href = "dashboard.html";
+
+  });
+
+})();
+
+</script>
