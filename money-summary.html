@@ -985,3 +985,109 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const active = localStorage.getItem("coBankActive");
+    const bank = localStorage.getItem("coSelectedBank");
+
+    if (active !== "true" || !bank) return;
+
+    const bankDays = {
+        "20000-20days": 20,
+        "30000-20days": 20,
+        "50000-20days": 20,
+        "100000-20days": 20,
+
+        "20000-30days": 30,
+        "30000-30days": 30,
+        "50000-30days": 30,
+        "100000-30days": 30
+    };
+
+    const bankAmounts = {
+        "20000-20days": 20000,
+        "30000-20days": 30000,
+        "50000-20days": 50000,
+        "100000-20days": 100000,
+
+        "20000-30days": 20000,
+        "30000-30days": 30000,
+        "50000-30days": 50000,
+        "100000-30days": 100000
+    };
+
+    const bankEarnings = {
+        "20000-20days": 35000,
+        "30000-20days": 55000,
+        "50000-20days": 85000,
+        "100000-20days": 155000,
+
+        "20000-30days": 50000,
+        "30000-30days": 90000,
+        "50000-30days": 135000,
+        "100000-30days": 220000
+    };
+
+    const startDate = localStorage.getItem("coBankStartDate");
+    if (!startDate) return;
+
+    const start = new Date(startDate);
+    const now = new Date();
+
+    const daysPassed = Math.floor(
+        (now - start) / (1000 * 60 * 60 * 24)
+    );
+
+    const totalDays = bankDays[bank];
+
+    if (daysPassed < totalDays) return;
+
+    const deposit = bankAmounts[bank];
+    const earnings = bankEarnings[bank];
+    const finalAmount = deposit + earnings;
+
+    const box = document.createElement("div");
+
+    box.style.cssText = `
+        margin:20px;
+        padding:24px;
+        border-radius:22px;
+        background:linear-gradient(135deg,#0b6b3a,#159447);
+        color:white;
+        box-shadow:0 12px 30px rgba(0,0,0,.15);
+    `;
+
+    box.innerHTML = `
+        <div style="text-align:center;font-size:13px;opacity:.85;">
+            SAVING BANK COMPLETED
+        </div>
+
+        <div style="text-align:center;font-size:28px;font-weight:800;margin:8px 0 20px;">
+            🎉 ${finalAmount.toLocaleString()}
+        </div>
+
+        <div style="display:flex;justify-content:space-between;margin:10px 0;">
+            <span>Amount Saved</span>
+            <strong>${deposit.toLocaleString()}</strong>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;margin:10px 0;">
+            <span>Total Earnings</span>
+            <strong>${earnings.toLocaleString()}</strong>
+        </div>
+
+        <div style="height:1px;background:rgba(255,255,255,.3);margin:15px 0;"></div>
+
+        <div style="display:flex;justify-content:space-between;font-size:18px;">
+            <strong>Final Amount</strong>
+            <strong>${finalAmount.toLocaleString()}</strong>
+        </div>
+    `;
+
+    document.body.appendChild(box);
+
+});
+</script>
+
+Save it.
