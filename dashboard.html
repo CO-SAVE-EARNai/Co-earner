@@ -2690,3 +2690,55 @@ document.addEventListener("touchend", function(e) {
 });
 </script>
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* Hide the standalone logout button */
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach(function (button) {
+        if (button.textContent.trim() === "Logout") {
+            button.style.display = "none";
+        }
+    });
+
+    /* Find the existing Settings section */
+    const settings = document.querySelector(
+        "#settings, .settings, [class*='settings']"
+    );
+
+    if (!settings) return;
+
+    /* Create Logout inside the existing Settings */
+    const logout = document.createElement("button");
+
+    logout.textContent = "🚪 Logout";
+
+    logout.style.cssText = `
+        width:100%;
+        margin-top:20px;
+        padding:14px;
+        border:none;
+        border-radius:12px;
+        background:#b3261e;
+        color:white;
+        font-size:15px;
+        font-weight:700;
+        cursor:pointer;
+    `;
+
+    logout.onclick = function () {
+
+        if (!confirm("Are you sure you want to logout?")) {
+            return;
+        }
+
+        localStorage.removeItem("coLoggedIn");
+
+        window.location.href = "login.html";
+    };
+
+    settings.appendChild(logout);
+
+});
+</script>
