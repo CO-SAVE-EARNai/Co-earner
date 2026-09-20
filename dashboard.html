@@ -510,3 +510,46 @@
 
   </footer></body>
       </html>
+<style>
+/* Remove the unwanted dashboard summary sections */
+.dashboard-summary,
+.summary-section,
+.stats-section,
+.dashboard-stats {
+    display: none !important;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Remove the Total Savings, This Month/Monthly Earnings,
+    // and Active Goals cards from the dashboard.
+
+    const unwantedWords = [
+        "total savings",
+        "this month",
+        "monthly earnings",
+        "active goals",
+        "goals"
+    ];
+
+    document.querySelectorAll(
+        ".stat-card, .summary-card, .dashboard-card, .stat, .card"
+    ).forEach(function (card) {
+
+        const text = card.innerText.trim().toLowerCase();
+
+        if (
+            text.includes("total savings") ||
+            text.includes("this month") ||
+            text.includes("monthly earnings") ||
+            text.includes("active goals")
+        ) {
+            card.style.display = "none";
+        }
+
+    });
+
+});
+</script>
