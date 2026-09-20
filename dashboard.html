@@ -546,7 +546,44 @@ document.addEventListener("DOMContentLoaded", function () {
             text.includes("monthly earnings") ||
             text.includes("active goals")
         ) {
-            card.style.display = "none";
+            card.style.display = "none";<style>
+/* Make the existing Notifications area clickable */
+.notification-section,
+.notifications,
+.notification-card,
+.notification-item {
+    cursor: pointer !important;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll("*").forEach(function (element) {
+
+        if (
+            element.children.length === 0 &&
+            element.textContent.trim().toLowerCase() === "notifications"
+        ) {
+
+            element.style.cursor = "pointer";
+
+            element.addEventListener("click", function () {
+
+                alert(
+                    "Notifications\n\n" +
+                    "Welcome to Co Earner! Your account is ready.\n\n" +
+                    "Check your account regularly for updates."
+                );
+
+            });
+
+        }
+
+    });
+
+});
+</script>
         }
 
     });
