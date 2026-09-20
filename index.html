@@ -1190,3 +1190,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const footer = document.querySelector("footer");
+
+    if (footer) {
+
+        let item = footer.nextElementSibling;
+
+        while (item) {
+            item.style.display = "none";
+            item = item.nextElementSibling;
+        }
+
+    }
+
+});
+</script>
