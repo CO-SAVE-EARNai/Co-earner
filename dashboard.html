@@ -653,3 +653,8 @@ window.addEventListener("load", function() {
 }
 
 @media
+<script>
+if (localStorage.getItem("coLoggedIn") !== "true") {
+    window.location.href = "login.html";
+}
+</script>
