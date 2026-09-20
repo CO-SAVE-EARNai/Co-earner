@@ -1361,3 +1361,139 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const bankAmounts = {
+        "20000-20days": 20000,
+        "30000-20days": 30000,
+        "50000-20days": 50000,
+        "100000-20days": 100000,
+
+        "20000-30days": 20000,
+        "30000-30days": 30000,
+        "50000-30days": 50000,
+        "100000-30days": 100000
+    };
+
+    /*
+     * Stop old Saving Bank links from opening
+     * Register or Login.
+     */
+    document.querySelectorAll('a[href*="register.html"], a[href*="login.html"]')
+        .forEach(function (link) {
+
+            const href = link.getAttribute("href") || "";
+            const match = href.match(/bank=([^&]+)/);
+
+            if (!match) return;
+
+            const bank = decodeURIComponent(match[1]);
+
+            link.addEventListener("click", function (event) {
+
+                event.preventDefault();
+                event.stopImmediatePropagation();
+
+                window.coSelectedBankForJoin = bank;
+
+                if (typeof window.openCoBankDetails === "function") {
+                    window.openCoBankDetails(bank);
+                }
+
+            }, true);
+        });
+
+
+    /*
+     * When the user chooses "Get/Join This Saving Bank",
+     * check their available balance.
+     */
+    const joinButton = document.getElementById("coPopupJoin");
+
+    if (!joinButton) return;
+
+    joinButton.onclick = function () {
+
+        const bank = window.coSelectedBankForJoin;
+
+        if (!bank || !bankAmounts[bank]) {
+            alert("Please choose a Saving Bank.");
+            return;
+        }
+
+        const deposited = Number(
+            localStorage.getItem("coTotalDeposited") || 0
+        );
+
+        const earned = Number(
+            localStorage.getItem("coTotalEarned") || 0
+        );
+
+        const withdrawn = Number(
+            localStorage.getItem("coTotalWithdrawn") || 0
+        );
+
+        const balance =
+            deposited + earned - withdrawn;
+
+        const required = bankAmounts[bank];
+
+        if (balance < required) {
+
+            alert(
+                "Insufficient balance.\n\n" +
+                "Required: " +
+                required.toLocaleString() +
+                "\nAvailable: " +
+                balance.toLocaleString() +
+                "\n\nPlease deposit more money before getting this Saving Bank."
+            );
+
+            return;
+        }
+
+        /*
+         * Activate the selected Saving Bank.
+         */
+        localStorage.setItem(
+            "coSelectedBank",
+            bank
+        );
+
+        localStorage.setItem(
+            "coBankActive",
+            "true"
+        );
+
+        localStorage.setItem(
+            "coBankAmount",
+            required
+        );
+
+        localStorage.setItem(
+            "coBankStartDate",
+            new Date().toISOString()
+        );
+
+        localStorage.setItem(
+            "coBankCompleted",
+            "false"
+        );
+
+        alert(
+            "Saving Bank activated successfully!\n\n" +
+            "Amount: " +
+            required.toLocaleString()
+        );
+
+        const popup =
+            document.getElementById("coBankPopup");
+
+        if (popup) {
+            popup.style.display = "none";
+        }
+    };
+
+});
+</script>
