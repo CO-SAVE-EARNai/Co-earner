@@ -889,3 +889,99 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
             </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const active = localStorage.getItem("coBankActive");
+    const bank = localStorage.getItem("coSelectedBank");
+
+    if (active !== "true" || !bank) return;
+
+    const bankDays = {
+        "20000-20days": 20,
+        "30000-20days": 20,
+        "50000-20days": 20,
+        "100000-20days": 20,
+
+        "20000-30days": 30,
+        "30000-30days": 30,
+        "50000-30days": 30,
+        "100000-30days": 30
+    };
+
+    const totalDays = bankDays[bank];
+
+    if (!totalDays) return;
+
+    let startDate =
+        localStorage.getItem("coBankStartDate");
+
+    if (!startDate) {
+        startDate = new Date().toISOString();
+        localStorage.setItem(
+            "coBankStartDate",
+            startDate
+        );
+    }
+
+    const start = new Date(startDate);
+    const now = new Date();
+
+    const daysPassed = Math.floor(
+        (now - start) / (1000 * 60 * 60 * 24)
+    );
+
+    const daysRemaining = Math.max(
+        totalDays - daysPassed,
+        0
+    );
+
+    const countdown = document.createElement("div");
+
+    countdown.style.cssText = `
+        margin:20px;
+        padding:22px;
+        border-radius:20px;
+        background:#ffffff;
+        box-shadow:0 10px 30px rgba(0,0,0,.10);
+        text-align:center;
+        border:1px solid #e6eee9;
+    `;
+
+    if (daysRemaining > 0) {
+
+        countdown.innerHTML = `
+            <div style="font-size:13px;color:#777;">
+                SAVING BANK PROGRESS
+            </div>
+
+            <div style="font-size:30px;font-weight:800;color:#0b6b3a;margin-top:8px;">
+                ${daysRemaining}
+            </div>
+
+            <div style="font-weight:600;margin-top:4px;">
+                Days Remaining
+            </div>
+
+            <div style="margin-top:12px;color:#666;">
+                Keep saving and growing your money.
+            </div>
+        `;
+
+    } else {
+
+        countdown.innerHTML = `
+            <div style="font-size:24px;font-weight:800;color:#0b6b3a;">
+                🎉 Saving Bank Completed
+            </div>
+
+            <div style="margin-top:8px;color:#666;">
+                Your saving period has reached its end.
+            </div>
+        `;
+    }
+
+    document.body.appendChild(countdown);
+
+});
+</script>
