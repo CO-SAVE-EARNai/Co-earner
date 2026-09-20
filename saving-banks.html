@@ -1267,3 +1267,30 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const dailyEarnings = {
+        "20000-20days": 1750,
+        "30000-20days": 2750,
+        "50000-20days": 4250,
+        "100000-20days": 7750,
+
+        "20000-30days": 1667,
+        "30000-30days": 3000,
+        "50000-30days": 4500,
+        "100000-30days": 7333
+    };
+
+    const bank = localStorage.getItem("coSelectedBank");
+    const active = localStorage.getItem("coBankActive");
+
+    if (active === "true" && bank && dailyEarnings[bank]) {
+        localStorage.setItem(
+            "coDailyEarned",
+            dailyEarnings[bank]
+        );
+    }
+
+});
+</script>
