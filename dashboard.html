@@ -2742,3 +2742,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* Hide the old Saving Banks section/cards on Dashboard */
+    const oldSavingBanks = document.querySelectorAll(
+        '.saving-banks, .saving-bank-section, .saving-bank-grid, .savings-grid, [class*="saving-bank-card"]'
+    );
+
+    oldSavingBanks.forEach(function (element) {
+        element.style.display = "none";
+    });
+
+});
+</script>
