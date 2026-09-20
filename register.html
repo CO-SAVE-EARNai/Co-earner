@@ -280,3 +280,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
                 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const buttons = document.querySelectorAll("button, a");
+
+    buttons.forEach(function (button) {
+
+        const text = button.textContent.toLowerCase().trim();
+
+        if (
+            text.includes("get started") ||
+            text.includes("register") ||
+            text.includes("sign up")
+        ) {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                window.location.href = "register.html";
+            });
+        }
+
+        if (
+            text.includes("login") ||
+            text.includes("log in")
+        ) {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                window.location.href = "login.html";
+            });
+        }
+
+    });
+
+});
+        </script>
