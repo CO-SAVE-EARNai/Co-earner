@@ -1333,3 +1333,89 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const active = localStorage.getItem("coBankActive");
+    const bank = localStorage.getItem("coSelectedBank");
+    const completed = localStorage.getItem("coBankCompleted");
+
+    const bankNames = {
+        "20000-20days": "20,000 • 20 DAYS",
+        "30000-20days": "30,000 • 20 DAYS",
+        "50000-20days": "50,000 • 20 DAYS",
+        "100000-20days": "100,000 • 20 DAYS",
+
+        "20000-30days": "20,000 • 30 DAYS",
+        "30000-30days": "30,000 • 30 DAYS",
+        "50000-30days": "50,000 • 30 DAYS",
+        "100000-30days": "100,000 • 30 DAYS"
+    };
+
+    const card = document.createElement("div");
+
+    card.style.cssText = `
+        margin:20px 0;
+        padding:22px;
+        border-radius:20px;
+        background:#fff;
+        box-shadow:0 8px 25px rgba(0,0,0,.08);
+        border-left:5px solid #0b6b3a;
+    `;
+
+    if (active === "true" && bank && bankNames[bank]) {
+
+        const status =
+            completed === "true"
+                ? "Completed"
+                : "Active";
+
+        card.innerHTML = `
+            <div style="font-size:13px;color:#777;">
+                SAVING BANK STATUS
+            </div>
+
+            <div style="
+                font-size:22px;
+                font-weight:800;
+                color:#0b6b3a;
+                margin-top:7px;
+            ">
+                ${bankNames[bank]}
+            </div>
+
+            <div style="
+                margin-top:12px;
+                font-weight:700;
+            ">
+                Status:
+                <span style="color:${status === "Completed" ? "#8a6500" : "#0b6b3a"};">
+                    ${status}
+                </span>
+            </div>
+        `;
+
+    } else {
+
+        card.innerHTML = `
+            <div style="
+                font-size:20px;
+                font-weight:800;
+                color:#0b6b3a;
+            ">
+                No Active Saving Bank
+            </div>
+
+            <div style="
+                margin-top:7px;
+                color:#777;
+            ">
+                Choose a Saving Bank to start saving.
+            </div>
+        `;
+    }
+
+    document.body.appendChild(card);
+
+});
+</script>
