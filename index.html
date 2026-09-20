@@ -623,3 +623,12 @@ document.querySelectorAll(".nav-item").forEach(item => {
   }
 });
 </script>
+<script>
+document.querySelectorAll(".nav-item").forEach(item => {
+  if (item.innerText.includes("Activity")) {
+    item.onclick = function() {
+      alert("No activity yet.");
+    };
+  }
+});
+</script>
