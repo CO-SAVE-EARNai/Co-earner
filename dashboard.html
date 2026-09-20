@@ -2014,3 +2014,54 @@ setInterval(
 );
 
 </script>
+<style>
+.co-profile-logout{
+    width:100%;
+    margin-top:18px;
+    padding:14px;
+    border:1px solid #7a3030;
+    border-radius:14px;
+    background:#351b1b;
+    color:#ff8d8d;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.co-profile-logout:hover{
+    background:#482020;
+}
+</style>
+
+<button
+    type="button"
+    class="co-profile-logout"
+    onclick="coProfileLogout()">
+
+    🚪 Logout
+
+</button>
+
+<script>
+
+function coProfileLogout(){
+
+    const confirmLogout =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+    if(!confirmLogout){
+        return;
+    }
+
+    localStorage.removeItem(
+        "coLoggedIn"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
