@@ -361,6 +361,84 @@
     </div>
 
   </main>
+<!-- ==========================================
+     CO EARNER WITHDRAW → MONEY SUMMARY
+     PASTE AT THE VERY END OF withdraw.html
+========================================== -->
 
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const withdrawForm = document.querySelector("form");
+
+    if (!withdrawForm) return;
+
+
+    withdrawForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        /* FIND WITHDRAWAL AMOUNT */
+
+        const amountInput =
+            document.querySelector('input[type="number"]');
+
+
+        if (!amountInput) {
+            alert("Please enter a withdrawal amount.");
+            return;
+        }
+
+
+        const amount =
+            Number(amountInput.value);
+
+
+        if (!amount || amount <= 0) {
+            alert("Please enter a valid withdrawal amount.");
+            return;
+        }
+
+
+        /* GET PREVIOUS WITHDRAWALS */
+
+        let totalWithdrawn =
+            Number(localStorage.getItem("coTotalWithdrawn") || 0);
+
+
+        /* ADD NEW WITHDRAWAL */
+
+        totalWithdrawn += amount;
+
+
+        /* SAVE */
+
+        localStorage.setItem(
+            "coTotalWithdrawn",
+            totalWithdrawn
+        );
+
+
+        /* CONFIRMATION */
+
+        alert(
+            "Withdrawal request recorded!\n\n" +
+            "Amount: " +
+            amount.toLocaleString()
+        );
+
+
+        /* GO TO MONEY SUMMARY */
+
+        window.location.href =
+            "money-summary.html";
+
+    });
+
+});
+
+</script>
 </body>
           </html>
