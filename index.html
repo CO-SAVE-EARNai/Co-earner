@@ -644,3 +644,29 @@ document.querySelectorAll(".nav-item").forEach(item => {
   }
 });
         </script>
+<style>
+.ai-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-card::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -25px;
+  top: -25px;
+  border-radius: 50%;
+  background: rgba(40, 215, 160, 0.12);
+}
+
+.ai-card h3 {
+  font-size: 17px;
+}
+
+.ai-card p {
+  margin-top: 5px;
+  color: #28d7a0;
+}
+</style>
