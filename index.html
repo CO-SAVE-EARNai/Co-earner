@@ -541,3 +541,16 @@ document.querySelectorAll(".save-box button").forEach(button => {
   };
 });
 </script>
+<script>
+document.querySelectorAll(".save-box").forEach(card => {
+  card.addEventListener("click", function() {
+    const title = this.querySelector("h3").innerText;
+
+    if (title.includes("Elephants")) {
+      alert("Welcome to Savings Elephants 🐘");
+    } else if (title.includes("Teens")) {
+      alert("Welcome to Savings Teens 👥");
+    }
+  });
+});
+</script>
