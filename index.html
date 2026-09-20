@@ -581,3 +581,12 @@ document.querySelectorAll(".nav-item").forEach(item => {
   });
 });
 </script>
+<script>
+document.querySelectorAll(".nav-item").forEach(item => {
+  if (item.innerText.includes("Profile")) {
+    item.onclick = function() {
+      alert("Profile section coming soon.");
+    };
+  }
+});
+</script>
