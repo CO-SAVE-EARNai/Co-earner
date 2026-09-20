@@ -849,3 +849,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
             </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const totalEarned = Number(
+        localStorage.getItem("coTotalEarned") || 0
+    );
+
+    const dailyEarned = Number(
+        localStorage.getItem("coDailyEarned") || 0
+    );
+
+    const deposited = Number(
+        localStorage.getItem("coTotalDeposited") || 0
+    );
+
+    const withdrawn = Number(
+        localStorage.getItem("coTotalWithdrawn") || 0
+    );
+
+    const earningsElement =
+        document.getElementById("coSummaryEarnings");
+
+    if (earningsElement) {
+        earningsElement.textContent =
+            totalEarned.toLocaleString();
+    }
+
+    const balanceElement =
+        document.getElementById("coSummaryBalance");
+
+    if (balanceElement) {
+        const balance =
+            deposited + totalEarned - withdrawn;
+
+        balanceElement.textContent =
+            balance.toLocaleString();
+    }
+
+});
+            </script>
