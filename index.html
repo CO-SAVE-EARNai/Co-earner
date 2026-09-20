@@ -697,3 +697,422 @@ document.querySelectorAll(".nav-item").forEach(item => {
   z-index: 2;
 }
 </style>
+<!-- ============================= -->
+<!-- CO SAVE & EARN FINAL FEATURES -->
+<!-- ============================= -->
+
+<style>
+/* Deposit / Withdraw screens */
+.cse-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #07111f;
+  color: white;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.cse-screen h2 {
+  margin-top: 10px;
+  font-size: 26px;
+}
+
+.cse-screen p {
+  color: #8295a8;
+  line-height: 1.5;
+}
+
+.cse-input {
+  width: 100%;
+  padding: 15px;
+  margin-top: 22px;
+  border-radius: 12px;
+  border: 1px solid #29465a;
+  background: #0d1d2d;
+  color: white;
+  font-size: 16px;
+}
+
+.cse-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #28d7a0;
+  color: #06131f;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.cse-back {
+  background: #13283a;
+  color: white;
+  border: 1px solid #29465a;
+}
+
+/* Confirmation box */
+.cse-message {
+  display: none;
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 15px;
+  background: #0d2a27;
+  border: 1px solid #1d6655;
+  color: #28d7a0;
+}
+
+/* Profile */
+.cse-profile-card {
+  margin-top: 25px;
+  background: #0d1d2d;
+  border: 1px solid #183448;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.cse-profile-icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: #142f42;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+</style>
+
+
+<!-- ============================= -->
+<!-- DEPOSIT SCREEN -->
+<!-- ============================= -->
+
+<div id="cseDepositScreen" class="cse-screen">
+
+  <h2>Deposit</h2>
+
+  <p>
+    Enter the amount you would like to deposit.
+  </p>
+
+  <input
+    id="cseDepositAmount"
+    class="cse-input"
+    type="number"
+    placeholder="Amount in UGX"
+  >
+
+  <button class="cse-btn" onclick="cseDeposit()">
+    Continue
+  </button>
+
+  <button class="cse-btn cse-back" onclick="cseCloseDeposit()">
+    Back
+  </button>
+
+  <div id="cseDepositMessage" class="cse-message"></div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- WITHDRAW SCREEN -->
+<!-- ============================= -->
+
+<div id="cseWithdrawScreen" class="cse-screen">
+
+  <h2>Withdraw</h2>
+
+  <p>
+    Enter the amount you would like to withdraw.
+  </p>
+
+  <input
+    id="cseWithdrawAmount"
+    class="cse-input"
+    type="number"
+    placeholder="Amount in UGX"
+  >
+
+  <button class="cse-btn" onclick="cseWithdraw()">
+    Continue
+  </button>
+
+  <button class="cse-btn cse-back" onclick="cseCloseWithdraw()">
+    Back
+  </button>
+
+  <div id="cseWithdrawMessage" class="cse-message"></div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- PROFILE SCREEN -->
+<!-- ============================= -->
+
+<div id="cseProfileScreen" class="cse-screen">
+
+  <h2>My Profile</h2>
+
+  <div class="cse-profile-card">
+
+    <div class="cse-profile-icon">
+      👤
+    </div>
+
+    <h3>Co Save & Earn User</h3>
+
+    <p style="margin-top:8px;">
+      Manage your account and savings.
+    </p>
+
+  </div>
+
+  <button class="cse-btn cse-back" onclick="cseCloseProfile()">
+    Back
+  </button>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- JAVASCRIPT -->
+<!-- ============================= -->
+
+<script>
+
+/* -----------------------------
+   DEPOSIT
+----------------------------- */
+
+function cseOpenDeposit() {
+  document.getElementById("cseDepositScreen").style.display = "block";
+}
+
+function cseCloseDeposit() {
+  document.getElementById("cseDepositScreen").style.display = "none";
+}
+
+function cseDeposit() {
+
+  const amount =
+    document.getElementById("cseDepositAmount").value;
+
+  const message =
+    document.getElementById("cseDepositMessage");
+
+  if (!amount || Number(amount) <= 0) {
+    alert("Please enter a valid amount.");
+    return;
+  }
+
+  message.style.display = "block";
+
+  message.innerHTML =
+    "Deposit amount entered: UGX " +
+    Number(amount).toLocaleString() +
+    "<br><br>This is a demo. Payment connection can be added later.";
+}
+
+
+/* -----------------------------
+   WITHDRAW
+----------------------------- */
+
+function cseOpenWithdraw() {
+  document.getElementById("cseWithdrawScreen").style.display = "block";
+}
+
+function cseCloseWithdraw() {
+  document.getElementById("cseWithdrawScreen").style.display = "none";
+}
+
+function cseWithdraw() {
+
+  const amount =
+    document.getElementById("cseWithdrawAmount").value;
+
+  const message =
+    document.getElementById("cseWithdrawMessage");
+
+  if (!amount || Number(amount) <= 0) {
+    alert("Please enter a valid amount.");
+    return;
+  }
+
+  message.style.display = "block";
+
+  message.innerHTML =
+    "Withdrawal request entered: UGX " +
+    Number(amount).toLocaleString() +
+    "<br><br>This is a demo. A real payment system can be connected later.";
+}
+
+
+/* -----------------------------
+   PROFILE
+----------------------------- */
+
+function cseOpenProfile() {
+  document.getElementById("cseProfileScreen").style.display = "block";
+}
+
+function cseCloseProfile() {
+  document.getElementById("cseProfileScreen").style.display = "none";
+}
+
+
+/* -----------------------------
+   DEPOSIT BUTTON
+----------------------------- */
+
+const cseDepositButton =
+  document.querySelector(".ai-buttons button:first-child");
+
+if (cseDepositButton) {
+  cseDepositButton.onclick = cseOpenDeposit;
+}
+
+
+/* -----------------------------
+   WITHDRAW BUTTON
+----------------------------- */
+
+const cseWithdrawButton =
+  document.querySelector(".ai-buttons button:last-child");
+
+if (cseWithdrawButton) {
+  cseWithdrawButton.onclick = cseOpenWithdraw;
+}
+
+
+/* -----------------------------
+   SAVINGS CARDS
+----------------------------- */
+
+document.querySelectorAll(".save-box button").forEach(function(button) {
+
+  button.onclick = function(event) {
+
+    event.stopPropagation();
+
+    const card = this.closest(".save-box");
+
+    if (!card) return;
+
+    const title =
+      card.querySelector("h3").innerText;
+
+    if (title.includes("Elephants")) {
+
+      alert(
+        "🐘 Savings Elephants\n\n" +
+        "Your long-term savings section."
+      );
+
+    } else {
+
+      alert(
+        "👥 Savings Teens\n\n" +
+        "Your flexible savings section."
+      );
+
+    }
+
+  };
+
+});
+
+
+/* -----------------------------
+   BOTTOM NAVIGATION
+----------------------------- */
+
+document.querySelectorAll(".nav-item").forEach(function(item) {
+
+  item.addEventListener("click", function() {
+
+    const text = this.innerText.trim();
+
+    document.querySelectorAll(".nav-item").forEach(function(nav) {
+      nav.classList.remove("active");
+    });
+
+    this.classList.add("active");
+
+
+    /* HOME */
+
+    if (text.includes("Home")) {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* SAVINGS */
+
+    else if (text.includes("Savings")) {
+
+      const savings =
+        document.querySelector(".save-slider");
+
+      if (savings) {
+
+        savings.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+
+
+    /* EARN */
+
+    else if (text.includes("Earn")) {
+
+      const earn =
+        document.querySelector(".ai-card");
+
+      if (earn) {
+
+        earn.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+
+
+    /* ACTIVITY */
+
+    else if (text.includes("Activity")) {
+
+      alert("No activity yet.");
+
+    }
+
+
+    /* PROFILE */
+
+    else if (text.includes("Profile")) {
+
+      cseOpenProfile();
+
+    }
+
+  });
+
+});
+
+  </script>
