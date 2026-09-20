@@ -2960,3 +2960,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<!-- ENABLE PROFILE BUTTON -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const allElements = document.querySelectorAll("*");
+
+    allElements.forEach(function (element) {
+
+        const text = element.textContent.trim().toLowerCase();
+
+        if (text === "profile") {
+
+            element.style.cursor = "pointer";
+
+            element.addEventListener("click", function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                window.location.href = "profile.html";
+
+            }, true);
+        }
+
+    });
+
+});
+</script>
