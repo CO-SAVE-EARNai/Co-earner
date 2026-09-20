@@ -2663,5 +2663,30 @@ document.addEventListener("touchend", function(event) {
     }
 
 });
+<!-- DASHBOARD SWIPE NAVIGATION -->
 
+<script>
+let dashboardStartX = 0;
+
+document.addEventListener("touchstart", function(e) {
+    dashboardStartX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", function(e) {
+
+    let dashboardEndX = e.changedTouches[0].clientX;
+    let distance = dashboardEndX - dashboardStartX;
+
+    /* Swipe LEFT → Money Summary */
+    if (distance < -80) {
+        window.location.href = "money-summary.html";
+    }
+
+    /* Swipe RIGHT → Saving Banks */
+    if (distance > 80) {
+        window.location.href = "saving-banks.html";
+    }
+
+});
+</script>
 </script>
