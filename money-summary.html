@@ -283,3 +283,233 @@ document.getElementById("totalWithdrawn").textContent =
 
 </body>
   </html>
+<!-- ==========================================
+     CO EARNER MONEY SUMMARY PREMIUM ADD-ON
+     PASTE AT THE VERY END
+========================================== -->
+
+<style>
+
+.co-summary-extra {
+    margin: 25px 18px 35px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* OVERVIEW */
+
+.co-summary-overview {
+    background: linear-gradient(135deg, #064d2d, #0b8a50);
+    color: white;
+    border-radius: 24px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 30px rgba(0,70,40,.18);
+}
+
+.co-summary-overview small {
+    opacity: .8;
+    font-size: 13px;
+}
+
+.co-summary-overview h2 {
+    margin: 8px 0;
+    font-size: 29px;
+}
+
+.co-summary-overview p {
+    margin: 0;
+    font-size: 13px;
+    opacity: .8;
+}
+
+
+/* ACTIVITY */
+
+.co-summary-activity {
+    background: white;
+    border-radius: 22px;
+    padding: 22px;
+    border: 1px solid #e3eee7;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+.co-summary-activity h3 {
+    margin: 0 0 18px;
+    font-size: 18px;
+}
+
+.co-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #edf2ee;
+}
+
+.co-summary-row:last-child {
+    border-bottom: none;
+}
+
+.co-summary-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.co-summary-mini-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf7f1;
+    font-size: 20px;
+}
+
+.co-summary-row strong {
+    display: block;
+    font-size: 14px;
+}
+
+.co-summary-row span {
+    color: #8a958e;
+    font-size: 12px;
+}
+
+.co-summary-amount {
+    font-weight: 800;
+    color: #087443;
+}
+
+</style>
+
+
+<div class="co-summary-extra">
+
+    <!-- OVERVIEW -->
+
+    <div class="co-summary-overview">
+
+        <small>YOUR MONEY OVERVIEW</small>
+
+        <h2 id="coSummaryBalance">
+            0
+        </h2>
+
+        <p>
+            Current account activity
+        </p>
+
+    </div>
+
+
+    <!-- RECENT ACTIVITY -->
+
+    <div class="co-summary-activity">
+
+        <h3>Money Activity</h3>
+
+
+        <div class="co-summary-row">
+
+            <div class="co-summary-left">
+
+                <div class="co-summary-mini-icon">
+                    💰
+                </div>
+
+                <div>
+                    <strong>Deposits</strong>
+                    <span>Money added</span>
+                </div>
+
+            </div>
+
+            <div class="co-summary-amount">
+                <span id="coSummaryDeposits">0</span>
+            </div>
+
+        </div>
+
+
+        <div class="co-summary-row">
+
+            <div class="co-summary-left">
+
+                <div class="co-summary-mini-icon">
+                    📈
+                </div>
+
+                <div>
+                    <strong>Today's Earnings</strong>
+                    <span>Money earned today</span>
+                </div>
+
+            </div>
+
+            <div class="co-summary-amount">
+                <span id="coSummaryEarnings">0</span>
+            </div>
+
+        </div>
+
+
+        <div class="co-summary-row">
+
+            <div class="co-summary-left">
+
+                <div class="co-summary-mini-icon">
+                    💸
+                </div>
+
+                <div>
+                    <strong>Withdrawals</strong>
+                    <span>Money withdrawn</span>
+                </div>
+
+            </div>
+
+            <div class="co-summary-amount">
+                <span id="coSummaryWithdrawals">0</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* CO EARNER SUMMARY VALUES */
+
+let coDeposited = 0;
+let coEarnedToday = 0;
+let coWithdrawn = 0;
+
+
+/* DISPLAY VALUES */
+
+document.getElementById("coSummaryDeposits").textContent =
+    coDeposited.toLocaleString();
+
+document.getElementById("coSummaryEarnings").textContent =
+    coEarnedToday.toLocaleString();
+
+document.getElementById("coSummaryWithdrawals").textContent =
+    coWithdrawn.toLocaleString();
+
+
+/* SIMPLE BALANCE */
+
+let coBalance = coDeposited + coEarnedToday - coWithdrawn;
+
+document.getElementById("coSummaryBalance").textContent =
+    coBalance.toLocaleString();
+
+</script>
