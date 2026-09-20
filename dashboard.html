@@ -965,4 +965,355 @@ loadBalance();
 </script>
 
 </body>
-          </html>
+          </html><style>
+/* ACTIVE SAVINGS ADDED SECTION */
+
+.active-savings-box{
+    width:92%;
+    max-width:650px;
+    margin:25px auto;
+    background:#0b302c;
+    border:1px solid #20d69b;
+    border-radius:22px;
+    padding:20px;
+    color:white;
+}
+
+.active-savings-box h3{
+    margin-bottom:15px;
+    font-size:19px;
+}
+
+.active-plan-card{
+    background:#073d34;
+    border-radius:18px;
+    padding:17px;
+    margin-bottom:12px;
+}
+
+.active-plan-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.active-plan-title strong{
+    font-size:17px;
+}
+
+.active-badge{
+    background:#20d69b;
+    color:#06231d;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.active-info{
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+    color:#a9c5bf;
+    font-size:13px;
+}
+
+.active-info strong{
+    color:white;
+}
+
+.active-days{
+    color:#20d69b !important;
+}
+
+.active-progress{
+    height:8px;
+    background:#173d37;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.active-progress-bar{
+    height:100%;
+    width:0%;
+    background:#20d69b;
+    border-radius:20px;
+    transition:width .5s ease;
+}
+
+.no-active-plan{
+    color:#9dbab4;
+    font-size:14px;
+    line-height:1.5;
+}
+</style>
+
+
+<div class="active-savings-box">
+
+<h3>💰 Active Savings</h3>
+
+<div id="activeSavingsContent">
+
+<div class="no-active-plan">
+You don't have an active savings plan yet.
+Choose an Elephant or Tin plan to start saving.
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function displayActiveSavings(){
+
+    const container =
+        document.getElementById("activeSavingsContent");
+
+    if(!container){
+        return;
+    }
+
+    container.innerHTML = "";
+
+    let plans = [];
+
+    /* Get Elephant plan */
+
+    const elephant =
+        localStorage.getItem("activeElephantPlan");
+
+    if(elephant){
+
+        try{
+
+            const plan =
+                JSON.parse(elephant);
+
+            plan.planType = "Saving Elephant";
+
+            plans.push(plan);
+
+        }catch(error){}
+
+    }
+
+
+    /* Get Tin plan */
+
+    const tin =
+        localStorage.getItem("activeTinPlan");
+
+    if(tin){
+
+        try{
+
+            const plan =
+                JSON.parse(tin);
+
+            plan.planType = "Saving Tin";
+
+            plans.push(plan);
+
+        }catch(error){}
+
+    }
+
+
+    /* No plans */
+
+    if(plans.length === 0){
+
+        container.innerHTML = `
+            <div class="no-active-plan">
+                You don't have an active savings plan yet.
+                Choose an Elephant or Tin plan to start saving.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    /* Show every active plan */
+
+    plans.forEach(function(plan){
+
+        const amount =
+            Number(plan.amount) || 0;
+
+        const reward =
+            Number(plan.reward) || 0;
+
+        const cycle =
+            Number(plan.days) || 0;
+
+
+        /* Calculate days */
+
+        const startDate =
+            new Date(plan.started);
+
+        const today =
+            new Date();
+
+        const difference =
+            today.getTime() -
+            startDate.getTime();
+
+        const daysPassed =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        let daysRemaining =
+            cycle - daysPassed;
+
+
+        if(daysRemaining < 0){
+            daysRemaining = 0;
+        }
+
+
+        if(daysRemaining > cycle){
+            daysRemaining = cycle;
+        }
+
+
+        /* Progress */
+
+        let progress = 0;
+
+        if(cycle > 0){
+
+            progress =
+                (daysPassed / cycle) * 100;
+
+        }
+
+        if(progress < 0){
+            progress = 0;
+        }
+
+        if(progress > 100){
+            progress = 100;
+        }
+
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "active-plan-card";
+
+
+        card.innerHTML = `
+
+            <div class="active-plan-title">
+
+                <strong>
+                    ${plan.planType} 🐘🪙
+                </strong>
+
+                <span class="active-badge">
+                    ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="active-info">
+
+                <span>Plan</span>
+
+                <strong>
+                    ${plan.name}
+                </strong>
+
+            </div>
+
+
+            <div class="active-info">
+
+                <span>Amount saved</span>
+
+                <strong>
+                    UGX ${amount.toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="active-info">
+
+                <span>Projected earnings</span>
+
+                <strong>
+                    UGX ${reward.toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="active-info">
+
+                <span>Cycle</span>
+
+                <strong>
+                    ${cycle} days
+                </strong>
+
+            </div>
+
+
+            <div class="active-info">
+
+                <span>Days remaining</span>
+
+                <strong class="active-days">
+
+                    ${daysRemaining} days
+
+                </strong>
+
+            </div>
+
+
+            <div class="active-progress">
+
+                <div
+                    class="active-progress-bar"
+                    style="width:${progress}%">
+                </div>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* Run when dashboard opens */
+
+displayActiveSavings();
+
+
+/* Refresh the countdown every minute */
+
+setInterval(
+    displayActiveSavings,
+    60000
+);
+
+    </script>
