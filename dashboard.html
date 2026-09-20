@@ -1317,3 +1317,139 @@ setInterval(
 );
 
     </script>
+<style>
+.completed-plan{
+    border:1px solid #20d69b !important;
+}
+
+.completed-badge{
+    background:#20d69b;
+    color:#06231d;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.completed-message{
+    margin-top:12px;
+    padding:10px;
+    background:#0b302c;
+    border-radius:10px;
+    color:#20d69b;
+    font-size:13px;
+}
+</style>
+
+<script>
+
+function updateCompletedSavings(){
+
+    const plans = [];
+
+    const elephant =
+        localStorage.getItem("activeElephantPlan");
+
+    const tin =
+        localStorage.getItem("activeTinPlan");
+
+
+    if(elephant){
+
+        try{
+
+            const plan =
+                JSON.parse(elephant);
+
+            plan.storageKey =
+                "activeElephantPlan";
+
+            plan.planType =
+                "Saving Elephant";
+
+            plans.push(plan);
+
+        }catch(error){}
+
+    }
+
+
+    if(tin){
+
+        try{
+
+            const plan =
+                JSON.parse(tin);
+
+            plan.storageKey =
+                "activeTinPlan";
+
+            plan.planType =
+                "Saving Tin";
+
+            plans.push(plan);
+
+        }catch(error){}
+
+    }
+
+
+    plans.forEach(function(plan){
+
+        const cycle =
+            Number(plan.days) || 0;
+
+        const start =
+            new Date(plan.started);
+
+        const now =
+            new Date();
+
+
+        const elapsed =
+            Math.floor(
+                (now.getTime() - start.getTime()) /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        if(elapsed >= cycle){
+
+            /*
+             * Mark the plan as completed.
+             */
+
+            plan.completed = true;
+
+            plan.completedDate =
+                now.toLocaleDateString();
+
+
+            localStorage.setItem(
+                plan.storageKey,
+                JSON.stringify(plan)
+            );
+
+        }
+
+    });
+
+
+    /*
+     * Refresh the active savings display.
+     * The function from the previous step will
+     * read the updated plan information.
+     */
+
+    if(typeof displayActiveSavings === "function"){
+
+        displayActiveSavings();
+
+    }
+
+}
+
+
+updateCompletedSavings();
+
+</script>
