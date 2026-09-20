@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>My Profile - Co Save & Earn</title>
 
@@ -79,10 +75,6 @@ body{
     margin-bottom:18px;
 }
 
-.profile-field:last-child{
-    margin-bottom:0;
-}
-
 .profile-label{
     display:block;
     color:#a9c5bf;
@@ -111,7 +103,7 @@ body{
 
 .save-profile-btn{
     width:100%;
-    margin-top:22px;
+    margin-top:5px;
     padding:14px;
     border:none;
     border-radius:14px;
@@ -139,241 +131,164 @@ body{
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="profile-page">
 
+<a href="dashboard.html" class="back-button">
+← Back to Dashboard
+</a>
 
-    <!-- BACK TO DASHBOARD -->
+<div class="profile-header">
 
-    <a href="dashboard.html"
-       class="back-button">
+<div class="profile-avatar" id="profileAvatar">
+U
+</div>
 
-        ← Back to Dashboard
+<h1>My Profile</h1>
 
-    </a>
+<p>Manage your Co Save & Earn account details</p>
 
+</div>
 
-    <!-- PROFILE HEADER -->
+<div class="profile-card">
 
-    <div class="profile-header">
+<!-- USERNAME -->
+<div class="profile-field">
 
-        <div class="profile-avatar"
-             id="profileAvatar">
+<label class="profile-label">
+Username
+</label>
 
-            U
+<input
+type="text"
+id="username"
+class="profile-input"
+placeholder="Enter your username"
+>
 
-        </div>
-
-        <h1>
-            My Profile
-        </h1>
-
-        <p>
-            Keep your Co Save & Earn details updated
-        </p>
-
-    </div>
-
-
-    <!-- PROFILE FORM -->
-
-    <div class="profile-card">
-
-        <!-- USERNAME -->
-
-        <div class="profile-field">
-
-            <label class="profile-label">
-                Username
-            </label>
-
-            <input
-                type="text"
-                id="username"
-                class="profile-input"
-                placeholder="Enter your username">
-
-        </div>
+</div>
 
 
-        <!-- EMAIL -->
+<!-- EMAIL -->
+<div class="profile-field">
 
-        <div class="profile-field">
+<label class="profile-label">
+Email
+</label>
 
-            <label class="profile-label">
-                Email
-            </label>
+<input
+type="email"
+id="email"
+class="profile-input"
+placeholder="Enter your email"
+>
 
-            <input
-                type="email"
-                id="email"
-                class="profile-input"
-                placeholder="Enter your email">
-
-        </div>
-
-
-        <!-- CONTACT NUMBER -->
-
-        <div class="profile-field">
-
-            <label class="profile-label">
-                Contact Number
-            </label>
-
-            <input
-                type="tel"
-                id="contact"
-                class="profile-input"
-                placeholder="Enter your contact number">
-
-        </div>
+</div>
 
 
-        <!-- NICKNAME -->
+<!-- MOBILE MONEY NUMBER -->
+<div class="profile-field">
 
-        <div class="profile-field">
+<label class="profile-label">
+Mobile Money Number
+</label>
 
-            <label class="profile-label">
-                Nickname
-            </label>
+<input
+type="tel"
+id="mobileMoney"
+class="profile-input"
+placeholder="e.g. 0771234567"
+inputmode="tel"
+>
 
-            <input
-                type="text"
-                id="nickname"
-                class="profile-input"
-                placeholder="Enter your nickname">
-
-        </div>
-
-
-        <!-- SAVE BUTTON -->
-
-        <button
-            type="button"
-            class="save-profile-btn"
-            onclick="saveProfile()">
-
-            Save Profile
-
-        </button>
+</div>
 
 
-        <div
-            id="savedMessage"
-            class="saved-message">
+<!-- SAVE -->
+<button
+type="button"
+class="save-profile-btn"
+onclick="saveProfile()"
+>
+Save Profile
+</button>
 
-            ✓ Profile saved successfully!
+<div
+id="savedMessage"
+class="saved-message"
+>
+✓ Profile saved successfully!
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 
 <script>
 
-/* ==============================
-   LOAD SAVED PROFILE
-============================== */
-
 function loadProfile(){
 
-    document.getElementById("username").value =
+    const username =
         localStorage.getItem("coUsername") || "";
 
-    document.getElementById("email").value =
+    const email =
         localStorage.getItem("coEmail") || "";
 
-    document.getElementById("contact").value =
-        localStorage.getItem("coContact") || "";
+    const mobile =
+        localStorage.getItem("coMobileMoneyNumber") ||
+        localStorage.getItem("coDepositMobileNumber") ||
+        localStorage.getItem("coWithdrawMobileNumber") ||
+        "";
 
-    document.getElementById("nickname").value =
-        localStorage.getItem("coNickname") || "";
+    document.getElementById("username").value = username;
 
+    document.getElementById("email").value = email;
+
+    document.getElementById("mobileMoney").value = mobile;
 
     updateAvatar();
-
 }
 
-
-/* ==============================
-   SAVE PROFILE
-============================== */
 
 function saveProfile(){
 
     const username =
-        document.getElementById(
-            "username"
-        ).value.trim();
+        document.getElementById("username").value.trim();
 
     const email =
-        document.getElementById(
-            "email"
-        ).value.trim();
+        document.getElementById("email").value.trim();
 
-    const contact =
-        document.getElementById(
-            "contact"
-        ).value.trim();
-
-    const nickname =
-        document.getElementById(
-            "nickname"
-        ).value.trim();
+    const mobile =
+        document.getElementById("mobileMoney").value.trim();
 
 
     if(!username){
 
-        alert(
-            "Please enter your username."
-        );
+        alert("Please enter your username.");
 
         return;
-
     }
 
 
     if(!email){
 
-        alert(
-            "Please enter your email."
-        );
+        alert("Please enter your email.");
 
         return;
-
     }
 
 
-    if(!contact){
+    if(!mobile){
 
-        alert(
-            "Please enter your contact number."
-        );
+        alert("Please enter your Mobile Money number.");
 
         return;
-
     }
 
-
-    if(!nickname){
-
-        alert(
-            "Please enter your nickname."
-        );
-
-        return;
-
-    }
-
-
-    /* SAVE ALL PROFILE INFORMATION */
 
     localStorage.setItem(
         "coUsername",
@@ -386,17 +301,24 @@ function saveProfile(){
     );
 
     localStorage.setItem(
-        "coContact",
-        contact
+        "coMobileMoneyNumber",
+        mobile
+    );
+
+    /* Keep the same Mobile Money number connected
+       to deposit and withdrawal details */
+
+    localStorage.setItem(
+        "coDepositMobileNumber",
+        mobile
     );
 
     localStorage.setItem(
-        "coNickname",
-        nickname
+        "coWithdrawMobileNumber",
+        mobile
     );
 
-
-    /* ALSO SAVE THE NAME USED BY THE DASHBOARD */
+    /* Also keep the username available to the dashboard */
 
     localStorage.setItem(
         "coUserName",
@@ -408,52 +330,34 @@ function saveProfile(){
 
 
     const message =
-        document.getElementById(
-            "savedMessage"
-        );
+        document.getElementById("savedMessage");
 
-    message.style.display =
-        "block";
+    message.style.display = "block";
 
 
     setTimeout(function(){
 
-        message.style.display =
-            "none";
+        message.style.display = "none";
 
     },3000);
 
 }
 
 
-/* ==============================
-   PROFILE AVATAR
-============================== */
-
 function updateAvatar(){
 
     const username =
-        localStorage.getItem(
-            "coUsername"
-        ) || "U";
+        localStorage.getItem("coUsername") || "U";
 
-
-    document.getElementById(
-        "profileAvatar"
-    ).textContent =
+    document.getElementById("profileAvatar").textContent =
         username.charAt(0).toUpperCase();
 
 }
 
-
-/* ==============================
-   START
-============================== */
 
 loadProfile();
 
 </script>
 
 </body>
-
-  </html>
+</html>
