@@ -590,3 +590,479 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<!-- CO EARNER SAVING BANKS ADD-ON -->
+
+<style>
+#coEarnerBanksButton {
+    margin: 25px 0;
+    width: 100%;
+}
+
+#coEarnerBanksButton button {
+    width: 100%;
+    padding: 22px;
+    border: 0;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #087443, #0b9b59);
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(8,116,67,.18);
+}
+
+#coEarnerBanksButton strong {
+    display: block;
+    font-size: 19px;
+    margin-bottom: 7px;
+}
+
+#coEarnerBanksButton span {
+    font-size: 14px;
+    opacity: .9;
+}
+
+
+/* SAVING BANKS SCREEN */
+
+#coEarnerBanksScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #f4f8f5;
+    overflow-y: auto;
+}
+
+.coBanksTop {
+    background: white;
+    padding: 18px;
+    border-bottom: 1px solid #dfe9e3;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.coBanksTopInner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.coBanksTop h2 {
+    margin: 0;
+    color: #087443;
+}
+
+.coBanksClose {
+    border: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #e8f4ed;
+    color: #087443;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.coBanksContent {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px 60px;
+}
+
+.coBanksIntro {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.coBanksIntro h1 {
+    margin-bottom: 10px;
+    color: #17231c;
+}
+
+.coBanksIntro p {
+    color: #6d7971;
+}
+
+
+/* CYCLES */
+
+.coCycle {
+    margin-bottom: 45px;
+}
+
+.coCycleTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.coCycleTitle h3 {
+    margin: 0;
+    color: #087443;
+}
+
+.coCycleLine {
+    flex: 1;
+    height: 1px;
+    background: #d7e3dc;
+}
+
+
+/* BANK CARDS */
+
+.coBankGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.coBank {
+    position: relative;
+    padding: 25px 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(20,60,40,.08);
+    transition: .2s;
+}
+
+.coBank:hover {
+    transform: translateY(-4px);
+}
+
+.coBank1 {
+    border-top: 6px solid #087443;
+}
+
+.coBank2 {
+    border-top: 6px solid #2c9b67;
+    background: linear-gradient(#fff,#f0faf5);
+}
+
+.coBank3 {
+    border-top: 6px solid #c99a25;
+    background: linear-gradient(#fffdf6,#fff);
+}
+
+.coBank4 {
+    border-top: 6px solid #17231c;
+}
+
+.coBank5 {
+    border-left: 6px solid #087443;
+}
+
+.coBank6 {
+    border-left: 6px solid #c99a25;
+    background: linear-gradient(135deg,#fffdf6,#fff);
+}
+
+.coBank7 {
+    border-left: 6px solid #0b9255;
+}
+
+.coBank8 {
+    border-left: 6px solid #17231c;
+    background: linear-gradient(135deg,#f2f8f4,#fff);
+}
+
+.coPlan {
+    font-size: 12px;
+    font-weight: 800;
+    color: #77827b;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.coAmount {
+    font-size: 27px;
+    font-weight: 900;
+    color: #17231c;
+    margin-bottom: 12px;
+}
+
+.coEarn {
+    color: #087443;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.coTotal {
+    color: #68756d;
+    margin-bottom: 20px;
+}
+
+.coChoose {
+    width: 100%;
+    padding: 13px;
+    border: 0;
+    border-radius: 12px;
+    background: #087443;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.coBank3 .coChoose,
+.coBank6 .coChoose {
+    background: #c99a25;
+}
+
+.coBank4 .coChoose,
+.coBank8 .coChoose {
+    background: #17231c;
+}
+
+
+/* POPULAR */
+
+.coPopular {
+    position: absolute;
+    top: 14px;
+    right: -30px;
+    transform: rotate(38deg);
+    background: #c99a25;
+    color: white;
+    padding: 5px 32px;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px) {
+    .coBankGrid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width:520px) {
+    .coBankGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .coBanksContent {
+        padding: 25px 15px 50px;
+    }
+}
+</style>
+
+
+<!-- BUTTON AT THE END OF THE DASHBOARD -->
+
+<div id="coEarnerBanksButton">
+
+    <button onclick="openCoEarnerBanks()">
+
+        <strong>💰 Saving Banks</strong>
+
+        <span>
+            Choose from Co Earner's available saving plans
+        </span>
+
+    </button>
+
+</div>
+
+
+<!-- FULL SAVING BANKS PAGE -->
+
+<div id="coEarnerBanksScreen">
+
+    <div class="coBanksTop">
+
+        <div class="coBanksTopInner">
+
+            <h2>Co Earner Saving Banks</h2>
+
+            <button
+                class="coBanksClose"
+                onclick="closeCoEarnerBanks()">
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="coBanksContent">
+
+        <div class="coBanksIntro">
+
+            <h1>Choose Your Saving Bank</h1>
+
+            <p>
+                Select your preferred amount and saving cycle.
+            </p>
+
+        </div>
+
+
+        <!-- 20 DAYS -->
+
+        <div class="coCycle">
+
+            <div class="coCycleTitle">
+
+                <h3>20 DAYS</h3>
+
+                <div class="coCycleLine"></div>
+
+            </div>
+
+
+            <div class="coBankGrid">
+
+                <div class="coBank coBank1">
+                    <div class="coPlan">20 DAY PLAN</div>
+                    <div class="coAmount">20,000</div>
+                    <div class="coEarn">Earn 35,000</div>
+                    <div class="coTotal">Total: 55,000</div>
+                    <button class="coChoose"
+                        onclick="coChooseBank('20000-20days')">
+                        Choose Bank
+                    </button>
+                </div>
+
+
+                <div class="coBank coBank2">
+                    <div class="coPlan">20 DAY PLAN</div>
+                    <div class="coAmount">30,000</div>
+                    <div class="coEarn">Earn 55,000</div>
+                    <div class="coTotal">Total: 85,000</div>
+                    <button class="coChoose"
+                        onclick="coChooseBank('30000-20days')">
+                        Choose Bank
+                    </button>
+                </div>
+
+
+                <div class="coBank coBank3">
+
+                    <div class="coPopular">POPULAR</div>
+
+                    <div class="coPlan">20 DAY PLAN</div>
+                    <div class="coAmount">50,000</div>
+                    <div class="coEarn">Earn 85,000</div>
+                    <div class="coTotal">Total: 135,000</div>
+
+                    <button class="coChoose"
+                        onclick="coChooseBank('50000-20days')">
+                        Choose Bank
+                    </button>
+
+                </div>
+
+
+                <div class="coBank coBank4">
+                    <div class="coPlan">20 DAY PLAN</div>
+                    <div class="coAmount">100,000</div>
+                    <div class="coEarn">Earn 155,000</div>
+                    <div class="coTotal">Total: 255,000</div>
+                    <button class="coChoose"
+                        onclick="coChooseBank('100000-20days')">
+                        Choose Bank
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- 30 DAYS -->
+
+        <div class="coCycle">
+
+            <div class="coCycleTitle">
+
+                <h3>30 DAYS</h3>
+
+                <div class="coCycleLine"></div>
+
+            </div>
+
+
+            <div class="coBankGrid">
+
+                <div class="coBank coBank5">
+                    <div class="coPlan">30 DAY PLAN</div>
+                    <div class="coAmount">20,000</div>
+                    <div class="coEarn">Earn 50,000</div>
+                    <div class="coTotal">Total: 70,000</div>
+                    <button class="coChoose"
+                        onclick="coChooseBank('20000-30days')">
+                        Choose Bank
+                    </button>
+                </div>
+
+
+                <div class="coBank coBank6">
+                    <div class="coPlan">30 DAY PLAN</div>
+                    <div class="coAmount">30,000</div>
+                    <div class="coEarn">Earn 90,000</div>
+                    <div class="coTotal">Total: 120,000</div>
+                    <button class="coChoose"
+                        onclick="coChooseBank('30000-30days')">
+                        Choose Bank
+                    </button>
+                </div>
+
+
+                <div class="coBank coBank7">
+
+                    <div class="coPopular">POPULAR</div>
+
+                    <div class="coPlan">30 DAY PLAN</div>
+                    <div class="coAmount">50,000</div>
+                    <div class="coEarn">Earn 135,000</div>
+                    <div class="coTotal">Total: 185,000</div>
+
+                    <button class="coChoose"
+                        onclick="coChooseBank('50000-30days')">
+                        Choose Bank
+                    </button>
+
+                </div>
+
+
+                <div class="coBank coBank8">
+                    <div class="coPlan">30 DAY PLAN</div>
+                    <div class="coAmount">100,000</div>
+                    <div class="coEarn">Earn 220,000</div>
+                    <div class="coTotal">Total: 320,000</div>
+                    <button class="coChoose"
+                        onclick="coChooseBank('100000-30days')">
+                        Choose Bank
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openCoEarnerBanks() {
+    document.getElementById("coEarnerBanksScreen").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+function closeCoEarnerBanks() {
+    document.getElementById("coEarnerBanksScreen").style.display = "none";
+    document.body.style.overflow = "";
+}
+
+function coChooseBank(bank) {
+    window.location.href = "register.html?bank=" + bank;
+}
+
+  </script>
