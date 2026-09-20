@@ -513,3 +513,63 @@ document.getElementById("coSummaryBalance").textContent =
     coBalance.toLocaleString();
 
 </script>
+<!-- ==========================================
+     SHOW SAVED DEPOSIT TOTAL
+     PASTE AT THE VERY END OF money-summary.html
+========================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    /* GET SAVED DEPOSITS */
+
+    const totalDeposited =
+        Number(localStorage.getItem("coTotalDeposited") || 0);
+
+
+    /* UPDATE THE MAIN DEPOSIT VALUE */
+
+    const depositedBox =
+        document.getElementById("totalDeposited");
+
+    if (depositedBox) {
+        depositedBox.textContent =
+            totalDeposited.toLocaleString();
+    }
+
+
+    /* UPDATE THE ACTIVITY DEPOSIT VALUE */
+
+    const activityDeposit =
+        document.getElementById("coSummaryDeposits");
+
+    if (activityDeposit) {
+        activityDeposit.textContent =
+            totalDeposited.toLocaleString();
+    }
+
+
+    /* UPDATE BALANCE */
+
+    const balanceBox =
+        document.getElementById("coSummaryBalance");
+
+    if (balanceBox) {
+
+        const earned =
+            Number(localStorage.getItem("coDailyEarned") || 0);
+
+        const withdrawn =
+            Number(localStorage.getItem("coTotalWithdrawn") || 0);
+
+        const balance =
+            totalDeposited + earned - withdrawn;
+
+        balanceBox.textContent =
+            balance.toLocaleString();
+    }
+
+});
+
+</script>
