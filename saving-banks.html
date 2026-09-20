@@ -1531,3 +1531,116 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+
+/* =================================
+   CO SAVE & EARN - SAVING BANKS
+   ================================= */
+
+function goToDeposit() {
+  window.location.href = "deposit.html";
+}
+
+function goToWithdraw() {
+  window.location.href = "withdraw.html";
+}
+
+function goToSummary() {
+  window.location.href = "money-summary.html";
+}
+
+function goBackDashboard() {
+  window.location.href = "dashboard.html";
+}
+
+
+/* =================================
+   BANK SELECTION
+   ================================= */
+
+function selectBank(bankName) {
+
+  localStorage.setItem("selectedBank", bankName);
+
+  window.location.href = "deposit.html";
+
+}
+
+
+/* =================================
+   SHOW SELECTED BANK
+   ================================= */
+
+window.addEventListener("DOMContentLoaded", function() {
+
+  const selectedBank =
+    localStorage.getItem("selectedBank");
+
+  const bankNameElements =
+    document.querySelectorAll(".selected-bank-name");
+
+  if (selectedBank && bankNameElements.length > 0) {
+
+    bankNameElements.forEach(function(element) {
+      element.textContent = selectedBank;
+    });
+
+  }
+
+});
+
+
+/* =================================
+   SWIPE BANKS LEFT AND RIGHT
+   ================================= */
+
+const bankContainer =
+  document.querySelector(".banks-wrapper");
+
+if (bankContainer) {
+
+  let startX = 0;
+
+  bankContainer.addEventListener(
+    "touchstart",
+    function(event) {
+
+      startX = event.touches[0].clientX;
+
+    }
+  );
+
+  bankContainer.addEventListener(
+    "touchend",
+    function(event) {
+
+      const endX =
+        event.changedTouches[0].clientX;
+
+      const difference =
+        startX - endX;
+
+      if (difference > 50) {
+
+        bankContainer.scrollBy({
+          left: 260,
+          behavior: "smooth"
+        });
+
+      }
+
+      if (difference < -50) {
+
+        bankContainer.scrollBy({
+          left: -260,
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+  );
+
+}
+
+</script>
