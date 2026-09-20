@@ -527,3 +527,71 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.querySelector("form");
+    if (!form) return;
+
+    form.addEventListener("submit", function (event) {
+
+        const amountInput = form.querySelector('input[type="number"]');
+
+        if (!amountInput) return;
+
+        const amount = Number(amountInput.value);
+
+        const deposited = Number(
+            localStorage.getItem("coTotalDeposited") || 0
+        );
+
+        const earned = Number(
+            localStorage.getItem("coTotalEarned") || 0
+        );
+
+        const withdrawn = Number(
+            localStorage.getItem("coTotalWithdrawn") || 0
+        );
+
+        const available = Math.max(
+            deposited + earned - withdrawn,
+            0
+        );
+
+        if (!amount || amount <= 0) {
+            event.preventDefault();
+            alert("Please enter a valid withdrawal amount.");
+            return;
+        }
+
+        if (amount > available) {
+            event.preventDefault();
+
+            alert(
+                "Insufficient balance.\n\n" +
+                "Available balance: " +
+                available.toLocaleString()
+            );
+
+            return;
+        }
+
+        /*
+         * Record only the amount the user requested.
+         */
+        localStorage.setItem(
+            "coTotalWithdrawn",
+            withdrawn + amount
+        );
+
+        alert(
+            "Withdrawal request submitted.\n\n" +
+            "Amount: " +
+            amount.toLocaleString()
+        );
+
+        window.location.href = "money-summary.html";
+    });
+
+});
+</script>
