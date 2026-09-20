@@ -1,665 +1,968 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script>
-(function () {
-  const loggedIn = localStorage.getItem("coLoggedIn");
+<head>
 
-  if (loggedIn !== "true") {
-    window.location.href = "login.html";
-  }
-})();
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Co Save & Earn - Dashboard</title>
+<title>Co Save & Earn - Dashboard</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
 
-    body {
-      background: #f5f7fb;
-      color: #172033;
-      min-height: 100vh;
-    }
-
-    /* TOP BAR */
-    .topbar {
-      background: white;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-      color: #176b45;
-    }
-
-    .profile {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #176b45;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    /* MAIN */
-    .container {
-      width: 92%;
-      max-width: 1000px;
-      margin: 25px auto;
-    }
-
-    .welcome {
-      margin-bottom: 20px;
-    }
-
-    .welcome h1 {
-      font-size: 27px;
-      margin-bottom: 6px;
-    }
-
-    .welcome p {
-      color: #687386;
-      font-size: 14px;
-    }
-
-    /* BALANCE */
-    .balance-card {
-      background: linear-gradient(135deg, #176b45, #24945f);
-      color: white;
-      border-radius: 22px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 25px rgba(23,107,69,0.2);
-    }
-
-    .balance-title {
-      font-size: 14px;
-      opacity: 0.9;
-      margin-bottom: 8px;
-    }
-
-    .balance {
-      font-size: 34px;
-      font-weight: bold;
-      margin-bottom: 22px;
-    }
-
-    .balance-actions {
-      display: flex;
-      gap: 12px;
-    }
-
-    .balance-actions button {
-      flex: 1;
-      padding: 12px;
-      border: none;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .add-btn {
-      background: white;
-      color: #176b45;
-    }
-
-    .withdraw-btn {
-      background: rgba(255,255,255,0.18);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.4) !important;
-    }
-
-    /* SECTION */
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 25px 0 14px;
-    }
-
-    .section-title h2 {
-      font-size: 19px;
-    }
-
-    .section-title span {
-      color: #176b45;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    /* SAVING BANKS */
-    .banks-wrapper {
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .banks-wrapper::-webkit-scrollbar {
-      display: none;
-    }
-
-    .banks {
-      display: flex;
-      gap: 15px;
-      width: max-content;
-      padding-bottom: 5px;
-    }
-
-    .bank {
-      width: 230px;
-      min-height: 155px;
-      background: white;
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.06);
-      flex-shrink: 0;
-    }
-
-    .bank-icon {
-      font-size: 32px;
-      margin-bottom: 12px;
-    }
-
-    .bank h3 {
-      margin-bottom: 7px;
-      font-size: 17px;
-    }
-
-    .bank p {
-      font-size: 13px;
-      color: #687386;
-      margin-bottom: 15px;
-    }
-
-    .bank button {
-      border: none;
-      background: #176b45;
-      color: white;
-      padding: 9px 15px;
-      border-radius: 9px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    /* QUICK ACTIONS */
-    .actions {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .action {
-      background: white;
-      border-radius: 16px;
-      padding: 20px 10px;
-      text-align: center;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.05);
-      cursor: pointer;
-    }
-
-    .action-icon {
-      font-size: 25px;
-      margin-bottom: 9px;
-    }
-
-    .action p {
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    /* ACTIVITY */
-    .activity {
-      background
-<script>
-
-/* ================================
-   CO SAVE & EARN DASHBOARD CONTROLS
-   ================================ */
-
-/* ADD MONEY */
-function addMoney() {
-  window.location.href = "deposit.html";
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
 
-/* WITHDRAW */
-function withdrawMoney() {
-  window.location.href = "withdraw.html";
+body{
+    background:#061b18;
+    color:white;
+    min-height:100vh;
+    padding-bottom:90px;
 }
 
-/* SAVING BANKS */
-function openBank(bankName) {
-  window.location.href = "saving-banks.html";
+button{
+    font-family:inherit;
+    cursor:pointer;
 }
 
-/* SAVE MONEY */
-function saveMoney() {
-  window.location.href = "deposit.html";
+/* HEADER */
+
+.header{
+    padding:25px 20px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-icon{
+    font-size:38px;
+}
+
+.logo-text{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.logo-text span{
+    color:#20d69b;
+}
+
+.tagline{
+    color:#b8d5cf;
+    font-size:13px;
+    margin-top:3px;
+}
+
+.profile-button{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:#10463c;
+    color:white;
+    font-size:23px;
+}
+
+/* MAIN */
+
+.container{
+    width:92%;
+    max-width:850px;
+    margin:auto;
+}
+
+/* WELCOME */
+
+.welcome{
+    background:linear-gradient(
+        135deg,
+        #073d34,
+        #075344
+    );
+    border:1px solid #0b7561;
+    border-radius:24px;
+    padding:25px 22px;
+    margin:10px 0 18px;
+    position:relative;
+    overflow:hidden;
+}
+
+.welcome h1{
+    font-size:28px;
+    margin-bottom:9px;
+}
+
+.welcome h1 span{
+    color:#20d69b;
+}
+
+.welcome p{
+    color:#c0d9d4;
+    line-height:1.5;
+    font-size:14px;
+}
+
+/* BALANCE */
+
+.balance-card{
+    background:linear-gradient(
+        135deg,
+        #0b332f,
+        #092a39
+    );
+    border:1px solid #0b675a;
+    border-radius:24px;
+    padding:23px;
+    margin-bottom:20px;
+}
+
+.balance-label{
+    color:#b9d1cc;
+    font-size:14px;
+}
+
+.balance{
+    font-size:34px;
+    font-weight:bold;
+    margin:8px 0 20px;
+}
+
+.balance-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.deposit{
+    background:#20d69b;
+    color:#06231d;
+    border:none;
+    border-radius:13px;
+    padding:14px;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.withdraw{
+    background:transparent;
+    color:white;
+    border:1px solid #20d69b;
+    border-radius:13px;
+    padding:14px;
+    font-weight:bold;
+    font-size:15px;
+}
+
+/* SECTION */
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:25px 0 13px;
+}
+
+.section-title h2{
+    font-size:20px;
+}
+
+.section-link{
+    color:#20d69b;
+    font-size:13px;
+    cursor:pointer;
+}
+
+/* QUICK ACTIONS */
+
+.quick-actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.quick-card{
+    background:#0b302c;
+    border:1px solid #10594d;
+    border-radius:18px;
+    padding:17px 8px;
+    text-align:center;
+    min-height:125px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.quick-card:active{
+    transform:scale(.97);
+}
+
+.quick-icon{
+    font-size:28px;
+    margin-bottom:9px;
+}
+
+.quick-card h3{
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.quick-card p{
+    color:#9fc2bb;
+    font-size:11px;
+}
+
+/* SAVINGS */
+
+.savings-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.saving-card{
+    background:linear-gradient(
+        145deg,
+        #0b342f,
+        #082923
+    );
+    border:1px solid #0e6758;
+    border-radius:20px;
+    padding:20px 15px;
+    text-align:center;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.saving-card:active{
+    transform:scale(.97);
+}
+
+.saving-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 12px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:34px;
+    background:#174b42;
+}
+
+.saving-card h3{
+    font-size:17px;
+    margin-bottom:7px;
+}
+
+.saving-card p{
+    color:#a9c9c3;
+    font-size:12px;
+    line-height:1.4;
+    margin-bottom:14px;
+}
+
+.open-button{
+    width:100%;
+    padding:11px;
+    border:none;
+    border-radius:10px;
+    background:#20d69b;
+    color:#06231d;
+    font-weight:bold;
 }
 
 /* EARN */
-function earnMoney() {
-  alert("Earn features will be available here soon.");
+
+.earn-card{
+    background:linear-gradient(
+        135deg,
+        #173c31,
+        #102c39
+    );
+    border:1px solid #176b5b;
+    border-radius:20px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
 }
 
-/* TRANSACTIONS */
-function transactions() {
-  window.location.href = "money-summary.html";
+.earn-icon{
+    width:55px;
+    height:55px;
+    border-radius:16px;
+    background:#f3c85b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
 }
 
-/* HOME */
-function goHome() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+.earn-card h3{
+    margin-bottom:5px;
 }
 
-/* PROFILE */
-function profilePage() {
-  alert("Your profile section will be added here.");
+.earn-card p{
+    color:#a9c8c1;
+    font-size:12px;
 }
 
+/* ACTIVITY */
 
-/* ================================
-   MAKE THE SAVING BANKS SWIPEABLE
-   ================================ */
+.activity{
+    background:#0b302c;
+    border:1px solid #10594d;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+}
 
-const banksWrapper = document.querySelector(".banks-wrapper");
+.activity-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
 
-if (banksWrapper) {
+.activity h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
 
-  let startX = 0;
-  let startY = 0;
+.activity p{
+    color:#9fbdb8;
+    font-size:12px;
+}
 
-  banksWrapper.addEventListener("touchstart", function(event) {
-    startX = event.touches[0].clientX;
-    startY = event.touches[0].clientY;
-  });
+/* BOTTOM NAV */
 
-  banksWrapper.addEventListener("touchend", function(event) {
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:75px;
+    background:#06221e;
+    border-top:1px solid #125247;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:100;
+}
 
-    const endX = event.changedTouches[0].clientX;
-    const endY = event.changedTouches[0].clientY;
+.nav-item{
+    text-align:center;
+    color:#91aaa6;
+    font-size:11px;
+    cursor:pointer;
+}
 
-    const differenceX = startX - endX;
-    const differenceY = startY - endY;
+.nav-item.active{
+    color:#20d69b;
+}
 
-    /* Only respond to horizontal swipes */
-    if (Math.abs(differenceX) > Math.abs(differenceY)) {
+.nav-icon{
+    display:block;
+    font-size:22px;
+    margin-bottom:4px;
+}
 
-      if (differenceX > 50) {
-        banksWrapper.scrollBy({
-          left: 250,
-          behavior: "smooth"
-        });
-      }
+/* MOBILE */
 
-      if (differenceX < -50) {
-        banksWrapper.scrollBy({
-          left: -250,
-          behavior: "smooth"
-        });
-      }
+@media(max-width:600px){
+
+    .welcome h1{
+        font-size:25px;
+    }
+
+    .balance{
+        font-size:31px;
+    }
+
+    .quick-actions{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .savings-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:400px){
+
+    .savings-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <div class="logo-icon">🌱</div>
+
+        <div>
+            <div class="logo-text">
+                Co <span>Save & Earn</span>
+            </div>
+
+            <div class="tagline">
+                Save. Earn. Grow.
+            </div>
+        </div>
+
+    </div>
+
+    <button
+        class="profile-button"
+        onclick="openProfile()">
+        👤
+    </button>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- WELCOME -->
+
+<section class="welcome">
+
+    <h1>
+        Hello, <span id="userName">User</span> 👋
+    </h1>
+
+    <p>
+        Keep going! Every little save counts
+        towards your bigger goals.
+    </p>
+
+</section>
+
+
+<!-- BALANCE -->
+
+<section class="balance-card">
+
+    <div class="balance-label">
+        Available Balance
+    </div>
+
+    <div
+        class="balance"
+        id="balance">
+        UGX 0
+    </div>
+
+    <div class="balance-buttons">
+
+        <button
+            class="deposit"
+            onclick="goDeposit()">
+            ↓ &nbsp; Deposit
+        </button>
+
+        <button
+            class="withdraw"
+            onclick="goWithdraw()">
+            ↑ &nbsp; Withdraw
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+
+<div class="section-title">
+
+    <h2>Quick Actions</h2>
+
+</div>
+
+<div class="quick-actions">
+
+    <div
+        class="quick-card"
+        onclick="goSavings()">
+
+        <div class="quick-icon">
+            🐷
+        </div>
+
+        <h3>My Savings</h3>
+
+        <p>
+            View & manage
+        </p>
+
+    </div>
+
+
+    <div
+        class="quick-card"
+        onclick="goHowItWorks()">
+
+        <div class="quick-icon">
+            📊
+        </div>
+
+        <h3>How It Works</h3>
+
+        <p>
+            Learn more
+        </p>
+
+    </div>
+
+
+    <div
+        class="quick-card"
+        onclick="goEarn()">
+
+        <div class="quick-icon">
+            🎁
+        </div>
+
+        <h3>Earn Rewards</h3>
+
+        <p>
+            Get more benefits
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- MY SAVINGS -->
+
+<div class="section-title">
+
+    <h2>My Savings</h2>
+
+    <span
+        class="section-link"
+        onclick="goSavings()">
+        View All →
+    </span>
+
+</div>
+
+
+<div class="savings-grid">
+
+
+    <!-- SAVING ELEPHANT -->
+
+    <div
+        class="saving-card"
+        onclick="openElephant()">
+
+        <div class="saving-icon">
+            🐘
+        </div>
+
+        <h3>
+            Saving Elephant
+        </h3>
+
+        <p>
+            Explore different Elephant
+            savings plans.
+        </p>
+
+        <button
+            class="open-button"
+            onclick="event.stopPropagation(); openElephant();">
+            Explore Plans
+        </button>
+
+    </div>
+
+
+    <!-- SAVING TIN -->
+
+    <div
+        class="saving-card"
+        onclick="openTin()">
+
+        <div class="saving-icon">
+            🪙
+        </div>
+
+        <h3>
+            Saving Tin
+        </h3>
+
+        <p>
+            Explore different Saving Tin
+            plans.
+        </p>
+
+        <button
+            class="open-button"
+            onclick="event.stopPropagation(); openTin();">
+            Explore Plans
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- EARN -->
+
+<div class="section-title">
+
+    <h2>Earn</h2>
+
+</div>
+
+<div
+    class="earn-card"
+    onclick="goEarn()">
+
+    <div class="earn-icon">
+        💰
+    </div>
+
+    <div>
+
+        <h3>
+            Earn Rewards
+        </h3>
+
+        <p>
+            Discover ways to earn
+            with Co Save & Earn.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- RECENT ACTIVITY -->
+
+<div class="section-title">
+
+    <h2>Recent Activity</h2>
+
+    <span
+        class="section-link"
+        onclick="goActivity()">
+        View All →
+    </span>
+
+</div>
+
+
+<div class="activity">
+
+    <div class="activity-icon">
+        📋
+    </div>
+
+    <h3>
+        No recent transactions
+    </h3>
+
+    <p>
+        Your activity will appear here
+        once you start saving.
+    </p>
+
+</div>
+
+
+</main>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+    <div
+        class="nav-item active"
+        onclick="goHome()">
+
+        <span class="nav-icon">
+            🏠
+        </span>
+
+        Home
+
+    </div>
+
+
+    <div
+        class="nav-item"
+        onclick="goSavings()">
+
+        <span class="nav-icon">
+            🐷
+        </span>
+
+        Savings
+
+    </div>
+
+
+    <div
+        class="nav-item"
+        onclick="goActivity()">
+
+        <span class="nav-icon">
+            📋
+        </span>
+
+        Activity
+
+    </div>
+
+
+    <div
+        class="nav-item"
+        onclick="openProfile()">
+
+        <span class="nav-icon">
+            👤
+        </span>
+
+        Profile
+
+    </div>
+
+</nav>
+
+
+<script>
+
+/* =========================
+   USER NAME
+========================= */
+
+function loadUserName(){
+
+    const possibleNames = [
+
+        localStorage.getItem("coUserName"),
+
+        localStorage.getItem("userName"),
+
+        localStorage.getItem("username"),
+
+        localStorage.getItem("name")
+
+    ];
+
+    let name = "User";
+
+    for(let i = 0; i < possibleNames.length; i++){
+
+        if(
+            possibleNames[i] &&
+            possibleNames[i].trim() !== ""
+        ){
+
+            name = possibleNames[i];
+            break;
+
+        }
 
     }
 
-  });
+    document.getElementById("userName").textContent =
+        name;
 
 }
 
 
-/* ================================
-   PREVENT BUTTONS FROM RELOADING
-   ================================ */
+/* =========================
+   BALANCE
+========================= */
 
-document.querySelectorAll("button").forEach(function(button) {
+function loadBalance(){
 
-  button.addEventListener("click", function(event) {
-    event.stopPropagation();
-  });
+    const savedBalance =
+        Number(
+            localStorage.getItem("coBalance")
+        ) || 0;
 
-});
+    document.getElementById("balance").textContent =
+        "UGX " +
+        savedBalance.toLocaleString();
+
+}
 
 
-/* ================================
-   DASHBOARD NAVIGATION
-   ================================ */
+/* =========================
+   DEPOSIT
+========================= */
 
-document.querySelectorAll(".nav-item").forEach(function(item) {
+function goDeposit(){
 
-  item.addEventListener("click", function() {
+    window.location.href =
+        "deposit.html";
 
-    document.querySelectorAll(".nav-item").forEach(function(nav) {
-      nav.classList.remove("active");
+}
+
+
+/* =========================
+   WITHDRAW
+========================= */
+
+function goWithdraw(){
+
+    window.location.href =
+        "withdraw.html";
+
+}
+
+
+/* =========================
+   SAVINGS
+========================= */
+
+function goSavings(){
+
+    window.location.href =
+        "saving-banks.html";
+
+}
+
+
+/* =========================
+   ELEPHANT
+========================= */
+
+function openElephant(){
+
+    /*
+       The Elephant plans page
+       will be designed next.
+    */
+
+    window.location.href =
+        "saving-elephant.html";
+
+}
+
+
+/* =========================
+   SAVING TIN
+========================= */
+
+function openTin(){
+
+    /*
+       The Saving Tin plans page
+       will be designed next.
+    */
+
+    window.location.href =
+        "saving-tin.html";
+
+}
+
+
+/* =========================
+   ACTIVITY
+========================= */
+
+function goActivity(){
+
+    window.location.href =
+        "money-summary.html";
+
+}
+
+
+/* =========================
+   EARN
+========================= */
+
+function goEarn(){
+
+    alert(
+        "Earn Rewards will be designed next."
+    );
+
+}
+
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+function goHowItWorks(){
+
+    alert(
+        "How It Works will be added next."
+    );
+
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+function openProfile(){
+
+    alert(
+        "Your profile section will be added next."
+    );
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function goHome(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
     });
 
-    this.classList.add("active");
-
-  });
-
-});
+}
 
 
-/* ================================
-   SMOOTH PAGE EXPERIENCE
-   ================================ */
+/* =========================
+   START
+========================= */
 
-window.addEventListener("load", function() {
+loadUserName();
 
-  document.body.style.opacity = "1";
-
-});
-
-
-</script
-<script>
-
-/* =========================================
-   CO SAVE & EARN — LIVE BALANCE
-   ========================================= */
-
-(function () {
-
-  function updateDashboardBalance() {
-
-    const balance =
-      Number(localStorage.getItem("coBalance")) || 0;
-
-    const balanceElement =
-      document.querySelector(".balance");
-
-    if (balanceElement) {
-      balanceElement.textContent =
-        "UGX " + balance.toLocaleString();
-    }
-
-  }
-
-  /* Show balance when dashboard opens */
-  updateDashboardBalance();
-
-})();
-
-
-/* =========================================
-   SHOW SAVED TRANSACTIONS
-   ========================================= */
-
-(function () {
-
-  const activity =
-    document.querySelector(".activity");
-
-  if (!activity) {
-    return;
-  }
-
-  const transactions =
-    JSON.parse(
-      localStorage.getItem("coTransactions") || "[]"
-    );
-
-  if (transactions.length === 0) {
-    return;
-  }
-
-  activity.innerHTML = "";
-
-  transactions.slice(0, 5).forEach(function (transaction) {
-
-    const item =
-      document.createElement("div");
-
-    item.className = "activity-item";
-
-    item.innerHTML = `
-      <div class="activity-left">
-
-        <div class="activity-icon">
-          ${transaction.type === "Deposit" ? "💰" : "💸"}
-        </div>
-
-        <div>
-          <div class="activity-name">
-            ${transaction.type}
-          </div>
-
-          <div class="activity-date">
-            ${transaction.bank || "Co Save & Earn"}
-            • ${transaction.date}
-          </div>
-        </div>
-
-      </div>
-
-      <div class="activity-amount">
-        + UGX ${Number(transaction.amount).toLocaleString()}
-      </div>
-    `;
-
-    activity.appendChild(item);
-
-  });
-
-})();
+loadBalance();
 
 </script>
-<script>
 
-/* =========================================
-   CO SAVE & EARN — LIVE BALANCE
-   ========================================= */
-
-(function () {
-
-  function updateDashboardBalance() {
-
-    const balance =
-      Number(localStorage.getItem("coBalance")) || 0;
-
-    const balanceElement =
-      document.querySelector(".balance");
-
-    if (balanceElement) {
-      balanceElement.textContent =
-        "UGX " + balance.toLocaleString();
-    }
-
-  }
-
-  /* Show balance when dashboard opens */
-  updateDashboardBalance();
-
-})();
-
-
-/* =========================================
-   SHOW SAVED TRANSACTIONS
-   ========================================= */
-
-(function () {
-
-  const activity =
-    document.querySelector(".activity");
-
-  if (!activity) {
-    return;
-  }
-
-  const transactions =
-    JSON.parse(
-      localStorage.getItem("coTransactions") || "[]"
-    );
-
-  if (transactions.length === 0) {
-    return;
-  }
-
-  activity.innerHTML = "";
-
-  transactions.slice(0, 5).forEach(function (transaction) {
-
-    const item =
-      document.createElement("div");
-
-    item.className = "activity-item";
-
-    item.innerHTML = `
-      <div class="activity-left">
-
-        <div class="activity-icon">
-          ${transaction.type === "Deposit" ? "💰" : "💸"}
-        </div>
-
-        <div>
-          <div class="activity-name">
-            ${transaction.type}
-          </div>
-
-          <div class="activity-date">
-            ${transaction.bank || "Co Save & Earn"}
-            • ${transaction.date}
-          </div>
-        </div>
-
-      </div>
-
-      <div class="activity-amount">
-        + UGX ${Number(transaction.amount).toLocaleString()}
-      </div>
-    `;
-
-    activity.appendChild(item);
-
-  });
-
-})();
-
-</script>
-<!-- CO SAVE & EARN DASHBOARD ADD-ON -->
-<style>
-/* New Dashboard Additions */
-.co-extra {
-  width: 92%;
-  max-width: 900px;
-  margin: 20px auto;
-}
-
-.co-section-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 25px 0 14px;
-  color: #172033;
-}
-
-.co-scroll {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  scrollbar-width: none;
-}
-
-.co-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.co-bank-card {
-  min-width: 230px;
-  background: white;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 5px 18px rgba(0,0,0,.07);
-  flex-shrink: 0;
-}
-
-.co-bank-icon {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.co-bank-card h3 {
-  margin-bottom: 7px;
-  color: #172033;
-}
-
-.co-bank-card p {
-  color: #687386;
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 15px;
-}
-
-.co-bank-card button {
-  border: none;
-  background: #176b45;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 9px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.co-actions {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 12px;
-}
-
-.co-action {
-  background: white;
-  border-radius: 16px;
-  padding: 18px 8px;
-  text-align: center;
-  box-shadow: 0 5px 18px rgba(0,0,0,.06);
-  cursor: pointer;
-}
-
-.co-action-icon {
-  font-size: 26px;
-  margin-bottom: 8px;
-}
-
-.co-action p {
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.co-message {
-  background: #176b45;
-  color: white;
-  padding: 18px;
-  border-radius: 16px;
-  margin-top: 20px;
-  line-height: 1.5;
-}
-
-@media
-<script>
-if (localStorage.getItem("coLoggedIn") !== "true") {
-    window.location.href = "login.html";
-}
-</script>
-<script>
-document.body.style.display = "block";
-document.body.style.visibility = "visible";
-document.body.style.opacity = "1";
-</script>
+</body>
+          </html>
