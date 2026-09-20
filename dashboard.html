@@ -2908,3 +2908,25 @@ document.addEventListener(
 );
 
     </script>
+<!-- PROFILE BUTTON CONNECTION -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const profileElements = document.querySelectorAll("a, button, div");
+
+    profileElements.forEach(function(element){
+
+        const text = element.textContent.trim().toLowerCase();
+
+        if(text === "profile"){
+            element.style.cursor = "pointer";
+
+            element.addEventListener("click", function(){
+                window.location.href = "profile.html";
+            });
+        }
+
+    });
+
+});
+</script>
