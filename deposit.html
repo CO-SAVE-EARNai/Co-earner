@@ -297,3 +297,94 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
             </script>
+<script>
+
+function addDeposit(amount){
+
+    amount = Number(amount);
+
+    if(!amount || amount <= 0){
+        alert("Please enter a valid amount.");
+        return;
+    }
+
+    /* Get current balance */
+    const oldBalance =
+        Number(localStorage.getItem("coBalance")) || 0;
+
+    /* Add the deposit */
+    const newBalance = oldBalance + amount;
+
+    localStorage.setItem(
+        "coBalance",
+        newBalance
+    );
+
+
+    /* Save the transaction */
+    const transactions =
+        JSON.parse(
+            localStorage.getItem("coTransactions") || "[]"
+        );
+
+    transactions.unshift({
+
+        type:"Deposit",
+
+        amount:amount,
+
+        date:new Date().toLocaleDateString(),
+
+        time:new Date().toLocaleTimeString()
+
+    });
+
+    localStorage.setItem(
+        "coTransactions",
+        JSON.stringify(transactions)
+    );
+
+
+    alert(
+        "Deposit successful! Your new balance is UGX " +
+        newBalance.toLocaleString()
+    );
+
+
+    /* Return to dashboard */
+    window.location.href =
+        "dashboard.html";
+}
+
+
+/* Find the deposit form automatically */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    const form =
+        document.querySelector("form");
+
+    if(form){
+
+        form.addEventListener("submit",function(event){
+
+            event.preventDefault();
+
+            const input =
+                form.querySelector(
+                    "input[type='number'], input"
+                );
+
+            if(input){
+
+                addDeposit(input.value);
+
+            }
+
+        });
+
+    }
+
+});
+
+</script>
