@@ -719,3 +719,67 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const bank = localStorage.getItem("coSelectedBank");
+    const active = localStorage.getItem("coBankActive");
+
+    const bankNames = {
+        "20000-20days": "20,000 • 20 DAYS",
+        "30000-20days": "30,000 • 20 DAYS",
+        "50000-20days": "50,000 • 20 DAYS",
+        "100000-20days": "100,000 • 20 DAYS",
+
+        "20000-30days": "20,000 • 30 DAYS",
+        "30000-30days": "30,000 • 30 DAYS",
+        "50000-30days": "50,000 • 30 DAYS",
+        "100000-30days": "100,000 • 30 DAYS"
+    };
+
+    const summaryBox = document.createElement("div");
+
+    summaryBox.style.cssText = `
+        margin:20px;
+        padding:20px;
+        border-radius:18px;
+        background:linear-gradient(135deg,#0b6b3a,#159447);
+        color:white;
+        box-shadow:0 10px 25px rgba(0,0,0,0.12);
+        text-align:center;
+    `;
+
+    if (active === "true" && bank && bankNames[bank]) {
+        summaryBox.innerHTML = `
+            <div style="font-size:13px;opacity:.85;">
+                ACTIVE SAVING BANK
+            </div>
+
+            <div style="font-size:22px;font-weight:800;margin-top:8px;">
+                ${bankNames[bank]}
+            </div>
+
+            <div style="margin-top:10px;font-size:15px;">
+                Your daily earning
+            </div>
+
+            <div style="font-size:25px;font-weight:800;margin-top:4px;">
+                ${Number(localStorage.getItem("coDailyEarned") || 0).toLocaleString()}
+            </div>
+        `;
+    } else {
+        summaryBox.innerHTML = `
+            <div style="font-size:20px;font-weight:800;">
+                No Active Saving Bank
+            </div>
+
+            <div style="margin-top:8px;opacity:.9;">
+                Choose a Saving Bank to start earning.
+            </div>
+        `;
+    }
+
+    document.body.appendChild(summaryBox);
+
+});
+                    </script>
