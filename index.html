@@ -1138,3 +1138,40 @@ removeDashboardCard("Total Savings");
 removeDashboardCard("This Month");
 removeDashboardCard("Active Goals");
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* Find the dashboard by its visible text */
+    const dashboardTexts = [
+        "Available Balance",
+        "AI Earning",
+        "Save & Grow"
+    ];
+
+    const allElements = document.body.querySelectorAll("*");
+
+    allElements.forEach(function(element) {
+
+        const text = element.textContent.trim();
+
+        if (
+            text.includes("Available Balance") &&
+            text.includes("AI Earning") &&
+            text.includes("Save & Grow")
+        ) {
+
+            /* Hide the dashboard section */
+            let box = element;
+
+            for (let i = 0; i < 5; i++) {
+                if (box.parentElement) {
+                    box = box.parentElement;
+                }
+            }
+
+            box.style.display = "none";
+        }
+    });
+
+});
+</script>
