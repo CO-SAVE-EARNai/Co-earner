@@ -590,3 +590,220 @@ document.addEventListener(
 );
 
     </script>
+<!-- CO SAVE & EARN — DEPOSIT MOBILE MONEY DETAILS -->
+
+<style>
+.co-mm-box{
+    width:92%;
+    max-width:650px;
+    margin:20px auto;
+    padding:18px;
+    background:#0b302c;
+    border:1px solid #176e5d;
+    border-radius:20px;
+    color:white;
+}
+
+.co-mm-box h3{
+    margin:0 0 8px;
+}
+
+.co-mm-box p{
+    color:#9dbab4;
+    font-size:12px;
+    line-height:1.5;
+    margin-bottom:16px;
+}
+
+.co-mm-field{
+    margin-bottom:14px;
+}
+
+.co-mm-field label{
+    display:block;
+    color:#a9c5bf;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+.co-mm-field input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #17463e;
+    background:#073d34;
+    color:white;
+    font-size:14px;
+    outline:none;
+}
+
+.co-mm-field input:focus{
+    border-color:#20d69b;
+}
+
+.co-mm-field input::placeholder{
+    color:#708f89;
+}
+
+.co-mm-required{
+    color:#20d69b;
+}
+
+.co-mm-save{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:13px;
+    background:#20d69b;
+    color:#06231d;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:5px;
+}
+</style>
+
+<div class="co-mm-box">
+
+    <h3>📱 Mobile Money Details</h3>
+
+    <p>
+        Enter the Mobile Money number and the name
+        registered on that number before making your deposit.
+    </p>
+
+    <div class="co-mm-field">
+
+        <label>
+            Mobile Money Number
+            <span class="co-mm-required">*</span>
+        </label>
+
+        <input
+            type="tel"
+            id="coDepositMobile"
+            placeholder="e.g. 0771234567"
+            inputmode="tel"
+        >
+
+    </div>
+
+    <div class="co-mm-field">
+
+        <label>
+            Registered Name
+            <span class="co-mm-required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="coDepositName"
+            placeholder="Name registered on the number"
+        >
+
+    </div>
+
+    <button
+        type="button"
+        class="co-mm-save"
+        onclick="saveDepositMobileDetails()"
+    >
+        Save Deposit Details
+    </button>
+
+</div>
+
+<script>
+
+function saveDepositMobileDetails(){
+
+    const number =
+        document.getElementById(
+            "coDepositMobile"
+        ).value.trim();
+
+    const name =
+        document.getElementById(
+            "coDepositName"
+        ).value.trim();
+
+
+    if(!number){
+
+        alert(
+            "Please enter the Mobile Money number."
+        );
+
+        return;
+
+    }
+
+
+    if(!name){
+
+        alert(
+            "Please enter the name registered on the Mobile Money number."
+        );
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "coDepositMobileNumber",
+        number
+    );
+
+    localStorage.setItem(
+        "coDepositMobileName",
+        name
+    );
+
+
+    alert(
+        "Mobile Money details saved successfully."
+    );
+
+}
+
+
+/* Load previously saved details */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const number =
+            localStorage.getItem(
+                "coDepositMobileNumber"
+            ) || "";
+
+        const name =
+            localStorage.getItem(
+                "coDepositMobileName"
+            ) || "";
+
+
+        const numberInput =
+            document.getElementById(
+                "coDepositMobile"
+            );
+
+        const nameInput =
+            document.getElementById(
+                "coDepositName"
+            );
+
+
+        if(numberInput){
+            numberInput.value = number;
+        }
+
+        if(nameInput){
+            nameInput.value = name;
+        }
+
+    }
+);
+
+</script>
