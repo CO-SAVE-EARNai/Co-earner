@@ -1475,3 +1475,220 @@ document.addEventListener(
 );
 
   </script>
+<!-- CO SAVE & EARN — WITHDRAWAL MOBILE MONEY DETAILS -->
+
+<style>
+.co-withdraw-mm{
+    width:92%;
+    max-width:650px;
+    margin:20px auto;
+    padding:18px;
+    background:#0b302c;
+    border:1px solid #176e5d;
+    border-radius:20px;
+    color:white;
+}
+
+.co-withdraw-mm h3{
+    margin:0 0 8px;
+}
+
+.co-withdraw-mm p{
+    color:#9dbab4;
+    font-size:12px;
+    line-height:1.5;
+    margin-bottom:16px;
+}
+
+.co-withdraw-field{
+    margin-bottom:14px;
+}
+
+.co-withdraw-field label{
+    display:block;
+    color:#a9c5bf;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+.co-withdraw-field input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #17463e;
+    background:#073d34;
+    color:white;
+    font-size:14px;
+    outline:none;
+}
+
+.co-withdraw-field input:focus{
+    border-color:#20d69b;
+}
+
+.co-withdraw-field input::placeholder{
+    color:#708f89;
+}
+
+.co-withdraw-required{
+    color:#20d69b;
+}
+
+.co-withdraw-save{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:13px;
+    background:#20d69b;
+    color:#06231d;
+    font-weight:bold;
+    cursor:pointer;
+}
+</style>
+
+<div class="co-withdraw-mm">
+
+    <h3>📱 Withdrawal Mobile Money Details</h3>
+
+    <p>
+        Enter the Mobile Money number where your
+        withdrawal should be sent and the name
+        registered on that number.
+    </p>
+
+    <div class="co-withdraw-field">
+
+        <label>
+            Mobile Money Number
+            <span class="co-withdraw-required">*</span>
+        </label>
+
+        <input
+            type="tel"
+            id="coWithdrawMobile"
+            placeholder="e.g. 0771234567"
+            inputmode="tel"
+        >
+
+    </div>
+
+    <div class="co-withdraw-field">
+
+        <label>
+            Registered Name
+            <span class="co-withdraw-required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="coWithdrawName"
+            placeholder="Name registered on the number"
+        >
+
+    </div>
+
+    <button
+        type="button"
+        class="co-withdraw-save"
+        onclick="saveWithdrawalMobileDetails()"
+    >
+        Save Withdrawal Details
+    </button>
+
+</div>
+
+<script>
+
+function saveWithdrawalMobileDetails(){
+
+    const number =
+        document.getElementById(
+            "coWithdrawMobile"
+        ).value.trim();
+
+    const name =
+        document.getElementById(
+            "coWithdrawName"
+        ).value.trim();
+
+
+    if(!number){
+
+        alert(
+            "Please enter the Mobile Money number."
+        );
+
+        return;
+
+    }
+
+
+    if(!name){
+
+        alert(
+            "Please enter the name registered on the Mobile Money number."
+        );
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "coWithdrawMobileNumber",
+        number
+    );
+
+    localStorage.setItem(
+        "coWithdrawMobileName",
+        name
+    );
+
+
+    alert(
+        "Withdrawal Mobile Money details saved successfully."
+    );
+
+}
+
+
+/* Load saved withdrawal details */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const number =
+            localStorage.getItem(
+                "coWithdrawMobileNumber"
+            ) || "";
+
+        const name =
+            localStorage.getItem(
+                "coWithdrawMobileName"
+            ) || "";
+
+
+        const numberInput =
+            document.getElementById(
+                "coWithdrawMobile"
+            );
+
+        const nameInput =
+            document.getElementById(
+                "coWithdrawName"
+            );
+
+
+        if(numberInput){
+            numberInput.value = number;
+        }
+
+        if(nameInput){
+            nameInput.value = name;
+        }
+
+    }
+);
+
+</script>
