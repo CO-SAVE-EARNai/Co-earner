@@ -307,3 +307,207 @@
 
 </body>
           </html>
+<!-- AI DASHBOARD ADD-ON -->
+<section class="ai-dashboard">
+
+  <div class="ai-header">
+    <div>
+      <small>Welcome back</small>
+      <h2>Co Save & Earn</h2>
+    </div>
+    <div class="ai-profile">👤</div>
+  </div>
+
+  <div class="ai-balance">
+    <p>Available Balance</p>
+    <h1>UGX 0</h1>
+
+    <div class="ai-buttons">
+      <button>Deposit</button>
+      <button>Withdraw</button>
+    </div>
+  </div>
+
+  <div class="ai-title">
+    <h3>AI Earning</h3>
+    <span>● Active</span>
+  </div>
+
+  <div class="ai-card">
+    <div class="ai-icon">🤖</div>
+    <div>
+      <h3>AI Earning System</h3>
+      <p>System Online</p>
+    </div>
+  </div>
+
+  <div class="ai-stats">
+    <div>
+      <small>Today's Earnings</small>
+      <strong>UGX 0</strong>
+    </div>
+
+    <div>
+      <small>Active Systems</small>
+      <strong>0</strong>
+    </div>
+  </div>
+
+  <!-- SWIPE LEFT/RIGHT -->
+  <div class="ai-title">
+    <h3>Save & Grow</h3>
+    <span>Swipe →</span>
+  </div>
+
+  <div class="save-slider">
+
+    <div class="save-box">
+      <h3>🐘 Savings Elephants</h3>
+      <p>Build your savings gradually with a simple saving plan.</p>
+      <button>Start Saving</button>
+    </div>
+
+    <div class="save-box">
+      <h3>👥 Savings Teens</h3>
+      <p>A flexible way to build good saving habits.</p>
+      <button>Start Saving</button>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+.ai-dashboard {
+  background:#07111f;
+  color:white;
+  padding:20px;
+  border-radius:20px;
+  margin-top:20px;
+}
+
+.ai-header,
+.ai-title {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.ai-header small,
+.ai-balance p,
+.ai-card p,
+.ai-stats small {
+  color:#8295a8;
+}
+
+.ai-profile {
+  background:#14283b;
+  padding:12px;
+  border-radius:50%;
+}
+
+.ai-balance {
+  background:linear-gradient(135deg,#102b3d,#0b1727);
+  padding:22px;
+  border-radius:20px;
+  margin-bottom:22px;
+}
+
+.ai-balance h1 {
+  font-size:32px;
+  margin:8px 0 20px;
+}
+
+.ai-buttons {
+  display:flex;
+  gap:10px;
+}
+
+.ai-buttons button,
+.save-box button {
+  flex:1;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  background:#28d7a0;
+  font-weight:bold;
+}
+
+.ai-buttons button:last-child {
+  background:#183044;
+  color:white;
+}
+
+.ai-title span {
+  color:#28d7a0;
+  font-size:12px;
+}
+
+.ai-card {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:#0d1d2d;
+  border:1px solid #183448;
+  padding:18px;
+  border-radius:18px;
+}
+
+.ai-icon {
+  font-size:30px;
+  background:#142f42;
+  padding:12px;
+  border-radius:15px;
+}
+
+.ai-stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:20px 0;
+}
+
+.ai-stats div {
+  background:#0d1d2d;
+  border:1px solid #183448;
+  padding:16px;
+  border-radius:16px;
+}
+
+.ai-stats strong {
+  display:block;
+  margin-top:8px;
+  color:#28d7a0;
+}
+
+.save-slider {
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+}
+
+.save-slider::-webkit-scrollbar {
+  display:none;
+}
+
+.save-box {
+  min-width:85%;
+  scroll-snap-align:start;
+  background:linear-gradient(135deg,#102b3d,#0b1727);
+  border:1px solid #183b50;
+  padding:20px;
+  border-radius:20px;
+}
+
+.save-box p {
+  color:#8295a8;
+  line-height:1.5;
+  margin:10px 0;
+}
+
+.save-box button {
+  width:100%;
+}
+    </style>
