@@ -1066,3 +1066,322 @@ function coChooseBank(bank) {
 }
 
   </script>
+<!-- PROFILE & SETTINGS ADD-ON -->
+
+<style>
+#coProfilePage,
+#coSettingsPage {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    background: #f4f8f5;
+    overflow-y: auto;
+}
+
+.coAccountHeader {
+    background: white;
+    padding: 18px 20px;
+    border-bottom: 1px solid #dfe9e3;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.coAccountHeaderInner {
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.coAccountHeader h2 {
+    margin: 0;
+    color: #087443;
+}
+
+.coCloseAccount {
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: #e8f4ed;
+    color: #087443;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.coAccountContent {
+    max-width: 700px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.coProfileCard,
+.coSettingCard {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+    border: 1px solid #e0e9e3;
+    box-shadow: 0 8px 25px rgba(20,60,40,.07);
+}
+
+.coProfileIcon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #087443;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.coProfileCard h3,
+.coSettingCard h3 {
+    margin: 0 0 8px;
+    color: #17231c;
+}
+
+.coProfileCard p {
+    color: #68756d;
+    margin: 7px 0;
+}
+
+.coSettingButton {
+    width: 100%;
+    padding: 17px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 12px;
+    background: #f1f7f3;
+    color: #17231c;
+    text-align: left;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.coSettingButton:hover {
+    background: #e5f1ea;
+}
+
+.coEditButton {
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    border-radius: 12px;
+    background: #087443;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+@media(max-width:600px) {
+    .coAccountContent {
+        padding: 25px 15px;
+    }
+
+    .coProfileCard,
+    .coSettingCard {
+        padding: 20px;
+    }
+}
+</style>
+
+
+<!-- PROFILE PAGE -->
+
+<div id="coProfilePage">
+
+    <div class="coAccountHeader">
+
+        <div class="coAccountHeaderInner">
+
+            <h2>My Profile</h2>
+
+            <button
+                class="coCloseAccount"
+                onclick="closeCoProfile()">
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="coAccountContent">
+
+        <div class="coProfileCard">
+
+            <div class="coProfileIcon">
+                👤
+            </div>
+
+            <h3>My Account</h3>
+
+            <p><strong>Name:</strong> Co Earner User</p>
+
+            <p><strong>Email:</strong> Your registered email</p>
+
+            <p><strong>Phone:</strong> Your registered phone</p>
+
+            <button
+                class="coEditButton"
+                onclick="alert('Profile editing will be available when account storage is connected.')">
+                Edit Profile
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SETTINGS PAGE -->
+
+<div id="coSettingsPage">
+
+    <div class="coAccountHeader">
+
+        <div class="coAccountHeaderInner">
+
+            <h2>Settings</h2>
+
+            <button
+                class="coCloseAccount"
+                onclick="closeCoSettings()">
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="coAccountContent">
+
+        <div class="coSettingCard">
+
+            <h3>Account Settings</h3>
+
+            <button
+                class="coSettingButton"
+                onclick="openCoProfileFromSettings()">
+                👤 Profile
+            </button>
+
+            <button
+                class="coSettingButton"
+                onclick="alert('Password change will be available when secure authentication is connected.')">
+                🔐 Change Password
+            </button>
+
+            <button
+                class="coSettingButton"
+                onclick="alert('Notification preferences will be available when the notification system is connected.')">
+                🔔 Notifications
+            </button>
+
+            <button
+                class="coSettingButton"
+                onclick="alert('Security settings will be available when secure authentication is connected.')">
+                🛡️ Security
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* Open Profile */
+function openCoProfile() {
+    document.getElementById("coProfilePage").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+
+/* Close Profile */
+function closeCoProfile() {
+    document.getElementById("coProfilePage").style.display = "none";
+    document.body.style.overflow = "";
+}
+
+
+/* Open Settings */
+function openCoSettings() {
+    document.getElementById("coSettingsPage").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+
+/* Close Settings */
+function closeCoSettings() {
+    document.getElementById("coSettingsPage").style.display = "none";
+    document.body.style.overflow = "";
+}
+
+
+/* Profile from Settings */
+function openCoProfileFromSettings() {
+    closeCoSettings();
+    openCoProfile();
+}
+
+
+/*
+   Find the existing Profile and Settings
+   text in the dashboard and make them clickable.
+*/
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    document.querySelectorAll("*").forEach(function(element) {
+
+        if (element.children.length === 0) {
+
+            const text = element.textContent.trim().toLowerCase();
+
+            if (text === "profile" || text === "my profile") {
+
+                element.style.cursor = "pointer";
+
+                element.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    openCoProfile();
+                });
+
+            }
+
+
+            if (text === "settings" || text === "setting") {
+
+                element.style.cursor = "pointer";
+
+                element.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    openCoSettings();
+                });
+
+            }
+
+        }
+
+    });
+
+});
+
+      </script>
