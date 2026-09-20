@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Money Summary | Co Earner</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5faf7;
+    color: #17231c;
+}
+
+
+/* HEADER */
+
+.summary-header {
+    background: linear-gradient(135deg, #075b35, #0a8a50);
+    color: white;
+    padding: 28px 22px 35px;
+    border-radius: 0 0 30px 30px;
+}
+
+.summary-header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.summary-header p {
+    margin: 8px 0 0;
+    opacity: .85;
+}
+
+
+/* CONTAINER */
+
+.summary-container {
+    padding: 25px 18px;
+    max-width: 600px;
+    margin: auto;
+}
+
+
+/* CARDS */
+
+.summary-card {
+    background: white;
+    border-radius: 22px;
+    padding: 25px;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.07);
+    border: 1px solid #e3eee7;
+}
+
+.summary-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    margin-bottom: 16px;
+}
+
+.summary-label {
+    color: #718078;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.summary-value {
+    font-size: 30px;
+    font-weight: 900;
+    margin-top: 7px;
+}
+
+.summary-description {
+    color: #89948e;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+
+/* COLORS */
+
+.deposit .summary-icon {
+    background: #e1f5e9;
+}
+
+.deposit .summary-value {
+    color: #087443;
+}
+
+
+.earned .summary-icon {
+    background: #fff3cf;
+}
+
+.earned .summary-value {
+    color: #b27d00;
+}
+
+
+.withdraw .summary-icon {
+    background: #fbe7ec;
+}
+
+.withdraw .summary-value {
+    color: #b23b52;
+}
+
+
+/* SWIPE HINT */
+
+.swipe-hint {
+    text-align: center;
+    color: #849088;
+    font-size: 13px;
+    margin-top: 25px;
+}
+
+
+/* BACK BUTTON */
+
+.back-dashboard {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: #087443;
+    color: white;
+    padding: 15px;
+    border-radius: 14px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<header class="summary-header">
+
+    <h1>Money Summary</h1>
+
+    <p>
+        Track your money activity
+    </p>
+
+</header>
+
+
+<main class="summary-container">
+
+
+    <!-- TOTAL DEPOSITED -->
+
+    <div class="summary-card deposit">
+
+        <div class="summary-icon">
+            💰
+        </div>
+
+        <div class="summary-label">
+            Total Money Deposited
+        </div>
+
+        <div class="summary-value" id="totalDeposited">
+            0
+        </div>
+
+        <div class="summary-description">
+            Total money added to your saving banks
+        </div>
+
+    </div>
+
+
+    <!-- DAILY EARNED -->
+
+    <div class="summary-card earned">
+
+        <div class="summary-icon">
+            📈
+        </div>
+
+        <div class="summary-label">
+            Daily Money Earned
+        </div>
+
+        <div class="summary-value" id="dailyEarned">
+            0
+        </div>
+
+        <div class="summary-description">
+            Money earned today
+        </div>
+
+    </div>
+
+
+    <!-- TOTAL WITHDRAWN -->
+
+    <div class="summary-card withdraw">
+
+        <div class="summary-icon">
+            💸
+        </div>
+
+        <div class="summary-label">
+            Total Money Withdrawn
+        </div>
+
+        <div class="summary-value" id="totalWithdrawn">
+            0
+        </div>
+
+        <div class="summary-description">
+            Total money withdrawn
+        </div>
+
+    </div>
+
+
+    <div class="swipe-hint">
+        ← Swipe right to return to Dashboard
+    </div>
+
+
+    <a href="dashboard.html" class="back-dashboard">
+        Back to Dashboard
+    </a>
+
+
+</main>
+
+
+<script>
+
+/* SWIPE RIGHT = DASHBOARD */
+
+let startX = 0;
+
+document.addEventListener("touchstart", function(event) {
+    startX = event.touches[0].clientX;
+});
+
+document.addEventListener("touchend", function(event) {
+
+    let endX = event.changedTouches[0].clientX;
+
+    let distance = endX - startX;
+
+    if (distance > 80) {
+        window.location.href = "dashboard.html";
+    }
+
+});
+
+
+/* CURRENT DEMO VALUES */
+
+document.getElementById("totalDeposited").textContent =
+    Number(0).toLocaleString();
+
+document.getElementById("dailyEarned").textContent =
+    Number(0).toLocaleString();
+
+document.getElementById("totalWithdrawn").textContent =
+    Number(0).toLocaleString();
+
+</script>
+
+</body>
+  </html>
