@@ -1497,3 +1497,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    let startX = 0;
+    let startY = 0;
+
+    document.addEventListener("touchstart", function (e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener("touchend", function (e) {
+
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+
+        const distanceX = endX - startX;
+        const distanceY = endY - startY;
+
+        /*
+         * Only respond to a horizontal swipe.
+         * This prevents normal scrolling from opening Saving Banks.
+         */
+        if (
+            distanceX > 100 &&
+            Math.abs(distanceX) > Math.abs(distanceY)
+        ) {
+            window.location.href = "saving-banks.html";
+        }
+
+    }, { passive: true });
+
+});
+</script>
