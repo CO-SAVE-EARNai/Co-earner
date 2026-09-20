@@ -1453,3 +1453,153 @@ function updateCompletedSavings(){
 updateCompletedSavings();
 
 </script>
+<style>
+.completed-card{
+    border:1px solid #20d69b !important;
+}
+
+.completed-badge{
+    background:#20d69b !important;
+    color:#06231d !important;
+}
+
+.completed-message{
+    margin-top:12px;
+    padding:11px;
+    background:#0b302c;
+    border-radius:10px;
+    color:#20d69b;
+    font-size:13px;
+    font-weight:bold;
+}
+</style>
+
+<script>
+
+function showCorrectPlanStatus(){
+
+    const cards =
+        document.querySelectorAll(".active-plan-card");
+
+    cards.forEach(function(card){
+
+        const title =
+            card.querySelector(".active-plan-title strong");
+
+        if(!title){
+            return;
+        }
+
+        const text =
+            title.textContent.toLowerCase();
+
+        let plan = null;
+
+        if(text.includes("elephant")){
+
+            const saved =
+                localStorage.getItem("activeElephantPlan");
+
+            if(saved){
+                try{
+                    plan = JSON.parse(saved);
+                }catch(error){}
+            }
+
+        }
+
+
+        if(text.includes("tin")){
+
+            const saved =
+                localStorage.getItem("activeTinPlan");
+
+            if(saved){
+                try{
+                    plan = JSON.parse(saved);
+                }catch(error){}
+            }
+
+        }
+
+
+        if(!plan || !plan.completed){
+            return;
+        }
+
+
+        /* Make the card completed */
+
+        card.classList.add("completed-card");
+
+
+        const badge =
+            card.querySelector(".active-badge");
+
+        if(badge){
+
+            badge.textContent =
+                "✓ COMPLETED";
+
+            badge.classList.add(
+                "completed-badge"
+            );
+
+        }
+
+
+        /* Change days remaining */
+
+        const days =
+            card.querySelector(".active-days");
+
+        if(days){
+
+            days.textContent =
+                "Cycle completed";
+
+        }
+
+
+        /* Add completion message */
+
+        if(
+            !card.querySelector(
+                ".completed-message"
+            )
+        ){
+
+            const message =
+                document.createElement("div");
+
+            message.className =
+                "completed-message";
+
+            message.textContent =
+                "🎉 Your saving cycle is complete.";
+
+            card.appendChild(message);
+
+        }
+
+    });
+
+}
+
+
+/* Run after the dashboard loads */
+
+setTimeout(
+    showCorrectPlanStatus,
+    300
+);
+
+
+/* Check again every minute */
+
+setInterval(
+    showCorrectPlanStatus,
+    60000
+);
+
+</script>
