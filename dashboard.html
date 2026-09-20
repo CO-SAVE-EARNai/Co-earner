@@ -2930,3 +2930,33 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 </script>
+<!-- FIX PROFILE BUTTON -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const elements = document.querySelectorAll("a, button, div");
+
+    elements.forEach(function (element) {
+
+        const text = element.textContent.trim().toLowerCase();
+
+        if (text === "profile") {
+
+            /* Remove old click handlers by replacing the element */
+            const newElement = element.cloneNode(true);
+
+            element.parentNode.replaceChild(newElement, element);
+
+            newElement.style.cursor = "pointer";
+
+            newElement.onclick = function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                window.location.href = "profile.html";
+            };
+        }
+
+    });
+
+});
+</script>
