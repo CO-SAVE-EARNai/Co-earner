@@ -1167,3 +1167,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
                           </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const deposited = Number(
+        localStorage.getItem("coTotalDeposited") || 0
+    );
+
+    const earned = Number(
+        localStorage.getItem("coTotalEarned") || 0
+    );
+
+    const withdrawn = Number(
+        localStorage.getItem("coTotalWithdrawn") || 0
+    );
+
+    const available = Math.max(
+        deposited + earned - withdrawn,
+        0
+    );
+
+    const box = document.createElement("div");
+
+    box.style.cssText = `
+        margin:20px 0;
+        padding:18px;
+        border-radius:18px;
+        background:linear-gradient(135deg,#0b6b3a,#159447);
+        color:white;
+        text-align:center;
+        box-shadow:0 8px 20px rgba(0,0,0,.12);
+    `;
+
+    box.innerHTML = `
+        <div style="font-size:13px;opacity:.85;">
+            AVAILABLE BALANCE
+        </div>
+
+        <div style="font-size:30px;font-weight:800;margin-top:6px;">
+            ${available.toLocaleString()}
+        </div>
+
+        <div style="font-size:13px;margin-top:6px;opacity:.9;">
+            Enter the amount you want to withdraw below.
+        </div>
+    `;
+
+    const form = document.querySelector("form");
+
+    if (form) {
+        form.insertBefore(box, form.firstChild);
+    }
+
+});
+    </script>
