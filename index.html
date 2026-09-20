@@ -612,3 +612,14 @@ document.querySelectorAll(".nav-item").forEach(item => {
   }
 });
 </script>
+<script>
+document.querySelectorAll(".nav-item").forEach(item => {
+  if (item.innerText.includes("Earn")) {
+    item.onclick = function() {
+      document.querySelector(".ai-card").scrollIntoView({
+        behavior: "smooth"
+      });
+    };
+  }
+});
+</script>
