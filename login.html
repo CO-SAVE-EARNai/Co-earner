@@ -6,7 +6,12 @@
     <title>Login | Co Earner</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
+<script>
+function loginUser() {
+    localStorage.setItem("coLoggedIn", "true");
+    window.location.href = "dashboard.html";
+}
+</script>
 <body>
 
 <header class="navbar">
