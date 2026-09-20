@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>My Profile - Co Save & Earn</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#041d19;
+    color:white;
+}
+
+.profile-page{
+    width:92%;
+    max-width:600px;
+    margin:auto;
+    padding:25px 0 40px;
+}
+
+.back-button{
+    display:inline-block;
+    color:#20d69b;
+    text-decoration:none;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.profile-header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.profile-avatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#20d69b;
+    color:#06231d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 12px;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.profile-header h1{
+    margin:0;
+    font-size:24px;
+}
+
+.profile-header p{
+    color:#9dbab4;
+    font-size:13px;
+    margin-top:7px;
+}
+
+.profile-card{
+    background:#0b302c;
+    border:1px solid #176e5d;
+    border-radius:22px;
+    padding:20px;
+}
+
+.profile-field{
+    margin-bottom:18px;
+}
+
+.profile-field:last-child{
+    margin-bottom:0;
+}
+
+.profile-label{
+    display:block;
+    color:#a9c5bf;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+.profile-input{
+    width:100%;
+    padding:14px;
+    border-radius:13px;
+    border:1px solid #17463e;
+    background:#073d34;
+    color:white;
+    font-size:14px;
+    outline:none;
+}
+
+.profile-input:focus{
+    border-color:#20d69b;
+}
+
+.profile-input::placeholder{
+    color:#76938d;
+}
+
+.save-profile-btn{
+    width:100%;
+    margin-top:22px;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    background:#20d69b;
+    color:#06231d;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.save-profile-btn:hover{
+    opacity:.9;
+}
+
+.saved-message{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    background:#073d34;
+    border:1px solid #20d69b;
+    border-radius:12px;
+    color:#20d69b;
+    text-align:center;
+    font-size:13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="profile-page">
+
+
+    <!-- BACK TO DASHBOARD -->
+
+    <a href="dashboard.html"
+       class="back-button">
+
+        ← Back to Dashboard
+
+    </a>
+
+
+    <!-- PROFILE HEADER -->
+
+    <div class="profile-header">
+
+        <div class="profile-avatar"
+             id="profileAvatar">
+
+            U
+
+        </div>
+
+        <h1>
+            My Profile
+        </h1>
+
+        <p>
+            Keep your Co Save & Earn details updated
+        </p>
+
+    </div>
+
+
+    <!-- PROFILE FORM -->
+
+    <div class="profile-card">
+
+        <!-- USERNAME -->
+
+        <div class="profile-field">
+
+            <label class="profile-label">
+                Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                class="profile-input"
+                placeholder="Enter your username">
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="profile-field">
+
+            <label class="profile-label">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                class="profile-input"
+                placeholder="Enter your email">
+
+        </div>
+
+
+        <!-- CONTACT NUMBER -->
+
+        <div class="profile-field">
+
+            <label class="profile-label">
+                Contact Number
+            </label>
+
+            <input
+                type="tel"
+                id="contact"
+                class="profile-input"
+                placeholder="Enter your contact number">
+
+        </div>
+
+
+        <!-- NICKNAME -->
+
+        <div class="profile-field">
+
+            <label class="profile-label">
+                Nickname
+            </label>
+
+            <input
+                type="text"
+                id="nickname"
+                class="profile-input"
+                placeholder="Enter your nickname">
+
+        </div>
+
+
+        <!-- SAVE BUTTON -->
+
+        <button
+            type="button"
+            class="save-profile-btn"
+            onclick="saveProfile()">
+
+            Save Profile
+
+        </button>
+
+
+        <div
+            id="savedMessage"
+            class="saved-message">
+
+            ✓ Profile saved successfully!
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ==============================
+   LOAD SAVED PROFILE
+============================== */
+
+function loadProfile(){
+
+    document.getElementById("username").value =
+        localStorage.getItem("coUsername") || "";
+
+    document.getElementById("email").value =
+        localStorage.getItem("coEmail") || "";
+
+    document.getElementById("contact").value =
+        localStorage.getItem("coContact") || "";
+
+    document.getElementById("nickname").value =
+        localStorage.getItem("coNickname") || "";
+
+
+    updateAvatar();
+
+}
+
+
+/* ==============================
+   SAVE PROFILE
+============================== */
+
+function saveProfile(){
+
+    const username =
+        document.getElementById(
+            "username"
+        ).value.trim();
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+    const contact =
+        document.getElementById(
+            "contact"
+        ).value.trim();
+
+    const nickname =
+        document.getElementById(
+            "nickname"
+        ).value.trim();
+
+
+    if(!username){
+
+        alert(
+            "Please enter your username."
+        );
+
+        return;
+
+    }
+
+
+    if(!email){
+
+        alert(
+            "Please enter your email."
+        );
+
+        return;
+
+    }
+
+
+    if(!contact){
+
+        alert(
+            "Please enter your contact number."
+        );
+
+        return;
+
+    }
+
+
+    if(!nickname){
+
+        alert(
+            "Please enter your nickname."
+        );
+
+        return;
+
+    }
+
+
+    /* SAVE ALL PROFILE INFORMATION */
+
+    localStorage.setItem(
+        "coUsername",
+        username
+    );
+
+    localStorage.setItem(
+        "coEmail",
+        email
+    );
+
+    localStorage.setItem(
+        "coContact",
+        contact
+    );
+
+    localStorage.setItem(
+        "coNickname",
+        nickname
+    );
+
+
+    /* ALSO SAVE THE NAME USED BY THE DASHBOARD */
+
+    localStorage.setItem(
+        "coUserName",
+        username
+    );
+
+
+    updateAvatar();
+
+
+    const message =
+        document.getElementById(
+            "savedMessage"
+        );
+
+    message.style.display =
+        "block";
+
+
+    setTimeout(function(){
+
+        message.style.display =
+            "none";
+
+    },3000);
+
+}
+
+
+/* ==============================
+   PROFILE AVATAR
+============================== */
+
+function updateAvatar(){
+
+    const username =
+        localStorage.getItem(
+            "coUsername"
+        ) || "U";
+
+
+    document.getElementById(
+        "profileAvatar"
+    ).textContent =
+        username.charAt(0).toUpperCase();
+
+}
+
+
+/* ==============================
+   START
+============================== */
+
+loadProfile();
+
+</script>
+
+</body>
+
+  </html>
