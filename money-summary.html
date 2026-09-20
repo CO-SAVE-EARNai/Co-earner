@@ -1221,3 +1221,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const deposited = Number(
+        localStorage.getItem("coTotalDeposited") || 0
+    );
+
+    const earned = Number(
+        localStorage.getItem("coTotalEarned") || 0
+    );
+
+    const withdrawn = Number(
+        localStorage.getItem("coTotalWithdrawn") || 0
+    );
+
+    const balance = Math.max(
+        deposited + earned - withdrawn,
+        0
+    );
+
+    const withdrawalElement =
+        document.getElementById("coSummaryWithdrawals");
+
+    if (withdrawalElement) {
+        withdrawalElement.textContent =
+            withdrawn.toLocaleString();
+    }
+
+    const balanceElement =
+        document.getElementById("coSummaryBalance");
+
+    if (balanceElement) {
+        balanceElement.textContent =
+            balance.toLocaleString();
+    }
+
+});
+</script>
