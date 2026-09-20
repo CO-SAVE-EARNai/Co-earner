@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Saving Elephant - Co Save & Earn</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#061b18;
+    color:white;
+    min-height:100vh;
+    padding-bottom:30px;
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:20px 18px;
+}
+
+.back{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#10463c;
+    color:white;
+    font-size:22px;
+}
+
+.header h1{
+    font-size:21px;
+}
+
+.container{
+    width:92%;
+    max-width:650px;
+    margin:auto;
+}
+
+.intro{
+    background:linear-gradient(135deg,#073d34,#075344);
+    border:1px solid #0b7561;
+    border-radius:22px;
+    padding:22px;
+    margin-bottom:20px;
+}
+
+.elephant{
+    font-size:52px;
+    margin-bottom:10px;
+}
+
+.intro h2{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.intro p{
+    color:#bdd7d1;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* BALANCE */
+
+.balance{
+    background:#0b302c;
+    border:1px solid #10594d;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:20px;
+}
+
+.balance-title{
+    color:#a9c7c0;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.balance-amount{
+    font-size:25px;
+    font-weight:bold;
+    color:#20d69b;
+}
+
+/* PLANS */
+
+.plan{
+    background:#0b302c;
+    border:1px solid #10594d;
+    border-radius:22px;
+    padding:20px;
+    margin-bottom:16px;
+}
+
+.plan-icon{
+    font-size:38px;
+    margin-bottom:8px;
+}
+
+.plan-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.plan h3{
+    font-size:19px;
+}
+
+.days{
+    background:#174b42;
+    color:#20d69b;
+    padding:7px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    color:#b5cec8;
+    font-size:14px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.row:last-of-type{
+    border-bottom:none;
+}
+
+.row strong{
+    color:white;
+}
+
+.earn{
+    color:#20d69b !important;
+}
+
+.select{
+    width:100%;
+    border:none;
+    border-radius:13px;
+    padding:14px;
+    margin-top:14px;
+    background:#20d69b;
+    color:#06231d;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.select:active{
+    transform:scale(.98);
+}
+
+/* MESSAGE */
+
+.message{
+    display:none;
+    background:#321d14;
+    border:1px solid #9a623c;
+    border-radius:18px;
+    padding:18px;
+    margin-top:5px;
+    margin-bottom:20px;
+}
+
+.message h3{
+    margin-bottom:8px;
+}
+
+.message p{
+    color:#d9c5b8;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.deposit{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    background:#20d69b;
+    color:#06231d;
+    border-radius:12px;
+    padding:13px;
+    margin-top:14px;
+    font-weight:bold;
+}
+
+/* SUCCESS */
+
+.success{
+    display:none;
+    background:#083c30;
+    border:1px solid #20d69b;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:20px;
+}
+
+.success h3{
+    color:#20d69b;
+    margin-bottom:8px;
+}
+
+.success p{
+    color:#c4ddd7;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.go-dashboard{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    background:#20d69b;
+    color:#06231d;
+    border-radius:12px;
+    padding:13px;
+    margin-top:14px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<button class="back" onclick="history.back()">←</button>
+
+<h1>Saving Elephant 🐘</h1>
+
+</header>
+
+
+<main class="container">
+
+<div class="intro">
+
+<div class="elephant">🐘</div>
+
+<h2>30-Day Saving Elephant</h2>
+
+<p>
+Choose the Elephant savings plan you want.
+Each plan has a different amount to save and a
+30-day saving cycle.
+</p>
+
+</div>
+
+
+<!-- AVAILABLE BALANCE -->
+
+<div class="balance">
+
+<div class="balance-title">
+Your Available Balance
+</div>
+
+<div class="balance-amount" id="balance">
+UGX 0
+</div>
+
+</div>
+
+
+<!-- SUCCESS MESSAGE -->
+
+<div class="success" id="success">
+
+<h3>✓ Plan Selected Successfully</h3>
+
+<p id="successText"></p>
+
+<a class="go-dashboard" href="dashboard.html">
+Go to Dashboard
+</a>
+
+</div>
+
+
+<!-- INSUFFICIENT BALANCE -->
+
+<div class="message" id="message">
+
+<h3>⚠️ Insufficient Balance</h3>
+
+<p id="messageText"></p>
+
+<a class="deposit" href="deposit.html">
+Deposit More Money
+</a>
+
+</div>
+
+
+<!-- PLAN 1 -->
+
+<div class="plan">
+
+<div class="plan-icon">
+🐘
+</div>
+
+<div class="plan-top">
+
+<h3>Elephant Starter</h3>
+
+<span class="days">
+30 DAYS
+</span>
+
+</div>
+
+<div class="row">
+<span>Amount to save</span>
+<strong>UGX 20,000</strong>
+</div>
+
+<div class="row">
+<span>Projected earnings</span>
+<strong class="earn">UGX 50,000</strong>
+</div>
+
+<div class="row">
+<span>Cycle</span>
+<strong>30 Days</strong>
+</div>
+
+<button
+class="select"
+onclick="choosePlan(20000,50000,'Elephant Starter')">
+
+Choose This Plan
+
+</button>
+
+</div>
+
+
+<!-- PLAN 2 -->
+
+<div class="plan">
+
+<div class="plan-icon">
+🐘💚
+</div>
+
+<div class="plan-top">
+
+<h3>Elephant Plus</h3>
+
+<span class="days">
+30 DAYS
+</span>
+
+</div>
+
+<div class="row">
+<span>Amount to save</span>
+<strong>UGX 50,000</strong>
+</div>
+
+<div class="row">
+<span>Projected earnings</span>
+<strong class="earn">UGX 135,000</strong>
+</div>
+
+<div class="row">
+<span>Cycle</span>
+<strong>30 Days</strong>
+</div>
+
+<button
+class="select"
+onclick="choosePlan(50000,135000,'Elephant Plus')">
+
+Choose This Plan
+
+</button>
+
+</div>
+
+
+</main>
+
+
+<script>
+
+function showBalance(){
+
+    const balance =
+        Number(localStorage.getItem("coBalance")) || 0;
+
+    document.getElementById("balance").textContent =
+        "UGX " + balance.toLocaleString();
+
+}
+
+
+function choosePlan(amount,reward,planName){
+
+    const balance =
+        Number(localStorage.getItem("coBalance")) || 0;
+
+
+    /* Check balance */
+
+    if(balance < amount){
+
+        const needed = amount - balance;
+
+        document.getElementById("messageText").textContent =
+            "Your current balance is UGX " +
+            balance.toLocaleString() +
+            ". You need UGX " +
+            needed.toLocaleString() +
+            " more to choose " +
+            planName +
+            ".";
+
+        document.getElementById("message").style.display =
+            "block";
+
+        document.getElementById("success").style.display =
+            "none";
+
+        document.getElementById("message").scrollIntoView({
+            behavior:"smooth"
+        });
+
+        return;
+    }
+
+
+    /* Deduct the saving amount */
+
+    const newBalance = balance - amount;
+
+    localStorage.setItem(
+        "coBalance",
+        newBalance
+    );
+
+
+    /* Create active Elephant plan */
+
+    const selectedPlan = {
+
+        type:"Saving Elephant",
+
+        name:planName,
+
+        amount:amount,
+
+        reward:reward,
+
+        days:30,
+
+        started:new Date().toISOString(),
+
+        startDate:new Date().toLocaleDateString()
+
+    };
+
+
+    localStorage.setItem(
+        "activeElephantPlan",
+        JSON.stringify(selectedPlan)
+    );
+
+
+    /* Save transaction */
+
+    const transactions =
+        JSON.parse(
+            localStorage.getItem("coTransactions") || "[]"
+        );
+
+
+    transactions.unshift({
+
+        type:"Saving Elephant",
+
+        amount:amount,
+
+        bank:planName,
+
+        reward:reward,
+
+        date:new Date().toLocaleDateString()
+
+    });
+
+
+    localStorage.setItem(
+        "coTransactions",
+        JSON.stringify(transactions)
+    );
+
+
+    /* Update balance on screen */
+
+    showBalance();
+
+
+    /* Show success */
+
+    document.getElementById("message").style.display =
+        "none";
+
+    document.getElementById("successText").textContent =
+        planName +
+        " has been selected. UGX " +
+        amount.toLocaleString() +
+        " has been placed into your 30-day savings cycle. Your projected earnings are UGX " +
+        reward.toLocaleString() +
+        ".";
+
+    document.getElementById("success").style.display =
+        "block";
+
+
+    document.getElementById("success").scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* Show current balance when page opens */
+
+showBalance();
+
+</script>
+
+</body>
+</html>
