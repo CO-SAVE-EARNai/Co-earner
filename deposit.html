@@ -181,3 +181,82 @@
 
 </body>
   </html>
+<!-- ==========================================
+     CO EARNER DEPOSIT → MONEY SUMMARY
+     PASTE AT THE VERY END OF deposit.html
+========================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const depositForm = document.querySelector("form");
+
+    if (!depositForm) return;
+
+
+    depositForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        /* FIND THE AMOUNT */
+
+        const amountInput =
+            document.querySelector('input[type="number"]');
+
+
+        if (!amountInput) {
+            alert("Please enter a deposit amount.");
+            return;
+        }
+
+
+        const amount =
+            Number(amountInput.value);
+
+
+        if (!amount || amount <= 0) {
+            alert("Please enter a valid deposit amount.");
+            return;
+        }
+
+
+        /* GET PREVIOUS DEPOSITS */
+
+        let totalDeposited =
+            Number(localStorage.getItem("coTotalDeposited") || 0);
+
+
+        /* ADD NEW DEPOSIT */
+
+        totalDeposited += amount;
+
+
+        /* SAVE */
+
+        localStorage.setItem(
+            "coTotalDeposited",
+            totalDeposited
+        );
+
+
+        /* CONFIRMATION */
+
+        alert(
+            "Deposit recorded successfully!\n\n" +
+            "Amount: " +
+            amount.toLocaleString()
+        );
+
+
+        /* GO TO MONEY SUMMARY */
+
+        window.location.href =
+            "money-summary.html";
+
+    });
+
+});
+
+    </script>
