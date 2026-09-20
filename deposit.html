@@ -388,3 +388,205 @@ document.addEventListener("DOMContentLoaded",function(){
 });
 
 </script>
+<style>
+.co-deposit-extra{
+    width:92%;
+    max-width:650px;
+    margin:20px auto;
+    color:white;
+}
+
+.co-balance-card{
+    background:linear-gradient(135deg,#0b302c,#075448);
+    border:1px solid #20d69b;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+.co-balance-label{
+    color:#a9c5bf;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.co-balance-value{
+    color:#20d69b;
+    font-size:27px;
+    font-weight:bold;
+}
+
+.co-deposit-info{
+    background:#0b302c;
+    border-radius:18px;
+    padding:17px;
+    margin-bottom:18px;
+}
+
+.co-deposit-info h3{
+    margin:0 0 8px;
+    font-size:17px;
+}
+
+.co-deposit-info p{
+    margin:0;
+    color:#a9c5bf;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.co-quick-title{
+    font-size:14px;
+    color:#a9c5bf;
+    margin-bottom:10px;
+}
+
+.co-quick-buttons{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.co-quick-btn{
+    background:#073d34;
+    border:1px solid #176e5d;
+    color:white;
+    padding:10px 14px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.co-quick-btn:hover{
+    border-color:#20d69b;
+    color:#20d69b;
+}
+
+.co-deposit-note{
+    text-align:center;
+    color:#8eaaa4;
+    font-size:12px;
+    margin-top:15px;
+}
+</style>
+
+<div class="co-deposit-extra">
+
+    <div class="co-balance-card">
+        <div class="co-balance-label">
+            Current Balance
+        </div>
+
+        <div class="co-balance-value"
+             id="coDepositBalance">
+            UGX 0
+        </div>
+    </div>
+
+    <div class="co-deposit-info">
+        <h3>💰 Add Money to Co Save & Earn</h3>
+
+        <p>
+            Deposit money into your Co Save & Earn balance.
+            Your balance can be used to choose Saving Elephant
+            or Saving Tin plans.
+        </p>
+    </div>
+
+    <div class="co-quick-title">
+        Quick deposit amount
+    </div>
+
+    <div class="co-quick-buttons">
+
+        <button
+            type="button"
+            class="co-quick-btn"
+            onclick="coQuickDeposit(20000)">
+            UGX 20,000
+        </button>
+
+        <button
+            type="button"
+            class="co-quick-btn"
+            onclick="coQuickDeposit(50000)">
+            UGX 50,000
+        </button>
+
+        <button
+            type="button"
+            class="co-quick-btn"
+            onclick="coQuickDeposit(100000)">
+            UGX 100,000
+        </button>
+
+        <button
+            type="button"
+            class="co-quick-btn"
+            onclick="coQuickDeposit(200000)">
+            UGX 200,000
+        </button>
+
+    </div>
+
+    <div class="co-deposit-note">
+        Select an amount above or enter your own amount in the
+        deposit form.
+    </div>
+
+</div>
+
+<script>
+
+function updateCoDepositBalance(){
+
+    const balance =
+        Number(localStorage.getItem("coBalance")) || 0;
+
+    const display =
+        document.getElementById("coDepositBalance");
+
+    if(display){
+
+        display.textContent =
+            "UGX " + balance.toLocaleString();
+
+    }
+}
+
+
+function coQuickDeposit(amount){
+
+    const input =
+        document.querySelector(
+            "form input[type='number'], form input"
+        );
+
+    if(input){
+
+        input.value = amount;
+
+        input.focus();
+
+    }else{
+
+        alert(
+            "Please enter the amount in the deposit form."
+        );
+
+    }
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateCoDepositBalance();
+
+    }
+);
+
+    </script>
