@@ -260,3 +260,40 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.querySelector("form");
+    if (!form) return;
+
+    form.addEventListener("submit", function () {
+
+        const amountInput =
+            form.querySelector('input[type="number"]');
+
+        if (!amountInput) return;
+
+        const amount = Number(amountInput.value);
+
+        if (!amount || amount <= 0) return;
+
+        const transactions =
+            JSON.parse(
+                localStorage.getItem("coTransactions") || "[]"
+            );
+
+        transactions.push({
+            type: "Deposit",
+            amount: amount,
+            date: new Date().toLocaleString()
+        });
+
+        localStorage.setItem(
+            "coTransactions",
+            JSON.stringify(transactions)
+        );
+
+    });
+
+});
+            </script>
