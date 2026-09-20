@@ -442,3 +442,88 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
           </html>
+<!-- CO EARNER WITHDRAWAL ADD-ON -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.querySelector("form");
+
+    if (!form) return;
+
+    form.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const amountInput =
+            document.querySelector('input[type="number"]');
+
+        const amount = Number(amountInput.value);
+
+        if (!amount || amount <= 0) {
+            alert("Please enter the amount you want to withdraw.");
+            return;
+        }
+
+
+        /* MONEY AVAILABLE */
+
+        const deposited =
+            Number(localStorage.getItem("coTotalDeposited") || 0);
+
+        const earned =
+            Number(localStorage.getItem("coDailyEarned") || 0);
+
+        const withdrawn =
+            Number(localStorage.getItem("coTotalWithdrawn") || 0);
+
+
+        const available =
+            deposited + earned - withdrawn;
+
+
+        /* CHECK USER'S REQUEST */
+
+        if (amount > available) {
+
+            alert(
+                "You cannot withdraw more than your available money.\n\n" +
+                "Available: " +
+                available.toLocaleString()
+            );
+
+            return;
+        }
+
+
+        /* RECORD ONLY THE AMOUNT USER REQUESTED */
+
+        const newWithdrawn =
+            withdrawn + amount;
+
+        localStorage.setItem(
+            "coTotalWithdrawn",
+            newWithdrawn
+        );
+
+
+        /* SHOW CONFIRMATION */
+
+        alert(
+            "Withdrawal request submitted.\n\n" +
+            "Amount requested: " +
+            amount.toLocaleString()
+        );
+
+
+        /* OPEN MONEY SUMMARY */
+
+        window.location.href =
+            "money-summary.html";
+
+    });
+
+});
+
+</script>
