@@ -1938,3 +1938,79 @@ document.addEventListener(
 );
 
 </script>
+<script>
+/* ==============================
+   CO SAVE & EARN BALANCE SYNC
+============================== */
+
+function updateCoDashboardBalance(){
+
+    const balance =
+        Number(localStorage.getItem("coBalance")) || 0;
+
+    const formatted =
+        "UGX " + balance.toLocaleString();
+
+    /* Find common balance elements */
+    const elements =
+        document.querySelectorAll(
+            "[id*='balance' i], [class*='balance' i]"
+        );
+
+    elements.forEach(function(element){
+
+        /* Don't change input fields */
+        if(
+            element.tagName === "INPUT" ||
+            element.tagName === "TEXTAREA"
+        ){
+            return;
+        }
+
+        /* Don't change the Deposit page link */
+        if(
+            element.textContent
+                .trim()
+                .toLowerCase() === "deposit"
+        ){
+            return;
+        }
+
+        element.textContent = formatted;
+
+    });
+
+}
+
+
+/* Update when dashboard opens */
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+        updateCoDashboardBalance();
+    }
+);
+
+
+/* Update if the page becomes visible again */
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState === "visible"
+        ){
+            updateCoDashboardBalance();
+        }
+
+    }
+);
+
+
+/* Keep balance synchronized */
+setInterval(
+    updateCoDashboardBalance,
+    1000
+);
+
+</script>
