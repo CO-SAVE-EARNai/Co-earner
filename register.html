@@ -241,3 +241,42 @@
     }
 }
 </style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.querySelector("form");
+
+    if (form) {
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            localStorage.setItem("coLoggedIn", "true");
+
+            window.location.href = "dashboard.html";
+        });
+    }
+
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach(function(button) {
+
+        if (
+            button.textContent.toLowerCase().includes("register") ||
+            button.textContent.toLowerCase().includes("sign up")
+        ) {
+
+            button.addEventListener("click", function () {
+
+                localStorage.setItem("coLoggedIn", "true");
+
+                window.location.href = "dashboard.html";
+
+            });
+
+        }
+
+    });
+
+});
+                </script>
