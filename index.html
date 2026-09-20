@@ -554,3 +554,30 @@ document.querySelectorAll(".save-box").forEach(card => {
   });
 });
 </script>
+<script>
+document.querySelectorAll(".nav-item").forEach(item => {
+  item.addEventListener("click", function() {
+
+    document.querySelectorAll(".nav-item").forEach(nav => {
+      nav.classList.remove("active");
+    });
+
+    this.classList.add("active");
+
+    const page = this.innerText.trim();
+
+    if (page.includes("Home")) {
+      alert("Home");
+    } else if (page.includes("Savings")) {
+      alert("Savings");
+    } else if (page.includes("Earn")) {
+      alert("Earn");
+    } else if (page.includes("Activity")) {
+      alert("Activity");
+    } else if (page.includes("Profile")) {
+      alert("Profile");
+    }
+
+  });
+});
+</script>
