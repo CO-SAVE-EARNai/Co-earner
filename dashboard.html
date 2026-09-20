@@ -362,3 +362,95 @@ window.addEventListener("load", function() {
 
 
 </script
+<script>
+
+/* =========================================
+   CO SAVE & EARN — LIVE BALANCE
+   ========================================= */
+
+(function () {
+
+  function updateDashboardBalance() {
+
+    const balance =
+      Number(localStorage.getItem("coBalance")) || 0;
+
+    const balanceElement =
+      document.querySelector(".balance");
+
+    if (balanceElement) {
+      balanceElement.textContent =
+        "UGX " + balance.toLocaleString();
+    }
+
+  }
+
+  /* Show balance when dashboard opens */
+  updateDashboardBalance();
+
+})();
+
+
+/* =========================================
+   SHOW SAVED TRANSACTIONS
+   ========================================= */
+
+(function () {
+
+  const activity =
+    document.querySelector(".activity");
+
+  if (!activity) {
+    return;
+  }
+
+  const transactions =
+    JSON.parse(
+      localStorage.getItem("coTransactions") || "[]"
+    );
+
+  if (transactions.length === 0) {
+    return;
+  }
+
+  activity.innerHTML = "";
+
+  transactions.slice(0, 5).forEach(function (transaction) {
+
+    const item =
+      document.createElement("div");
+
+    item.className = "activity-item";
+
+    item.innerHTML = `
+      <div class="activity-left">
+
+        <div class="activity-icon">
+          ${transaction.type === "Deposit" ? "💰" : "💸"}
+        </div>
+
+        <div>
+          <div class="activity-name">
+            ${transaction.type}
+          </div>
+
+          <div class="activity-date">
+            ${transaction.bank || "Co Save & Earn"}
+            • ${transaction.date}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="activity-amount">
+        + UGX ${Number(transaction.amount).toLocaleString()}
+      </div>
+    `;
+
+    activity.appendChild(item);
+
+  });
+
+})();
+
+</script>
