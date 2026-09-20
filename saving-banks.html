@@ -1294,3 +1294,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const joinButton = document.getElementById("coPopupJoin");
+
+    if (!joinButton) return;
+
+    joinButton.addEventListener("click", function () {
+
+        const bank = localStorage.getItem("coSelectedBank");
+
+        if (!bank) return;
+
+        const active = localStorage.getItem("coBankActive");
+
+        if (active === "true") {
+            return;
+        }
+
+        localStorage.setItem(
+            "coBankStartDate",
+            new Date().toISOString()
+        );
+
+        localStorage.setItem(
+            "coBankCompleted",
+            "false"
+        );
+
+    });
+
+});
+</script>
