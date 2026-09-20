@@ -1603,3 +1603,283 @@ setInterval(
 );
 
 </script>
+<!-- COMPLETED SAVINGS SECTION -->
+<style>
+.completed-savings-box{
+    width:92%;
+    max-width:650px;
+    margin:25px auto;
+    background:#0b302c;
+    border:1px solid #176e5d;
+    border-radius:22px;
+    padding:20px;
+    color:white;
+}
+
+.completed-savings-box h3{
+    margin:0 0 15px;
+    font-size:19px;
+}
+
+.completed-saving-card{
+    background:#073d34;
+    border-radius:18px;
+    padding:17px;
+    margin-bottom:12px;
+    border:1px solid #20d69b;
+}
+
+.completed-saving-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+}
+
+.completed-saving-header strong{
+    font-size:16px;
+}
+
+.completed-status{
+    background:#20d69b;
+    color:#06231d;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.completed-saving-info{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:7px 0;
+    font-size:13px;
+    color:#a9c5bf;
+}
+
+.completed-saving-info strong{
+    color:white;
+    text-align:right;
+}
+
+.completed-reward{
+    color:#20d69b !important;
+}
+
+.completed-date{
+    margin-top:12px;
+    padding:10px;
+    background:#0b302c;
+    border-radius:10px;
+    color:#20d69b;
+    font-size:12px;
+}
+
+.no-completed-savings{
+    color:#9dbab4;
+    font-size:14px;
+    line-height:1.5;
+}
+</style>
+
+<div class="completed-savings-box">
+
+    <h3>🎉 Completed Savings</h3>
+
+    <div id="completedSavingsContent">
+
+        <div class="no-completed-savings">
+            You don't have any completed savings cycles yet.
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function displayCompletedSavings(){
+
+    const container =
+        document.getElementById(
+            "completedSavingsContent"
+        );
+
+    if(!container){
+        return;
+    }
+
+    container.innerHTML = "";
+
+    const completedPlans = [];
+
+    /* SAVING ELEPHANT */
+
+    const elephant =
+        localStorage.getItem(
+            "activeElephantPlan"
+        );
+
+    if(elephant){
+
+        try{
+
+            const plan =
+                JSON.parse(elephant);
+
+            if(plan.completed === true){
+
+                plan.planType =
+                    "Saving Elephant";
+
+                completedPlans.push(plan);
+
+            }
+
+        }catch(error){}
+
+    }
+
+
+    /* SAVING TIN */
+
+    const tin =
+        localStorage.getItem(
+            "activeTinPlan"
+        );
+
+    if(tin){
+
+        try{
+
+            const plan =
+                JSON.parse(tin);
+
+            if(plan.completed === true){
+
+                plan.planType =
+                    "Saving Tin";
+
+                completedPlans.push(plan);
+
+            }
+
+        }catch(error){}
+
+    }
+
+
+    if(completedPlans.length === 0){
+
+        container.innerHTML = `
+            <div class="no-completed-savings">
+                You don't have any completed savings cycles yet.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    completedPlans.forEach(function(plan){
+
+        const amount =
+            Number(plan.amount) || 0;
+
+        const reward =
+            Number(plan.reward) || 0;
+
+        const cycle =
+            Number(plan.days) || 0;
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "completed-saving-card";
+
+        card.innerHTML = `
+
+            <div class="completed-saving-header">
+
+                <strong>
+                    ${plan.planType}
+                </strong>
+
+                <span class="completed-status">
+                    ✓ COMPLETED
+                </span>
+
+            </div>
+
+
+            <div class="completed-saving-info">
+
+                <span>Plan</span>
+
+                <strong>
+                    ${plan.name}
+                </strong>
+
+            </div>
+
+
+            <div class="completed-saving-info">
+
+                <span>Amount saved</span>
+
+                <strong>
+                    UGX ${amount.toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="completed-saving-info">
+
+                <span>Cycle</span>
+
+                <strong>
+                    ${cycle} days
+                </strong>
+
+            </div>
+
+
+            <div class="completed-saving-info">
+
+                <span>Projected earnings</span>
+
+                <strong class="completed-reward">
+                    UGX ${reward.toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="completed-date">
+
+                🎉 Saving cycle completed on
+                ${plan.completedDate || "Completed"}
+
+            </div>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+displayCompletedSavings();
+
+setInterval(
+    displayCompletedSavings,
+    60000
+);
+
+            </script>
