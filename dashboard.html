@@ -220,3 +220,145 @@
     /* ACTIVITY */
     .activity {
       background
+<script>
+
+/* ================================
+   CO SAVE & EARN DASHBOARD CONTROLS
+   ================================ */
+
+/* ADD MONEY */
+function addMoney() {
+  window.location.href = "deposit.html";
+}
+
+/* WITHDRAW */
+function withdrawMoney() {
+  window.location.href = "withdraw.html";
+}
+
+/* SAVING BANKS */
+function openBank(bankName) {
+  window.location.href = "saving-banks.html";
+}
+
+/* SAVE MONEY */
+function saveMoney() {
+  window.location.href = "deposit.html";
+}
+
+/* EARN */
+function earnMoney() {
+  alert("Earn features will be available here soon.");
+}
+
+/* TRANSACTIONS */
+function transactions() {
+  window.location.href = "money-summary.html";
+}
+
+/* HOME */
+function goHome() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+/* PROFILE */
+function profilePage() {
+  alert("Your profile section will be added here.");
+}
+
+
+/* ================================
+   MAKE THE SAVING BANKS SWIPEABLE
+   ================================ */
+
+const banksWrapper = document.querySelector(".banks-wrapper");
+
+if (banksWrapper) {
+
+  let startX = 0;
+  let startY = 0;
+
+  banksWrapper.addEventListener("touchstart", function(event) {
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+  });
+
+  banksWrapper.addEventListener("touchend", function(event) {
+
+    const endX = event.changedTouches[0].clientX;
+    const endY = event.changedTouches[0].clientY;
+
+    const differenceX = startX - endX;
+    const differenceY = startY - endY;
+
+    /* Only respond to horizontal swipes */
+    if (Math.abs(differenceX) > Math.abs(differenceY)) {
+
+      if (differenceX > 50) {
+        banksWrapper.scrollBy({
+          left: 250,
+          behavior: "smooth"
+        });
+      }
+
+      if (differenceX < -50) {
+        banksWrapper.scrollBy({
+          left: -250,
+          behavior: "smooth"
+        });
+      }
+
+    }
+
+  });
+
+}
+
+
+/* ================================
+   PREVENT BUTTONS FROM RELOADING
+   ================================ */
+
+document.querySelectorAll("button").forEach(function(button) {
+
+  button.addEventListener("click", function(event) {
+    event.stopPropagation();
+  });
+
+});
+
+
+/* ================================
+   DASHBOARD NAVIGATION
+   ================================ */
+
+document.querySelectorAll(".nav-item").forEach(function(item) {
+
+  item.addEventListener("click", function() {
+
+    document.querySelectorAll(".nav-item").forEach(function(nav) {
+      nav.classList.remove("active");
+    });
+
+    this.classList.add("active");
+
+  });
+
+});
+
+
+/* ================================
+   SMOOTH PAGE EXPERIENCE
+   ================================ */
+
+window.addEventListener("load", function() {
+
+  document.body.style.opacity = "1";
+
+});
+
+
+</script
