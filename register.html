@@ -410,3 +410,348 @@ document.addEventListener(
 );
 
 </script>
+<!-- REFERRAL REWARDS -->
+<style>
+.co-reward-box{
+    width:92%;
+    max-width:650px;
+    margin:20px auto;
+    padding:20px;
+    background:#0b302c;
+    border:1px solid #176e5d;
+    border-radius:22px;
+    color:white;
+}
+
+.co-reward-title{
+    font-size:19px;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.co-reward-subtitle{
+    color:#9dbab4;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.co-reward-progress{
+    background:#062b25;
+    border-radius:12px;
+    height:12px;
+    overflow:hidden;
+    margin:10px 0 8px;
+}
+
+.co-reward-progress-bar{
+    height:100%;
+    width:0%;
+    background:#20d69b;
+    border-radius:12px;
+    transition:width .4s ease;
+}
+
+.co-reward-next{
+    color:#a9c5bf;
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.co-reward-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.co-reward-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px;
+    background:#062b25;
+    border:1px solid #17463e;
+    border-radius:13px;
+}
+
+.co-reward-left{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.co-reward-people{
+    color:#a9c5bf;
+    font-size:13px;
+}
+
+.co-reward-amount{
+    color:#20d69b;
+    font-weight:bold;
+}
+
+.co-reward-status{
+    font-size:11px;
+    font-weight:bold;
+}
+
+.co-reward-status.available{
+    color:#20d69b;
+}
+
+.co-reward-status.locked{
+    color:#78938e;
+}
+</style>
+
+<div class="co-reward-box">
+
+    <div class="co-reward-title">
+        🎁 Referral Rewards
+    </div>
+
+    <div class="co-reward-subtitle">
+        Invite more people and reach the reward milestones.
+    </div>
+
+    <div class="co-reward-next" id="coRewardNext">
+        Checking your progress...
+    </div>
+
+    <div class="co-reward-progress">
+        <div
+            class="co-reward-progress-bar"
+            id="coRewardProgressBar"
+        ></div>
+    </div>
+
+    <div class="co-reward-next" id="coRewardProgressText">
+        0 referrals
+    </div>
+
+    <div class="co-reward-list">
+
+        <div class="co-reward-item">
+
+            <div class="co-reward-left">
+                <span class="co-reward-people">
+                    10 Referrals
+                </span>
+
+                <span class="co-reward-amount">
+                    UGX 20,000
+                </span>
+            </div>
+
+            <span
+                class="co-reward-status locked"
+                id="reward10"
+            >
+                🔒 Locked
+            </span>
+
+        </div>
+
+
+        <div class="co-reward-item">
+
+            <div class="co-reward-left">
+                <span class="co-reward-people">
+                    50 Referrals
+                </span>
+
+                <span class="co-reward-amount">
+                    UGX 80,000
+                </span>
+            </div>
+
+            <span
+                class="co-reward-status locked"
+                id="reward50"
+            >
+                🔒 Locked
+            </span>
+
+        </div>
+
+
+        <div class="co-reward-item">
+
+            <div class="co-reward-left">
+                <span class="co-reward-people">
+                    100 Referrals
+                </span>
+
+                <span class="co-reward-amount">
+                    UGX 130,000
+                </span>
+            </div>
+
+            <span
+                class="co-reward-status locked"
+                id="reward100"
+            >
+                🔒 Locked
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function updateCoReferralRewards(){
+
+    const count =
+        Number(
+            localStorage.getItem("coReferralCount")
+        ) || 0;
+
+
+    const reward10 =
+        document.getElementById("reward10");
+
+    const reward50 =
+        document.getElementById("reward50");
+
+    const reward100 =
+        document.getElementById("reward100");
+
+
+    /* 10 REFERRALS */
+
+    if(count >= 10){
+
+        reward10.textContent =
+            "✓ Reached";
+
+        reward10.className =
+            "co-reward-status available";
+
+    }else{
+
+        reward10.textContent =
+            "🔒 Locked";
+
+        reward10.className =
+            "co-reward-status locked";
+    }
+
+
+    /* 50 REFERRALS */
+
+    if(count >= 50){
+
+        reward50.textContent =
+            "✓ Reached";
+
+        reward50.className =
+            "co-reward-status available";
+
+    }else{
+
+        reward50.textContent =
+            "🔒 Locked";
+
+        reward50.className =
+            "co-reward-status locked";
+    }
+
+
+    /* 100 REFERRALS */
+
+    if(count >= 100){
+
+        reward100.textContent =
+            "✓ Reached";
+
+        reward100.className =
+            "co-reward-status available";
+
+    }else{
+
+        reward100.textContent =
+            "🔒 Locked";
+
+        reward100.className =
+            "co-reward-status locked";
+    }
+
+
+    /* NEXT TARGET */
+
+    const nextBox =
+        document.getElementById("coRewardNext");
+
+    const progressText =
+        document.getElementById(
+            "coRewardProgressText"
+        );
+
+    const progressBar =
+        document.getElementById(
+            "coRewardProgressBar"
+        );
+
+
+    let target;
+
+    if(count < 10){
+
+        target = 10;
+
+    }else if(count < 50){
+
+        target = 50;
+
+    }else if(count < 100){
+
+        target = 100;
+
+    }else{
+
+        target = 100;
+    }
+
+
+    if(count < 100){
+
+        nextBox.textContent =
+            (target - count) +
+            " more referrals to reach your next reward.";
+
+    }else{
+
+        nextBox.textContent =
+            "🎉 You have reached all referral milestones.";
+
+    }
+
+
+    progressText.textContent =
+        count + " / " + target + " referrals";
+
+
+    let progress =
+        (count / target) * 100;
+
+    if(progress > 100){
+        progress = 100;
+    }
+
+    progressBar.style.width =
+        progress + "%";
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateCoReferralRewards();
+
+    }
+);
+
+    </script>
