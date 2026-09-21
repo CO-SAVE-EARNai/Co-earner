@@ -2988,3 +2988,371 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<!-- REFERRAL / INVITE & EARN -->
+<style>
+.co-referral-box{
+    width:92%;
+    max-width:650px;
+    margin:20px auto;
+    padding:20px;
+    background:#0b302c;
+    border:1px solid #176e5d;
+    border-radius:22px;
+    color:white;
+}
+
+.co-referral-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.co-referral-subtitle{
+    color:#9dbab4;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+.co-referral-link{
+    width:100%;
+    padding:13px;
+    border-radius:12px;
+    border:1px solid #176e5d;
+    background:#062b25;
+    color:#20d69b;
+    font-size:12px;
+    outline:none;
+    margin-bottom:10px;
+}
+
+.co-referral-buttons{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.co-referral-btn{
+    flex:1;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    background:#20d69b;
+    color:#06231d;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.co-referral-btn.secondary{
+    background:#073d34;
+    border:1px solid #176e5d;
+    color:white;
+}
+
+.co-referral-count{
+    background:#073d34;
+    border-radius:16px;
+    padding:17px;
+    margin-bottom:15px;
+}
+
+.co-referral-count-label{
+    color:#9dbab4;
+    font-size:12px;
+}
+
+.co-referral-number{
+    color:#20d69b;
+    font-size:30px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.co-referral-rewards{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.co-referral-reward{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:13px;
+    background:#062b25;
+    border-radius:12px;
+    border:1px solid #17463e;
+}
+
+.co-referral-reward span:first-child{
+    color:#a9c5bf;
+    font-size:13px;
+}
+
+.co-referral-reward span:last-child{
+    color:#20d69b;
+    font-weight:bold;
+}
+
+.co-referral-status{
+    margin-top:15px;
+    padding:12px;
+    border-radius:12px;
+    background:#062b25;
+    color:#a9c5bf;
+    font-size:12px;
+    text-align:center;
+}
+</style>
+
+<div class="co-referral-box">
+
+    <div class="co-referral-title">
+        🎁 Invite & Earn
+    </div>
+
+    <div class="co-referral-subtitle">
+        Invite people to join Co Save & Earn using your personal referral link.
+    </div>
+
+    <input
+        type="text"
+        id="coReferralLink"
+        class="co-referral-link"
+        readonly
+    >
+
+    <div class="co-referral-buttons">
+
+        <button
+            type="button"
+            class="co-referral-btn"
+            onclick="coCopyReferralLink()"
+        >
+            📋 Copy Link
+        </button>
+
+        <button
+            type="button"
+            class="co-referral-btn secondary"
+            onclick="coShareReferralLink()"
+        >
+            📤 Share
+        </button>
+
+    </div>
+
+    <div class="co-referral-count">
+
+        <div class="co-referral-count-label">
+            People Invited
+        </div>
+
+        <div
+            class="co-referral-number"
+            id="coReferralCount"
+        >
+            0
+        </div>
+
+    </div>
+
+    <div class="co-referral-rewards">
+
+        <div class="co-referral-reward">
+            <span>10 referrals</span>
+            <span>UGX 20,000</span>
+        </div>
+
+        <div class="co-referral-reward">
+            <span>50 referrals</span>
+            <span>UGX 80,000</span>
+        </div>
+
+        <div class="co-referral-reward">
+            <span>100 referrals</span>
+            <span>UGX 130,000</span>
+        </div>
+
+    </div>
+
+    <div
+        class="co-referral-status"
+        id="coReferralStatus"
+    >
+        Invite your friends to start earning rewards.
+    </div>
+
+</div>
+
+<script>
+
+function coGetReferralCode(){
+
+    let code = localStorage.getItem("coReferralCode");
+
+    if(!code){
+
+        const username =
+            localStorage.getItem("coUsername") ||
+            localStorage.getItem("coUserName") ||
+            "user";
+
+        const random =
+            Math.random()
+            .toString(36)
+            .substring(2,8)
+            .toUpperCase();
+
+        code =
+            username
+            .replace(/[^a-zA-Z0-9]/g,"")
+            .substring(0,6)
+            .toUpperCase()
+            + random;
+
+        localStorage.setItem(
+            "coReferralCode",
+            code
+        );
+    }
+
+    return code;
+}
+
+
+function coGetReferralLink(){
+
+    const code = coGetReferralCode();
+
+    return window.location.origin +
+        window.location.pathname.replace(
+            "dashboard.html",
+            "register.html"
+        ) +
+        "?ref=" +
+        encodeURIComponent(code);
+}
+
+
+function coLoadReferral(){
+
+    const link = coGetReferralLink();
+
+    const linkBox =
+        document.getElementById("coReferralLink");
+
+    if(linkBox){
+        linkBox.value = link;
+    }
+
+    const count =
+        Number(
+            localStorage.getItem("coReferralCount")
+        ) || 0;
+
+    const countBox =
+        document.getElementById("coReferralCount");
+
+    if(countBox){
+        countBox.textContent = count;
+    }
+
+    const status =
+        document.getElementById("coReferralStatus");
+
+    if(status){
+
+        if(count >= 100){
+
+            status.textContent =
+                "🎉 You have reached 100 referrals.";
+
+        }else if(count >= 50){
+
+            status.textContent =
+                "🎁 You have reached 50 referrals. Next target: 100.";
+
+        }else if(count >= 10){
+
+            status.textContent =
+                "🎁 You have reached 10 referrals. Next target: 50.";
+
+        }else{
+
+            status.textContent =
+                "Invite " +
+                (10 - count) +
+                " more people to reach your first reward.";
+
+        }
+    }
+}
+
+
+function coCopyReferralLink(){
+
+    const link =
+        document.getElementById(
+            "coReferralLink"
+        ).value;
+
+    navigator.clipboard.writeText(link)
+        .then(function(){
+
+            alert(
+                "Your referral link has been copied!"
+            );
+
+        })
+        .catch(function(){
+
+            alert(
+                "Please copy your referral link manually."
+            );
+
+        });
+}
+
+
+function coShareReferralLink(){
+
+    const link =
+        document.getElementById(
+            "coReferralLink"
+        ).value;
+
+    const message =
+        "Join me on Co Save & Earn! Sign up using my referral link: " +
+        link;
+
+    if(navigator.share){
+
+        navigator.share({
+            title:"Co Save & Earn",
+            text:message,
+            url:link
+        });
+
+    }else{
+
+        window.open(
+            "https://wa.me/?text=" +
+            encodeURIComponent(message),
+            "_blank"
+        );
+
+    }
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        coLoadReferral();
+
+    }
+);
+
+        </script>
