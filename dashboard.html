@@ -3880,3 +3880,29 @@ document.addEventListener(
 );
 
 </script>
+<!-- FINAL PROFILE BUTTON FIX -->
+<script>
+document.addEventListener("click", function(event){
+
+    let element = event.target;
+
+    while(element && element !== document.body){
+
+        const text = element.textContent.trim().toLowerCase();
+
+        if(text === "profile"){
+
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            window.location.href = "profile.html";
+
+            return;
+        }
+
+        element = element.parentElement;
+    }
+
+}, true);
+</script>
