@@ -3794,3 +3794,89 @@ function coClaimReferralReward(){
 }
 
 </script>
+<!-- CLAIM REWARD BUTTON -->
+<style>
+.co-claim-reward-btn{
+    width:100%;
+    margin-top:18px;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    background:#20d69b;
+    color:#06231d;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.co-claim-reward-btn:hover{
+    opacity:.9;
+}
+</style>
+
+<div id="coClaimRewardContainer"
+     style="width:92%;max-width:650px;margin:0 auto 20px;">
+</div>
+
+<script>
+
+function showCoClaimRewardButton(){
+
+    const container =
+        document.getElementById(
+            "coClaimRewardContainer"
+        );
+
+    if(!container){
+        return;
+    }
+
+    const count =
+        Number(
+            localStorage.getItem("coReferralCount")
+        ) || 0;
+
+    let milestone = 0;
+
+    if(count >= 100){
+        milestone = 100;
+    }
+    else if(count >= 50){
+        milestone = 50;
+    }
+    else if(count >= 10){
+        milestone = 10;
+    }
+
+    if(!milestone){
+        container.innerHTML = "";
+        return;
+    }
+
+    const claimed =
+        JSON.parse(
+            localStorage.getItem(
+                "coClaimedReferralRewards"
+            ) || "[]"
+        );
+
+    if(claimed.includes(milestone)){
+
+        container.innerHTML =
+            '<div style="padding:13px;background:#073d34;border:1px solid #176e5d;border-radius:13px;color:#20d69b;text-align:center;font-size:13px;">✓ Reward already claimed</div>';
+
+        return;
+    }
+
+    container.innerHTML =
+        '<button type="button" class="co-claim-reward-btn" onclick="coClaimReferralReward()">🎁 Claim Referral Reward</button>';
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+        showCoClaimRewardButton();
+    }
+);
+
+</script>
