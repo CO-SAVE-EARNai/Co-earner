@@ -314,3 +314,99 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
         </script>
+<!-- REFERRAL REGISTRATION CONNECTION -->
+<script>
+(function(){
+
+    const params = new URLSearchParams(window.location.search);
+
+    const referralCode = params.get("ref");
+
+    if(referralCode){
+
+        localStorage.setItem(
+            "coPendingReferral",
+            referralCode
+        );
+
+    }
+
+})();
+
+
+function coRegisterReferral(){
+
+    const referralCode =
+        localStorage.getItem("coPendingReferral");
+
+    if(!referralCode){
+        return;
+    }
+
+    let referrals =
+        JSON.parse(
+            localStorage.getItem("coReferralUsers") || "[]"
+        );
+
+    /*
+       Prevent the same referral from being counted
+       more than once on this device.
+    */
+
+    const alreadyCounted =
+        referrals.includes(referralCode);
+
+    if(!alreadyCounted){
+
+        referrals.push(referralCode);
+
+        localStorage.setItem(
+            "coReferralUsers",
+            JSON.stringify(referrals)
+        );
+
+        const currentCount =
+            Number(
+                localStorage.getItem("coReferralCount")
+            ) || 0;
+
+        localStorage.setItem(
+            "coReferralCount",
+            currentCount + 1
+        );
+    }
+
+    localStorage.removeItem(
+        "coPendingReferral"
+    );
+}
+
+
+/*
+   Connect to the existing registration form.
+*/
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const form =
+            document.querySelector("form");
+
+        if(form){
+
+            form.addEventListener(
+                "submit",
+                function(){
+
+                    coRegisterReferral();
+
+                },
+                true
+            );
+
+        }
+
+    }
+);
+
+</script>
