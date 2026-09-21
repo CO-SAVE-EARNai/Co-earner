@@ -3701,3 +3701,96 @@ document.addEventListener(
 );
 
                     </script>
+<!-- CLAIM REFERRAL REWARDS -->
+<script>
+
+function coClaimReferralReward(){
+
+    const count =
+        Number(localStorage.getItem("coReferralCount")) || 0;
+
+    let reward = 0;
+    let milestone = 0;
+
+    if(count >= 100){
+
+        milestone = 100;
+        reward = 130000;
+
+    }else if(count >= 50){
+
+        milestone = 50;
+        reward = 80000;
+
+    }else if(count >= 10){
+
+        milestone = 10;
+        reward = 20000;
+
+    }else{
+
+        alert(
+            "You have not reached a referral reward yet."
+        );
+
+        return;
+    }
+
+
+    const claimed =
+        JSON.parse(
+            localStorage.getItem(
+                "coClaimedReferralRewards"
+            ) || "[]"
+        );
+
+
+    if(claimed.includes(milestone)){
+
+        alert(
+            "You have already claimed the " +
+            milestone +
+            " referral reward."
+        );
+
+        return;
+    }
+
+
+    const confirmClaim =
+        confirm(
+            "Claim UGX " +
+            reward.toLocaleString() +
+            " for reaching " +
+            milestone +
+            " referrals?"
+        );
+
+
+    if(!confirmClaim){
+        return;
+    }
+
+
+    claimed.push(milestone);
+
+    localStorage.setItem(
+        "coClaimedReferralRewards",
+        JSON.stringify(claimed)
+    );
+
+
+    alert(
+        "Reward recorded successfully!\n\n" +
+        "UGX " +
+        reward.toLocaleString() +
+        "\n" +
+        milestone +
+        " referrals"
+    );
+
+
+    updateCoReferralRewards();
+}
+
+</script>
