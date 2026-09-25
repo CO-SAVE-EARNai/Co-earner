@@ -1,757 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | Co Earner</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - Co Save & Earn</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(160deg,#031b16,#063b2f,#02120f);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.container{
+  width:100%;
+  max-width:430px;
+  background:#08251f;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;
+  padding:28px 22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+.logo{
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  color:#55e6b0;
+  margin-bottom:6px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#a9c8bf;
+  margin-bottom:25px;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin:14px 0 7px;
+  color:#cce4dd;
+  font-size:14px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #24564a;
+  background:#061914;
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+input:focus{
+  border-color:#55e6b0;
+}
+
+.checkbox{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  margin:18px 0;
+  color:#a9c8bf;
+  font-size:13px;
+}
+
+.checkbox input{
+  width:auto;
+  margin-top:2px;
+}
+
+button{
+  width:100%;
+  border:none;
+  padding:15px;
+  border-radius:13px;
+  background:#55e6b0;
+  color:#04231b;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(.98);
+}
+
+.message{
+  margin-top:15px;
+  text-align:center;
+  font-size:14px;
+  min-height:20px;
+}
+
+.login{
+  text-align:center;
+  margin-top:20px;
+  color:#a9c8bf;
+}
+
+.login a{
+  color:#55e6b0;
+  text-decoration:none;
+  font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-<header class="navbar">
-    <div class="logo">Co<span>Earner</span></div>
+<div class="container">
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="saving-banks.html">Saving Banks</a>
-        <a href="login.html">Login</a>
-    </nav>
-</header>
+  <div class="logo">Co Save & Earn</div>
+  <div class="subtitle">Save • Earn • Grow</div>
 
+  <h2>Create Your Account</h2>
 
-<section class="auth-section">
+  <form id="registerForm">
 
-    <div class="auth-card">
+    <label>Full Name</label>
+    <input
+      type="text"
+      id="fullName"
+      placeholder="Enter your full name"
+      required
+    >
 
-        <div class="auth-header">
-            <div class="auth-logo">Co<span>Earner</span></div>
+    <label>Email</label>
+    <input
+      type="email"
+      id="email"
+      placeholder="Enter your email"
+      required
+    >
 
-            <h1>Create Your Account</h1>
+    <label>Phone Number</label>
+    <input
+      type="tel"
+      id="phone"
+      placeholder="Enter your phone number"
+      required
+    >
 
-            <p>
-                Create your Co Earner account and start your saving journey.
-            </p>
-        </div>
+    <label>Password</label>
+    <input
+      type="password"
+      id="password"
+      placeholder="Create a password"
+      minlength="6"
+      required
+    >
 
+    <label>Confirm Password</label>
+    <input
+      type="password"
+      id="confirmPassword"
+      placeholder="Confirm your password"
+      minlength="6"
+      required
+    >
 
-        <!-- SELECTED BANK -->
-        <div class="selected-bank" id="selectedBankBox">
-            <span>Selected Saving Bank</span>
-            <strong id="selectedBank">Loading...</strong>
-        </div>
-
-
-        <form id="registerForm">
-
-            <div class="form-group">
-                <label for="fullname">Full Name</label>
-                <input
-                    type="text"
-                    id="fullname"
-                    name="fullname"
-                    placeholder="Enter your full name"
-                    required
-                >
-            </div>
-
-
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required
-                >
-            </div>
-
-
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="Enter your phone number"
-                    required
-                >
-            </div>
-
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Create a password"
-                    required
-                >
-            </div>
-
-
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    placeholder="Confirm your password"
-                    required
-                >
-            </div>
-
-
-            <label class="terms-check">
-                <input type="checkbox" required>
-                <span>I agree to the Co Earner terms and conditions.</span>
-            </label>
-
-
-            <button type="submit" class="auth-btn">
-                Create Account
-            </button>
-
-        </form>
-
-
-        <div class="auth-footer">
-            <p>
-                Already have an account?
-                <a href="login.html">Login</a>
-            </p>
-        </div>
-
+    <div class="checkbox">
+      <input type="checkbox" id="terms" required>
+      <span>I agree to the Co Save & Earn terms.</span>
     </div>
 
-</section>
+    <button type="submit">Create Account</button>
 
+    <div class="message" id="message"></div>
 
-<footer>
-    <div class="logo">Co<span>Earner</span></div>
-    <p>Save More. Grow Together.</p>
-</footer>
+  </form>
 
-
-<script>
-    const params = new URLSearchParams(window.location.search);
-    const bank = params.get("bank");
-
-    const selectedBank = document.getElementById("selectedBank");
-    const selectedBankBox = document.getElementById("selectedBankBox");
-
-    const bankNames = {
-        "20000-20days": "20,000 • 20 DAYS",
-        "30000-20days": "30,000 • 20 DAYS",
-        "50000-20days": "50,000 • 20 DAYS",
-        "100000-20days": "100,000 • 20 DAYS",
-
-        "20000-30days": "20,000 • 30 DAYS",
-        "30000-30days": "30,000 • 30 DAYS",
-        "50000-30days": "50,000 • 30 DAYS",
-        "100000-30days": "100,000 • 30 DAYS"
-    };
-
-    if (bank && bankNames[bank]) {
-        selectedBank.textContent = bankNames[bank];
-    } else {
-        selectedBank.textContent = "No bank selected";
-    }
-
-
-    
-    document.getElementById("registerForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    window.location.href = "dashboard.html";
-});
-</script>
-
-</body>
-</html>
-<style>
-/* Bigger and more spacious Register form */
-
-.register-card {
-    max-width: 560px !important;
-    padding: 45px 42px !important;
-}
-
-#registerForm {
-    width: 100% !important;
-}
-
-/* More space between each field */
-#registerForm .form-group {
-    margin-bottom: 27px !important;
-}
-
-/* More space between labels and boxes */
-#registerForm label {
-    display: block !important;
-    margin-bottom: 11px !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-}
-
-/* Bigger input boxes */
-#registerForm input {
-    width: 100% !important;
-    height: 60px !important;
-    padding: 0 20px !important;
-    font-size: 16px !important;
-    border-radius: 14px !important;
-}
-
-/* Bigger text inside the boxes */
-#registerForm input::placeholder {
-    font-size: 15px !important;
-}
-
-/* Bigger register button */
-#registerForm button {
-    width: 100% !important;
-    min-height: 60px !important;
-    padding: 15px 20px !important;
-    font-size: 17px !important;
-    border-radius: 14px !important;
-    margin-top: 5px !important;
-}
-
-/* Give the selected saving bank box more breathing room */
-.selected-bank,
-.bank-selection,
-.selected-plan {
-    padding: 18px 20px !important;
-    margin-bottom: 28px !important;
-    line-height: 1.7 !important;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .register-card {
-        padding: 35px 22px !important;
-    }
-
-    #registerForm input {
-        height: 60px !important;
-        font-size: 16px !important;
-    }
-}
-</style>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const form = document.querySelector("form");
-
-    if (form) {
-        form.addEventListener("submit", function (event) {
-
-            event.preventDefault();
-
-            localStorage.setItem("coLoggedIn", "true");
-
-            window.location.href = "dashboard.html";
-        });
-    }
-
-    const buttons = document.querySelectorAll("button");
-
-    buttons.forEach(function(button) {
-
-        if (
-            button.textContent.toLowerCase().includes("register") ||
-            button.textContent.toLowerCase().includes("sign up")
-        ) {
-
-            button.addEventListener("click", function () {
-
-                localStorage.setItem("coLoggedIn", "true");
-
-                window.location.href = "dashboard.html";
-
-            });
-
-        }
-
-    });
-
-});
-                </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const buttons = document.querySelectorAll("button, a");
-
-    buttons.forEach(function (button) {
-
-        const text = button.textContent.toLowerCase().trim();
-
-        if (
-            text.includes("get started") ||
-            text.includes("register") ||
-            text.includes("sign up")
-        ) {
-            button.addEventListener("click", function (event) {
-                event.preventDefault();
-                window.location.href = "register.html";
-            });
-        }
-
-        if (
-            text.includes("login") ||
-            text.includes("log in")
-        ) {
-            button.addEventListener("click", function (event) {
-                event.preventDefault();
-                window.location.href = "login.html";
-            });
-        }
-
-    });
-
-});
-        </script>
-<!-- REFERRAL REGISTRATION CONNECTION -->
-<script>
-(function(){
-
-    const params = new URLSearchParams(window.location.search);
-
-    const referralCode = params.get("ref");
-
-    if(referralCode){
-
-        localStorage.setItem(
-            "coPendingReferral",
-            referralCode
-        );
-
-    }
-
-})();
-
-
-function coRegisterReferral(){
-
-    const referralCode =
-        localStorage.getItem("coPendingReferral");
-
-    if(!referralCode){
-        return;
-    }
-
-    let referrals =
-        JSON.parse(
-            localStorage.getItem("coReferralUsers") || "[]"
-        );
-
-    /*
-       Prevent the same referral from being counted
-       more than once on this device.
-    */
-
-    const alreadyCounted =
-        referrals.includes(referralCode);
-
-    if(!alreadyCounted){
-
-        referrals.push(referralCode);
-
-        localStorage.setItem(
-            "coReferralUsers",
-            JSON.stringify(referrals)
-        );
-
-        const currentCount =
-            Number(
-                localStorage.getItem("coReferralCount")
-            ) || 0;
-
-        localStorage.setItem(
-            "coReferralCount",
-            currentCount + 1
-        );
-    }
-
-    localStorage.removeItem(
-        "coPendingReferral"
-    );
-}
-
-
-/*
-   Connect to the existing registration form.
-*/
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        const form =
-            document.querySelector("form");
-
-        if(form){
-
-            form.addEventListener(
-                "submit",
-                function(){
-
-                    coRegisterReferral();
-
-                },
-                true
-            );
-
-        }
-
-    }
-);
-
-</script>
-<!-- REFERRAL REWARDS -->
-<style>
-.co-reward-box{
-    width:92%;
-    max-width:650px;
-    margin:20px auto;
-    padding:20px;
-    background:#0b302c;
-    border:1px solid #176e5d;
-    border-radius:22px;
-    color:white;
-}
-
-.co-reward-title{
-    font-size:19px;
-    font-weight:bold;
-    margin-bottom:6px;
-}
-
-.co-reward-subtitle{
-    color:#9dbab4;
-    font-size:13px;
-    margin-bottom:18px;
-}
-
-.co-reward-progress{
-    background:#062b25;
-    border-radius:12px;
-    height:12px;
-    overflow:hidden;
-    margin:10px 0 8px;
-}
-
-.co-reward-progress-bar{
-    height:100%;
-    width:0%;
-    background:#20d69b;
-    border-radius:12px;
-    transition:width .4s ease;
-}
-
-.co-reward-next{
-    color:#a9c5bf;
-    font-size:12px;
-    margin-bottom:18px;
-}
-
-.co-reward-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.co-reward-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:14px;
-    background:#062b25;
-    border:1px solid #17463e;
-    border-radius:13px;
-}
-
-.co-reward-left{
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-}
-
-.co-reward-people{
-    color:#a9c5bf;
-    font-size:13px;
-}
-
-.co-reward-amount{
-    color:#20d69b;
-    font-weight:bold;
-}
-
-.co-reward-status{
-    font-size:11px;
-    font-weight:bold;
-}
-
-.co-reward-status.available{
-    color:#20d69b;
-}
-
-.co-reward-status.locked{
-    color:#78938e;
-}
-</style>
-
-<div class="co-reward-box">
-
-    <div class="co-reward-title">
-        🎁 Referral Rewards
-    </div>
-
-    <div class="co-reward-subtitle">
-        Invite more people and reach the reward milestones.
-    </div>
-
-    <div class="co-reward-next" id="coRewardNext">
-        Checking your progress...
-    </div>
-
-    <div class="co-reward-progress">
-        <div
-            class="co-reward-progress-bar"
-            id="coRewardProgressBar"
-        ></div>
-    </div>
-
-    <div class="co-reward-next" id="coRewardProgressText">
-        0 referrals
-    </div>
-
-    <div class="co-reward-list">
-
-        <div class="co-reward-item">
-
-            <div class="co-reward-left">
-                <span class="co-reward-people">
-                    10 Referrals
-                </span>
-
-                <span class="co-reward-amount">
-                    UGX 20,000
-                </span>
-            </div>
-
-            <span
-                class="co-reward-status locked"
-                id="reward10"
-            >
-                🔒 Locked
-            </span>
-
-        </div>
-
-
-        <div class="co-reward-item">
-
-            <div class="co-reward-left">
-                <span class="co-reward-people">
-                    50 Referrals
-                </span>
-
-                <span class="co-reward-amount">
-                    UGX 80,000
-                </span>
-            </div>
-
-            <span
-                class="co-reward-status locked"
-                id="reward50"
-            >
-                🔒 Locked
-            </span>
-
-        </div>
-
-
-        <div class="co-reward-item">
-
-            <div class="co-reward-left">
-                <span class="co-reward-people">
-                    100 Referrals
-                </span>
-
-                <span class="co-reward-amount">
-                    UGX 130,000
-                </span>
-            </div>
-
-            <span
-                class="co-reward-status locked"
-                id="reward100"
-            >
-                🔒 Locked
-            </span>
-
-        </div>
-
-    </div>
+  <div class="login">
+    Already have an account?
+    <a href="login.html">Login</a>
+  </div>
 
 </div>
 
 <script>
 
-function updateCoReferralRewards(){
+const form = document.getElementById("registerForm");
+const message = document.getElementById("message");
 
-    const count =
-        Number(
-            localStorage.getItem("coReferralCount")
-        ) || 0;
+form.addEventListener("submit", function(e){
 
+  e.preventDefault();
 
-    const reward10 =
-        document.getElementById("reward10");
+  const fullName =
+    document.getElementById("fullName").value.trim();
 
-    const reward50 =
-        document.getElementById("reward50");
+  const email =
+    document.getElementById("email").value.trim().toLowerCase();
 
-    const reward100 =
-        document.getElementById("reward100");
+  const phone =
+    document.getElementById("phone").value.trim();
 
+  const password =
+    document.getElementById("password").value;
 
-    /* 10 REFERRALS */
+  const confirmPassword =
+    document.getElementById("confirmPassword").value;
 
-    if(count >= 10){
+  if(password !== confirmPassword){
 
-        reward10.textContent =
-            "✓ Reached";
+    message.style.color = "#ff7777";
+    message.textContent = "Passwords do not match.";
+    return;
+  }
 
-        reward10.className =
-            "co-reward-status available";
+  if(password.length < 6){
 
-    }else{
+    message.style.color = "#ff7777";
+    message.textContent =
+      "Password must contain at least 6 characters.";
+    return;
+  }
 
-        reward10.textContent =
-            "🔒 Locked";
+  /*
+     Get existing accounts.
+  */
+  let accounts =
+    JSON.parse(localStorage.getItem("coAccounts") || "[]");
 
-        reward10.className =
-            "co-reward-status locked";
+  /*
+     Prevent duplicate email.
+  */
+  const existing =
+    accounts.find(account =>
+      account.email === email
+    );
+
+  if(existing){
+
+    message.style.color = "#ff7777";
+    message.textContent =
+      "An account with this email already exists.";
+    return;
+  }
+
+  /*
+     Create a completely unique user ID.
+  */
+  const userId =
+    "USER-" +
+    Date.now() +
+    "-" +
+    Math.random()
+      .toString(36)
+      .substring(2,8)
+      .toUpperCase();
+
+  /*
+     Create referral code for this user.
+  */
+  const referralCode =
+    "CO" +
+    Math.random()
+      .toString(36)
+      .substring(2,8)
+      .toUpperCase();
+
+  /*
+     Create the new account.
+  */
+  const newAccount = {
+
+    id: userId,
+
+    name: fullName,
+
+    email: email,
+
+    phone: phone,
+
+    password: password,
+
+    referralCode: referralCode,
+
+    referredBy: null,
+
+    balance: 0,
+
+    totalDeposited: 0,
+
+    totalWithdrawn: 0,
+
+    referralCount: 0,
+
+    referralRewards: 0,
+
+    transactions: [],
+
+    savings: [],
+
+    createdAt: new Date().toISOString()
+  };
+
+  /*
+     Check whether this person came
+     through somebody's referral link.
+  */
+  const params =
+    new URLSearchParams(window.location.search);
+
+  const referral =
+    params.get("ref");
+
+  if(referral){
+
+    const referrer =
+      accounts.find(account =>
+        account.referralCode === referral
+      );
+
+    if(referrer){
+
+      newAccount.referredBy =
+        referrer.referralCode;
+
+      referrer.referralCount =
+        Number(referrer.referralCount || 0) + 1;
     }
+  }
 
+  /*
+     Save the updated accounts.
+  */
+  accounts.push(newAccount);
 
-    /* 50 REFERRALS */
+  localStorage.setItem(
+    "coAccounts",
+    JSON.stringify(accounts)
+  );
 
-    if(count >= 50){
+  /*
+     IMPORTANT:
+     Store ONLY this person's ID
+     as the current logged-in account.
+  */
+  localStorage.setItem(
+    "coCurrentUserId",
+    userId
+  );
 
-        reward50.textContent =
-            "✓ Reached";
+  /*
+     Keep compatibility with the
+     old dashboard.
+  */
+  localStorage.setItem(
+    "coLoggedIn",
+    "true"
+  );
 
-        reward50.className =
-            "co-reward-status available";
+  message.style.color = "#55e6b0";
+  message.textContent =
+    "Account created successfully!";
 
-    }else{
+  setTimeout(function(){
 
-        reward50.textContent =
-            "🔒 Locked";
+    window.location.href =
+      "dashboard.html";
 
-        reward50.className =
-            "co-reward-status locked";
-    }
+  }, 700);
 
+});
 
-    /* 100 REFERRALS */
+</script>
 
-    if(count >= 100){
-
-        reward100.textContent =
-            "✓ Reached";
-
-        reward100.className =
-            "co-reward-status available";
-
-    }else{
-
-        reward100.textContent =
-            "🔒 Locked";
-
-        reward100.className =
-            "co-reward-status locked";
-    }
-
-
-    /* NEXT TARGET */
-
-    const nextBox =
-        document.getElementById("coRewardNext");
-
-    const progressText =
-        document.getElementById(
-            "coRewardProgressText"
-        );
-
-    const progressBar =
-        document.getElementById(
-            "coRewardProgressBar"
-        );
-
-
-    let target;
-
-    if(count < 10){
-
-        target = 10;
-
-    }else if(count < 50){
-
-        target = 50;
-
-    }else if(count < 100){
-
-        target = 100;
-
-    }else{
-
-        target = 100;
-    }
-
-
-    if(count < 100){
-
-        nextBox.textContent =
-            (target - count) +
-            " more referrals to reach your next reward.";
-
-    }else{
-
-        nextBox.textContent =
-            "🎉 You have reached all referral milestones.";
-
-    }
-
-
-    progressText.textContent =
-        count + " / " + target + " referrals";
-
-
-    let progress =
-        (count / target) * 100;
-
-    if(progress > 100){
-        progress = 100;
-    }
-
-    progressBar.style.width =
-        progress + "%";
-}
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        updateCoReferralRewards();
-
-    }
-);
-
-    </script>
+</body>
+</html>
