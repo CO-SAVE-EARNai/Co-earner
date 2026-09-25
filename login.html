@@ -1,250 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Co Earner</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<script>
-function loginUser() {
-    localStorage.setItem("coLoggedIn", "true");
-    window.location.href = "dashboard.html";
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Co Save & Earn</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
 }
-</script>
+
+body{
+  min-height:100vh;
+  background:linear-gradient(160deg,#031b16,#063b2f,#02120f);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.container{
+  width:100%;
+  max-width:430px;
+  background:#08251f;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;
+  padding:30px 22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+.logo{
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  color:#55e6b0;
+  margin-bottom:6px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#a9c8bf;
+  margin-bottom:28px;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin:14px 0 7px;
+  color:#cce4dd;
+  font-size:14px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #24564a;
+  background:#061914;
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+button{
+  width:100%;
+  margin-top:22px;
+  border:none;
+  padding:15px;
+  border-radius:13px;
+  background:#55e6b0;
+  color:#04231b;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.message{
+  text-align:center;
+  margin-top:15px;
+  min-height:20px;
+  font-size:14px;
+}
+
+.register{
+  text-align:center;
+  margin-top:22px;
+  color:#a9c8bf;
+}
+
+.register a{
+  color:#55e6b0;
+  text-decoration:none;
+  font-weight:bold;
+}
+</style>
+</head>
+
 <body>
 
-<header class="navbar">
-    <div class="logo">Co<span>Earner</span></div>
+<div class="container">
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="saving-banks.html">Saving Banks</a>
-        <a href="register.html">Register</a>
-    </nav>
-</header>
+  <div class="logo">Co Save & Earn</div>
+  <div class="subtitle">Save • Earn • Grow</div>
 
+  <h2>Welcome Back</h2>
 
-<section class="auth-section">
+  <form id="loginForm">
 
-    <div class="auth-card">
+    <label>Email</label>
 
-        <div class="auth-header">
-            <div class="auth-logo">Co<span>Earner</span></div>
+    <input
+      type="email"
+      id="email"
+      placeholder="Enter your email"
+      required
+    >
 
-            <h1>Welcome Back</h1>
+    <label>Password</label>
 
-            <p>
-                Login to your Co Earner account and continue your saving journey.
-            </p>
-        </div>
+    <input
+      type="password"
+      id="password"
+      placeholder="Enter your password"
+      required
+    >
 
+    <button type="submit">
+      Login
+    </button>
 
-        <form id="loginForm">
-
-            <div class="form-group">
-                <label for="email">Email Address</label>
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required
-                >
-            </div>
-
-
-            <div class="form-group">
-                <label for="password">Password</label>
-
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    required
-                >
-            </div>
-
-
-            <div class="login-options">
-
-                <label class="remember-check">
-                    <input type="checkbox">
-                    <span>Remember me</span>
-                </label>
-
-                <a href="#" onclick="showForgotMessage(); return false;">
-                    Forgot Password?
-                </a>
-
-            </div>
-
-
-            <button type="submit" class="auth-btn">
-                Login
-            </button>
-
-        </form>
-
-
-        <div class="auth-divider">
-            <span>OR</span>
-        </div>
-
-
-        <div class="new-account">
-            <p>Don't have an account?</p>
-
-            <a href="register.html" class="secondary-auth-btn">
-                Create Account
-            </a>
-        </div>
-
-
-        <div class="auth-footer">
-            <a href="index.html">← Back to Home</a>
-        </div>
-
+    <div
+      class="message"
+      id="message">
     </div>
 
-</section>
+  </form>
 
+  <div class="register">
+    Don't have an account?
+    <a href="register.html">
+      Create Account
+    </a>
+  </div>
 
-<footer>
-    <div class="logo">Co<span>Earner</span></div>
-    <p>Save More. Grow Together.</p>
-</footer>
-
+</div>
 
 <script>
-    
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
 
-    window.location.href = "dashboard.html";
+const form =
+  document.getElementById("loginForm");
+
+const message =
+  document.getElementById("message");
+
+form.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const email =
+    document
+      .getElementById("email")
+      .value
+      .trim()
+      .toLowerCase();
+
+  const password =
+    document
+      .getElementById("password")
+      .value;
+
+  const accounts =
+    JSON.parse(
+      localStorage.getItem("coAccounts") || "[]"
+    );
+
+  /*
+     Find the exact account.
+  */
+  const account =
+    accounts.find(user =>
+      user.email === email &&
+      user.password === password
+    );
+
+  if(!account){
+
+    message.style.color = "#ff7777";
+
+    message.textContent =
+      "Incorrect email or password.";
+
+    return;
+  }
+
+  /*
+     THIS is the important part.
+     We remember exactly which account
+     is logged in.
+  */
+  localStorage.setItem(
+    "coCurrentUserId",
+    account.id
+  );
+
+  localStorage.setItem(
+    "coLoggedIn",
+    "true"
+  );
+
+  message.style.color =
+    "#55e6b0";
+
+  message.textContent =
+    "Login successful!";
+
+  setTimeout(function(){
+
+    window.location.href =
+      "dashboard.html";
+
+  }, 500);
+
 });
 
-    function showForgotMessage() {
-        alert("Password recovery will be available when secure account authentication is connected.");
-    }
 </script>
 
 </body>
-  </html>
-<style>
-/* Make login form bigger and more spacious */
-
-.login-card {
-    max-width: 560px !important;
-    padding: 45px 42px !important;
-}
-
-.login-form,
-#loginForm {
-    width: 100% !important;
-}
-
-.form-group {
-    margin-bottom: 28px !important;
-}
-
-.form-group label {
-    display: block !important;
-    margin-bottom: 12px !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-}
-
-.form-group input,
-#loginForm input[type="email"],
-#loginForm input[type="password"] {
-    width: 100% !important;
-    height: 62px !important;
-    padding: 0 20px !important;
-    font-size: 17px !important;
-    border-radius: 14px !important;
-}
-
-.form-group input::placeholder {
-    font-size: 15px !important;
-}
-
-.login-options {
-    margin-top: 5px !important;
-    margin-bottom: 30px !important;
-}
-
-.login-button,
-#loginForm button[type="submit"] {
-    width: 100% !important;
-    height: 62px !important;
-    font-size: 17px !important;
-    border-radius: 14px !important;
-    margin-top: 5px !important;
-}
-
-.register-link {
-    margin-top: 30px !important;
-    padding-top: 28px !important;
-    line-height: 1.7 !important;
-}
-
-/* Mobile spacing */
-@media (max-width: 600px) {
-    .login-card {
-        padding: 35px 22px !important;
-    }
-
-    .form-group input,
-    #loginForm input[type="email"],
-    #loginForm input[type="password"] {
-        height: 60px !important;
-    }
-}
-</style>
-<!-- CO SAVE & EARN LOGIN FIX -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    /* Find the login form automatically */
-    const form = document.querySelector("form");
-
-    if (form) {
-        form.addEventListener("submit", function (event) {
-
-            event.preventDefault();
-
-            /* Mark the user as logged in */
-            localStorage.setItem("coLoggedIn", "true");
-
-            /* Go to the dashboard */
-            window.location.href = "dashboard.html";
-        });
-    }
-
-    /* Also make any Login button work */
-    const buttons = document.querySelectorAll("button");
-
-    buttons.forEach(function(button) {
-
-        if (
-            button.textContent.toLowerCase().includes("login") ||
-            button.textContent.toLowerCase().includes("log in")
-        ) {
-
-            button.addEventListener("click", function () {
-
-                localStorage.setItem("coLoggedIn", "true");
-
-                window.location.href = "dashboard.html";
-
-            });
-
-        }
-
-    });
-
-});
-</script>
+    </html>
