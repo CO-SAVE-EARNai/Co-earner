@@ -13,14 +13,14 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
     background:#061b18;
     color:white;
     min-height:100vh;
-    padding-bottom:90px;
+    padding-bottom:95px;
 }
 
 button{
@@ -31,7 +31,7 @@ button{
 /* HEADER */
 
 .header{
-    padding:25px 20px 18px;
+    padding:22px 18px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -44,11 +44,11 @@ button{
 }
 
 .logo-icon{
-    font-size:38px;
+    font-size:35px;
 }
 
 .logo-text{
-    font-size:23px;
+    font-size:21px;
     font-weight:bold;
 }
 
@@ -57,22 +57,22 @@ button{
 }
 
 .tagline{
-    color:#b8d5cf;
-    font-size:13px;
+    color:#a9c8c1;
+    font-size:12px;
     margin-top:3px;
 }
 
 .profile-button{
-    width:48px;
-    height:48px;
+    width:46px;
+    height:46px;
     border:none;
     border-radius:50%;
     background:#10463c;
     color:white;
-    font-size:23px;
+    font-size:22px;
 }
 
-/* MAIN */
+/* CONTAINER */
 
 .container{
     width:92%;
@@ -83,22 +83,16 @@ button{
 /* WELCOME */
 
 .welcome{
-    background:linear-gradient(
-        135deg,
-        #073d34,
-        #075344
-    );
+    background:linear-gradient(135deg,#073d34,#075344);
     border:1px solid #0b7561;
-    border-radius:24px;
-    padding:25px 22px;
-    margin:10px 0 18px;
-    position:relative;
-    overflow:hidden;
+    border-radius:23px;
+    padding:24px 20px;
+    margin:5px 0 18px;
 }
 
 .welcome h1{
-    font-size:28px;
-    margin-bottom:9px;
+    font-size:27px;
+    margin-bottom:8px;
 }
 
 .welcome h1 span{
@@ -106,7 +100,7 @@ button{
 }
 
 .welcome p{
-    color:#c0d9d4;
+    color:#bfd8d2;
     line-height:1.5;
     font-size:14px;
 }
@@ -114,24 +108,20 @@ button{
 /* BALANCE */
 
 .balance-card{
-    background:linear-gradient(
-        135deg,
-        #0b332f,
-        #092a39
-    );
+    background:linear-gradient(135deg,#0b332f,#092a39);
     border:1px solid #0b675a;
-    border-radius:24px;
-    padding:23px;
-    margin-bottom:20px;
+    border-radius:23px;
+    padding:22px;
+    margin-bottom:22px;
 }
 
 .balance-label{
     color:#b9d1cc;
-    font-size:14px;
+    font-size:13px;
 }
 
 .balance{
-    font-size:34px;
+    font-size:32px;
     font-weight:bold;
     margin:8px 0 20px;
 }
@@ -139,27 +129,25 @@ button{
 .balance-buttons{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:11px;
 }
 
 .deposit{
     background:#20d69b;
     color:#06231d;
     border:none;
-    border-radius:13px;
+    border-radius:12px;
     padding:14px;
     font-weight:bold;
-    font-size:15px;
 }
 
 .withdraw{
     background:transparent;
     color:white;
     border:1px solid #20d69b;
-    border-radius:13px;
+    border-radius:12px;
     padding:14px;
     font-weight:bold;
-    font-size:15px;
 }
 
 /* SECTION */
@@ -168,17 +156,16 @@ button{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:25px 0 13px;
+    margin:24px 0 13px;
 }
 
 .section-title h2{
-    font-size:20px;
+    font-size:19px;
 }
 
 .section-link{
     color:#20d69b;
-    font-size:13px;
-    cursor:pointer;
+    font-size:12px;
 }
 
 /* QUICK ACTIONS */
@@ -186,21 +173,20 @@ button{
 .quick-actions{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:12px;
+    gap:10px;
 }
 
 .quick-card{
     background:#0b302c;
     border:1px solid #10594d;
-    border-radius:18px;
-    padding:17px 8px;
+    border-radius:17px;
+    padding:15px 6px;
     text-align:center;
-    min-height:125px;
+    min-height:112px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     cursor:pointer;
-    transition:.2s;
 }
 
 .quick-card:active{
@@ -208,40 +194,35 @@ button{
 }
 
 .quick-icon{
-    font-size:28px;
-    margin-bottom:9px;
+    font-size:27px;
+    margin-bottom:8px;
 }
 
 .quick-card h3{
-    font-size:14px;
-    margin-bottom:5px;
+    font-size:13px;
+    margin-bottom:4px;
 }
 
 .quick-card p{
     color:#9fc2bb;
-    font-size:11px;
+    font-size:10px;
 }
 
-/* SAVINGS */
+/* SAVINGS GRID */
 
 .savings-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px;
+    gap:13px;
 }
 
 .saving-card{
-    background:linear-gradient(
-        145deg,
-        #0b342f,
-        #082923
-    );
+    background:linear-gradient(145deg,#0b342f,#082923);
     border:1px solid #0e6758;
-    border-radius:20px;
-    padding:20px 15px;
+    border-radius:19px;
+    padding:18px 13px;
     text-align:center;
     cursor:pointer;
-    transition:.2s;
 }
 
 .saving-card:active{
@@ -249,74 +230,218 @@ button{
 }
 
 .saving-icon{
-    width:65px;
-    height:65px;
-    margin:0 auto 12px;
+    width:62px;
+    height:62px;
+    margin:0 auto 10px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:34px;
+    font-size:32px;
     background:#174b42;
 }
 
 .saving-card h3{
-    font-size:17px;
-    margin-bottom:7px;
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.cycle{
+    color:#20d69b;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
 .saving-card p{
     color:#a9c9c3;
-    font-size:12px;
+    font-size:11px;
     line-height:1.4;
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .open-button{
     width:100%;
-    padding:11px;
+    padding:10px;
     border:none;
     border-radius:10px;
     background:#20d69b;
     color:#06231d;
     font-weight:bold;
+    font-size:12px;
+}
+
+/* ACTIVE SAVINGS */
+
+.active-box,
+.completed-box,
+.referral-box{
+    background:#0b302c;
+    border:1px solid #176e5d;
+    border-radius:20px;
+    padding:18px;
+    margin-top:22px;
+}
+
+.box-title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:14px;
+}
+
+.plan-card{
+    background:#073d34;
+    border-radius:16px;
+    padding:15px;
+    margin-bottom:11px;
+}
+
+.plan-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    margin-bottom:11px;
+}
+
+.plan-header strong{
+    font-size:15px;
+}
+
+.badge{
+    background:#20d69b;
+    color:#06231d;
+    padding:5px 8px;
+    border-radius:20px;
+    font-size:9px;
+    font-weight:bold;
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 0;
+    color:#a9c5bf;
+    font-size:12px;
+}
+
+.info-row strong{
+    color:white;
+}
+
+.green{
+    color:#20d69b !important;
+}
+
+.progress{
+    height:7px;
+    background:#173d37;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:9px;
+}
+
+.progress-bar{
+    height:100%;
+    background:#20d69b;
+    border-radius:20px;
+}
+
+.empty{
+    color:#9dbab4;
+    font-size:13px;
+    line-height:1.5;
 }
 
 /* EARN */
 
 .earn-card{
-    background:linear-gradient(
-        135deg,
-        #173c31,
-        #102c39
-    );
+    background:linear-gradient(135deg,#173c31,#102c39);
     border:1px solid #176b5b;
-    border-radius:20px;
-    padding:20px;
+    border-radius:19px;
+    padding:18px;
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:14px;
     cursor:pointer;
 }
 
 .earn-icon{
-    width:55px;
-    height:55px;
-    border-radius:16px;
+    width:53px;
+    height:53px;
+    border-radius:15px;
     background:#f3c85b;
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:26px;
+}
+
+/* REFERRAL */
+
+.referral-link{
+    width:100%;
+    padding:12px;
+    border-radius:11px;
+    border:1px solid #176e5d;
+    background:#062b25;
+    color:#20d69b;
+    font-size:11px;
+    margin-bottom:9px;
+}
+
+.referral-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+}
+
+.referral-btn{
+    padding:12px;
+    border:none;
+    border-radius:11px;
+    background:#20d69b;
+    color:#06231d;
+    font-weight:bold;
+}
+
+.referral-btn.secondary{
+    background:#073d34;
+    border:1px solid #176e5d;
+    color:white;
+}
+
+.referral-count{
+    margin-top:15px;
+    padding:15px;
+    background:#073d34;
+    border-radius:14px;
+}
+
+.referral-count small{
+    color:#9dbab4;
+}
+
+.referral-number{
+    color:#20d69b;
     font-size:27px;
+    font-weight:bold;
+    margin-top:4px;
 }
 
-.earn-card h3{
-    margin-bottom:5px;
-}
-
-.earn-card p{
-    color:#a9c8c1;
+.reward{
+    display:flex;
+    justify-content:space-between;
+    padding:10px;
+    margin-top:8px;
+    background:#062b25;
+    border-radius:10px;
     font-size:12px;
+}
+
+.reward span:last-child{
+    color:#20d69b;
+    font-weight:bold;
 }
 
 /* ACTIVITY */
@@ -324,24 +449,43 @@ button{
 .activity{
     background:#0b302c;
     border:1px solid #10594d;
-    border-radius:20px;
-    padding:20px;
+    border-radius:19px;
+    padding:18px;
+}
+
+.transaction{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:11px 0;
+    border-bottom:1px solid #17463e;
+}
+
+.transaction:last-child{
+    border-bottom:none;
+}
+
+.transaction-name{
+    font-size:13px;
+}
+
+.transaction-date{
+    color:#78938e;
+    font-size:10px;
+    margin-top:3px;
+}
+
+.transaction-amount{
+    color:#20d69b;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.no-activity{
     text-align:center;
-}
-
-.activity-icon{
-    font-size:35px;
-    margin-bottom:10px;
-}
-
-.activity h3{
-    font-size:16px;
-    margin-bottom:6px;
-}
-
-.activity p{
-    color:#9fbdb8;
-    font-size:12px;
+    color:#9dbab4;
+    font-size:13px;
+    padding:10px;
 }
 
 /* BOTTOM NAV */
@@ -351,7 +495,7 @@ button{
     bottom:0;
     left:0;
     width:100%;
-    height:75px;
+    height:73px;
     background:#06221e;
     border-top:1px solid #125247;
     display:flex;
@@ -363,7 +507,7 @@ button{
 .nav-item{
     text-align:center;
     color:#91aaa6;
-    font-size:11px;
+    font-size:10px;
     cursor:pointer;
 }
 
@@ -373,25 +517,26 @@ button{
 
 .nav-icon{
     display:block;
-    font-size:22px;
+    font-size:21px;
     margin-bottom:4px;
+}
+
+/* LOGOUT */
+
+.logout{
+    width:100%;
+    margin-top:20px;
+    padding:13px;
+    border:1px solid #7a3030;
+    border-radius:13px;
+    background:#351b1b;
+    color:#ff8d8d;
+    font-weight:bold;
 }
 
 /* MOBILE */
 
-@media(max-width:600px){
-
-    .welcome h1{
-        font-size:25px;
-    }
-
-    .balance{
-        font-size:31px;
-    }
-
-    .quick-actions{
-        grid-template-columns:repeat(3,1fr);
-    }
+@media(max-width:500px){
 
     .savings-grid{
         grid-template-columns:1fr 1fr;
@@ -399,7 +544,7 @@ button{
 
 }
 
-@media(max-width:400px){
+@media(max-width:370px){
 
     .savings-grid{
         grid-template-columns:1fr;
@@ -408,12 +553,9 @@ button{
 }
 
 </style>
-
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header class="header">
 
@@ -444,258 +586,413 @@ button{
 
 <main class="container">
 
+    <!-- WELCOME -->
 
-<!-- WELCOME -->
+    <section class="welcome">
 
-<section class="welcome">
-
-    <h1>
-        Hello, <span id="userName">User</span> 👋
-    </h1>
-
-    <p>
-        Keep going! Every little save counts
-        towards your bigger goals.
-    </p>
-
-</section>
-
-
-<!-- BALANCE -->
-
-<section class="balance-card">
-
-    <div class="balance-label">
-        Available Balance
-    </div>
-
-    <div
-        class="balance"
-        id="balance">
-        UGX 0
-    </div>
-
-    <div class="balance-buttons">
-
-        <button
-            class="deposit"
-            onclick="goDeposit()">
-            ↓ &nbsp; Deposit
-        </button>
-
-        <button
-            class="withdraw"
-            onclick="goWithdraw()">
-            ↑ &nbsp; Withdraw
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- QUICK ACTIONS -->
-
-<div class="section-title">
-
-    <h2>Quick Actions</h2>
-
-</div>
-
-<div class="quick-actions">
-
-    <div
-        class="quick-card"
-        onclick="goSavings()">
-
-        <div class="quick-icon">
-            🐷
-        </div>
-
-        <h3>My Savings</h3>
+        <h1>
+            Hello, <span id="userName">User</span> 👋
+        </h1>
 
         <p>
-            View & manage
+            Keep going! Every little save counts
+            towards your bigger goals.
         </p>
 
-    </div>
+    </section>
 
 
-    <div
-        class="quick-card"
-        onclick="goHowItWorks()">
+    <!-- BALANCE -->
 
-        <div class="quick-icon">
-            📊
+    <section class="balance-card">
+
+        <div class="balance-label">
+            Available Balance
         </div>
 
-        <h3>How It Works</h3>
+        <div
+            class="balance"
+            id="balance">
+            UGX 0
+        </div>
 
-        <p>
-            Learn more
-        </p>
+        <div class="balance-buttons">
+
+            <button
+                class="deposit"
+                onclick="goDeposit()">
+                ↓ &nbsp; Deposit
+            </button>
+
+            <button
+                class="withdraw"
+                onclick="goWithdraw()">
+                ↑ &nbsp; Withdraw
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <div class="section-title">
+        <h2>Quick Actions</h2>
+    </div>
+
+    <div class="quick-actions">
+
+        <div
+            class="quick-card"
+            onclick="goSavings()">
+
+            <div class="quick-icon">💰</div>
+
+            <h3>My Savings</h3>
+
+            <p>View plans</p>
+
+        </div>
+
+
+        <div
+            class="quick-card"
+            onclick="goHowItWorks()">
+
+            <div class="quick-icon">📊</div>
+
+            <h3>How It Works</h3>
+
+            <p>Learn more</p>
+
+        </div>
+
+
+        <div
+            class="quick-card"
+            onclick="goEarn()">
+
+            <div class="quick-icon">🎁</div>
+
+            <h3>Earn Rewards</h3>
+
+            <p>Invite & earn</p>
+
+        </div>
 
     </div>
 
 
+    <!-- SAVINGS -->
+
+    <div class="section-title">
+
+        <h2>Saving Plans</h2>
+
+        <span
+            class="section-link"
+            onclick="goSavings()">
+            View All →
+        </span>
+
+    </div>
+
+
+    <div class="savings-grid">
+
+
+        <!-- BOXES -->
+
+        <div
+            class="saving-card"
+            onclick="openBoxes()">
+
+            <div class="saving-icon">
+                📦
+            </div>
+
+            <h3>Saving Boxes</h3>
+
+            <div class="cycle">
+                5 DAYS
+            </div>
+
+            <p>
+                Short 5-day saving cycle
+                with daily projected earnings.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="event.stopPropagation();openBoxes();">
+                Explore Plans
+            </button>
+
+        </div>
+
+
+        <!-- SAFES -->
+
+        <div
+            class="saving-card"
+            onclick="openSafes()">
+
+            <div class="saving-icon">
+                🔐
+            </div>
+
+            <h3>Saving Safes</h3>
+
+            <div class="cycle">
+                10 DAYS
+            </div>
+
+            <p>
+                Secure 10-day saving cycle
+                with daily projected earnings.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="event.stopPropagation();openSafes();">
+                Explore Plans
+            </button>
+
+        </div>
+
+
+        <!-- TIN -->
+
+        <div
+            class="saving-card"
+            onclick="openTin()">
+
+            <div class="saving-icon">
+                🪙
+            </div>
+
+            <h3>Saving Tin</h3>
+
+            <div class="cycle">
+                20 DAYS
+            </div>
+
+            <p>
+                Build your savings with
+                the 20-day Tin cycle.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="event.stopPropagation();openTin();">
+                Explore Plans
+            </button>
+
+        </div>
+
+
+        <!-- ELEPHANT -->
+
+        <div
+            class="saving-card"
+            onclick="openElephant()">
+
+            <div class="saving-icon">
+                🐘
+            </div>
+
+            <h3>Saving Elephant</h3>
+
+            <div class="cycle">
+                30 DAYS
+            </div>
+
+            <p>
+                Grow your savings with
+                the 30-day Elephant cycle.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="event.stopPropagation();openElephant();">
+                Explore Plans
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ACTIVE SAVINGS -->
+
+    <div class="active-box">
+
+        <div class="box-title">
+            💰 Active Savings
+        </div>
+
+        <div id="activeSavings">
+
+            <div class="empty">
+                You don't have an active savings plan yet.
+                Choose a plan above to start saving.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- COMPLETED -->
+
+    <div class="completed-box">
+
+        <div class="box-title">
+            🎉 Completed Savings
+        </div>
+
+        <div id="completedSavings">
+
+            <div class="empty">
+                No completed savings cycles yet.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- EARN -->
+
+    <div class="section-title">
+        <h2>Earn</h2>
+    </div>
+
     <div
-        class="quick-card"
+        class="earn-card"
         onclick="goEarn()">
 
-        <div class="quick-icon">
+        <div class="earn-icon">
             🎁
         </div>
 
-        <h3>Earn Rewards</h3>
+        <div>
 
-        <p>
-            Get more benefits
-        </p>
+            <h3>Invite & Earn</h3>
 
-    </div>
+            <p style="color:#a9c8c1;font-size:12px;margin-top:5px;">
+                Invite people and earn referral rewards.
+            </p>
 
-</div>
-
-
-<!-- MY SAVINGS -->
-
-<div class="section-title">
-
-    <h2>My Savings</h2>
-
-    <span
-        class="section-link"
-        onclick="goSavings()">
-        View All →
-    </span>
-
-</div>
-
-
-<div class="savings-grid">
-
-
-    <!-- SAVING ELEPHANT -->
-
-    <div
-        class="saving-card"
-        onclick="openElephant()">
-
-        <div class="saving-icon">
-            🐘
         </div>
 
-        <h3>
-            Saving Elephant
-        </h3>
-
-        <p>
-            Explore different Elephant
-            savings plans.
-        </p>
-
-        <button
-            class="open-button"
-            onclick="event.stopPropagation(); openElephant();">
-            Explore Plans
-        </button>
-
     </div>
 
 
-    <!-- SAVING TIN -->
+    <!-- REFERRALS -->
 
-    <div
-        class="saving-card"
-        onclick="openTin()">
+    <div class="referral-box">
 
-        <div class="saving-icon">
-            🪙
+        <div class="box-title">
+            🎁 Invite & Earn
         </div>
 
-        <h3>
-            Saving Tin
-        </h3>
-
-        <p>
-            Explore different Saving Tin
-            plans.
+        <p
+            style="color:#9dbab4;font-size:12px;line-height:1.5;margin-bottom:14px;">
+            Share your personal referral link with friends.
         </p>
 
-        <button
-            class="open-button"
-            onclick="event.stopPropagation(); openTin();">
-            Explore Plans
-        </button>
+        <input
+            id="referralLink"
+            class="referral-link"
+            readonly>
+
+        <div class="referral-buttons">
+
+            <button
+                class="referral-btn"
+                onclick="copyReferral()">
+                📋 Copy Link
+            </button>
+
+            <button
+                class="referral-btn secondary"
+                onclick="shareReferral()">
+                📤 Share
+            </button>
+
+        </div>
+
+
+        <div class="referral-count">
+
+            <small>
+                People Invited
+            </small>
+
+            <div
+                class="referral-number"
+                id="referralCount">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="reward">
+            <span>10 referrals</span>
+            <span>UGX 20,000</span>
+        </div>
+
+        <div class="reward">
+            <span>50 referrals</span>
+            <span>UGX 80,000</span>
+        </div>
+
+        <div class="reward">
+            <span>100 referrals</span>
+            <span>UGX 130,000</span>
+        </div>
 
     </div>
 
-</div>
 
+    <!-- ACTIVITY -->
 
-<!-- EARN -->
+    <div class="section-title">
 
-<div class="section-title">
+        <h2>Recent Activity</h2>
 
-    <h2>Earn</h2>
-
-</div>
-
-<div
-    class="earn-card"
-    onclick="goEarn()">
-
-    <div class="earn-icon">
-        💰
-    </div>
-
-    <div>
-
-        <h3>
-            Earn Rewards
-        </h3>
-
-        <p>
-            Discover ways to earn
-            with Co Save & Earn.
-        </p>
+        <span
+            class="section-link"
+            onclick="goActivity()">
+            View All →
+        </span>
 
     </div>
 
-</div>
 
+    <div class="activity">
 
-<!-- RECENT ACTIVITY -->
+        <div id="activityContent">
 
-<div class="section-title">
+            <div class="no-activity">
+                No recent transactions.
+            </div>
 
-    <h2>Recent Activity</h2>
+        </div>
 
-    <span
-        class="section-link"
-        onclick="goActivity()">
-        View All →
-    </span>
-
-</div>
-
-
-<div class="activity">
-
-    <div class="activity-icon">
-        📋
     </div>
 
-    <h3>
-        No recent transactions
-    </h3>
 
-    <p>
-        Your activity will appear here
-        once you start saving.
-    </p>
+    <!-- LOGOUT -->
 
-</div>
+    <button
+        class="logout"
+        onclick="logout()">
+        🚪 Logout
+    </button>
 
 
 </main>
@@ -709,10 +1006,7 @@ button{
         class="nav-item active"
         onclick="goHome()">
 
-        <span class="nav-icon">
-            🏠
-        </span>
-
+        <span class="nav-icon">🏠</span>
         Home
 
     </div>
@@ -722,10 +1016,7 @@ button{
         class="nav-item"
         onclick="goSavings()">
 
-        <span class="nav-icon">
-            🐷
-        </span>
-
+        <span class="nav-icon">💰</span>
         Savings
 
     </div>
@@ -735,10 +1026,7 @@ button{
         class="nav-item"
         onclick="goActivity()">
 
-        <span class="nav-icon">
-            📋
-        </span>
-
+        <span class="nav-icon">📋</span>
         Activity
 
     </div>
@@ -748,10 +1036,7 @@ button{
         class="nav-item"
         onclick="openProfile()">
 
-        <span class="nav-icon">
-            👤
-        </span>
-
+        <span class="nav-icon">👤</span>
         Profile
 
     </div>
@@ -761,1389 +1046,23 @@ button{
 
 <script>
 
-/* =========================
-   USER NAME
-========================= */
+/* =====================================================
+   CURRENT USER
+===================================================== */
 
-function loadUserName(){
+let currentUser = null;
 
-    const possibleNames = [
-
-        localStorage.getItem("coUserName"),
-
-        localStorage.getItem("userName"),
-
-        localStorage.getItem("username"),
-
-        localStorage.getItem("name")
-
-    ];
-
-    let name = "User";
-
-    for(let i = 0; i < possibleNames.length; i++){
-
-        if(
-            possibleNames[i] &&
-            possibleNames[i].trim() !== ""
-        ){
-
-            name = possibleNames[i];
-            break;
-
-        }
-
-    }
-
-    document.getElementById("userName").textContent =
-        name;
-
-}
-
-
-/* =========================
-   BALANCE
-========================= */
-
-function loadBalance(){
-
-    const savedBalance =
-        Number(
-            localStorage.getItem("coBalance")
-        ) || 0;
-
-    document.getElementById("balance").textContent =
-        "UGX " +
-        savedBalance.toLocaleString();
-
-}
-
-
-/* =========================
-   DEPOSIT
-========================= */
-
-function goDeposit(){
-
-    window.location.href =
-        "deposit.html";
-
-}
-
-
-/* =========================
-   WITHDRAW
-========================= */
-
-function goWithdraw(){
-
-    window.location.href =
-        "withdraw.html";
-
-}
-
-
-/* =========================
-   SAVINGS
-========================= */
-
-function goSavings(){
-
-    window.location.href =
-        "saving-banks.html";
-
-}
-
-
-/* =========================
-   ELEPHANT
-========================= */
-
-function openElephant(){
-
-    /*
-       The Elephant plans page
-       will be designed next.
-    */
-
-    window.location.href =
-        "saving-elephant.html";
-
-}
-
-
-/* =========================
-   SAVING TIN
-========================= */
-
-function openTin(){
-
-    /*
-       The Saving Tin plans page
-       will be designed next.
-    */
-
-    window.location.href =
-        "saving-tin.html";
-
-}
-
-
-/* =========================
-   ACTIVITY
-========================= */
-
-function goActivity(){
-
-    window.location.href =
-        "money-summary.html";
-
-}
-
-
-/* =========================
-   EARN
-========================= */
-
-function goEarn(){
-
-    alert(
-        "Earn Rewards will be designed next."
-    );
-
-}
-
-
-/* =========================
-   HOW IT WORKS
-========================= */
-
-function goHowItWorks(){
-
-    alert(
-        "How It Works will be added next."
-    );
-
-}
-
-
-/* =========================
-   PROFILE
-========================= */
-
-function openProfile(){
-
-    alert(
-        "Your profile section will be added next."
-    );
-
-}
-
-
-/* =========================
-   HOME
-========================= */
-
-function goHome(){
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-loadUserName();
-
-loadBalance();
-
-</script>
-
-</body>
-          </html><style>
-/* ACTIVE SAVINGS ADDED SECTION */
-
-.active-savings-box{
-    width:92%;
-    max-width:650px;
-    margin:25px auto;
-    background:#0b302c;
-    border:1px solid #20d69b;
-    border-radius:22px;
-    padding:20px;
-    color:white;
-}
-
-.active-savings-box h3{
-    margin-bottom:15px;
-    font-size:19px;
-}
-
-.active-plan-card{
-    background:#073d34;
-    border-radius:18px;
-    padding:17px;
-    margin-bottom:12px;
-}
-
-.active-plan-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:12px;
-}
-
-.active-plan-title strong{
-    font-size:17px;
-}
-
-.active-badge{
-    background:#20d69b;
-    color:#06231d;
-    padding:5px 9px;
-    border-radius:20px;
-    font-size:10px;
-    font-weight:bold;
-}
-
-.active-info{
-    display:flex;
-    justify-content:space-between;
-    padding:7px 0;
-    color:#a9c5bf;
-    font-size:13px;
-}
-
-.active-info strong{
-    color:white;
-}
-
-.active-days{
-    color:#20d69b !important;
-}
-
-.active-progress{
-    height:8px;
-    background:#173d37;
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:10px;
-}
-
-.active-progress-bar{
-    height:100%;
-    width:0%;
-    background:#20d69b;
-    border-radius:20px;
-    transition:width .5s ease;
-}
-
-.no-active-plan{
-    color:#9dbab4;
-    font-size:14px;
-    line-height:1.5;
-}
-</style>
-
-
-<div class="active-savings-box">
-
-<h3>💰 Active Savings</h3>
-
-<div id="activeSavingsContent">
-
-<div class="no-active-plan">
-You don't have an active savings plan yet.
-Choose an Elephant or Tin plan to start saving.
-</div>
-
-</div>
-
-</div>
-
-
-<script>
-
-function displayActiveSavings(){
-
-    const container =
-        document.getElementById("activeSavingsContent");
-
-    if(!container){
-        return;
-    }
-
-    container.innerHTML = "";
-
-    let plans = [];
-
-    /* Get Elephant plan */
-
-    const elephant =
-        localStorage.getItem("activeElephantPlan");
-
-    if(elephant){
-
-        try{
-
-            const plan =
-                JSON.parse(elephant);
-
-            plan.planType = "Saving Elephant";
-
-            plans.push(plan);
-
-        }catch(error){}
-
-    }
-
-
-    /* Get Tin plan */
-
-    const tin =
-        localStorage.getItem("activeTinPlan");
-
-    if(tin){
-
-        try{
-
-            const plan =
-                JSON.parse(tin);
-
-            plan.planType = "Saving Tin";
-
-            plans.push(plan);
-
-        }catch(error){}
-
-    }
-
-
-    /* No plans */
-
-    if(plans.length === 0){
-
-        container.innerHTML = `
-            <div class="no-active-plan">
-                You don't have an active savings plan yet.
-                Choose an Elephant or Tin plan to start saving.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    /* Show every active plan */
-
-    plans.forEach(function(plan){
-
-        const amount =
-            Number(plan.amount) || 0;
-
-        const reward =
-            Number(plan.reward) || 0;
-
-        const cycle =
-            Number(plan.days) || 0;
-
-
-        /* Calculate days */
-
-        const startDate =
-            new Date(plan.started);
-
-        const today =
-            new Date();
-
-        const difference =
-            today.getTime() -
-            startDate.getTime();
-
-        const daysPassed =
-            Math.floor(
-                difference /
-                (1000 * 60 * 60 * 24)
-            );
-
-
-        let daysRemaining =
-            cycle - daysPassed;
-
-
-        if(daysRemaining < 0){
-            daysRemaining = 0;
-        }
-
-
-        if(daysRemaining > cycle){
-            daysRemaining = cycle;
-        }
-
-
-        /* Progress */
-
-        let progress = 0;
-
-        if(cycle > 0){
-
-            progress =
-                (daysPassed / cycle) * 100;
-
-        }
-
-        if(progress < 0){
-            progress = 0;
-        }
-
-        if(progress > 100){
-            progress = 100;
-        }
-
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "active-plan-card";
-
-
-        card.innerHTML = `
-
-            <div class="active-plan-title">
-
-                <strong>
-                    ${plan.planType} 🐘🪙
-                </strong>
-
-                <span class="active-badge">
-                    ACTIVE
-                </span>
-
-            </div>
-
-
-            <div class="active-info">
-
-                <span>Plan</span>
-
-                <strong>
-                    ${plan.name}
-                </strong>
-
-            </div>
-
-
-            <div class="active-info">
-
-                <span>Amount saved</span>
-
-                <strong>
-                    UGX ${amount.toLocaleString()}
-                </strong>
-
-            </div>
-
-
-            <div class="active-info">
-
-                <span>Projected earnings</span>
-
-                <strong>
-                    UGX ${reward.toLocaleString()}
-                </strong>
-
-            </div>
-
-
-            <div class="active-info">
-
-                <span>Cycle</span>
-
-                <strong>
-                    ${cycle} days
-                </strong>
-
-            </div>
-
-
-            <div class="active-info">
-
-                <span>Days remaining</span>
-
-                <strong class="active-days">
-
-                    ${daysRemaining} days
-
-                </strong>
-
-            </div>
-
-
-            <div class="active-progress">
-
-                <div
-                    class="active-progress-bar"
-                    style="width:${progress}%">
-                </div>
-
-            </div>
-
-        `;
-
-
-        container.appendChild(card);
-
-    });
-
-}
-
-
-/* Run when dashboard opens */
-
-displayActiveSavings();
-
-
-/* Refresh the countdown every minute */
-
-setInterval(
-    displayActiveSavings,
-    60000
-);
-
-    </script>
-<style>
-.completed-plan{
-    border:1px solid #20d69b !important;
-}
-
-.completed-badge{
-    background:#20d69b;
-    color:#06231d;
-    padding:5px 9px;
-    border-radius:20px;
-    font-size:10px;
-    font-weight:bold;
-}
-
-.completed-message{
-    margin-top:12px;
-    padding:10px;
-    background:#0b302c;
-    border-radius:10px;
-    color:#20d69b;
-    font-size:13px;
-}
-</style>
-
-<script>
-
-function updateCompletedSavings(){
-
-    const plans = [];
-
-    const elephant =
-        localStorage.getItem("activeElephantPlan");
-
-    const tin =
-        localStorage.getItem("activeTinPlan");
-
-
-    if(elephant){
-
-        try{
-
-            const plan =
-                JSON.parse(elephant);
-
-            plan.storageKey =
-                "activeElephantPlan";
-
-            plan.planType =
-                "Saving Elephant";
-
-            plans.push(plan);
-
-        }catch(error){}
-
-    }
-
-
-    if(tin){
-
-        try{
-
-            const plan =
-                JSON.parse(tin);
-
-            plan.storageKey =
-                "activeTinPlan";
-
-            plan.planType =
-                "Saving Tin";
-
-            plans.push(plan);
-
-        }catch(error){}
-
-    }
-
-
-    plans.forEach(function(plan){
-
-        const cycle =
-            Number(plan.days) || 0;
-
-        const start =
-            new Date(plan.started);
-
-        const now =
-            new Date();
-
-
-        const elapsed =
-            Math.floor(
-                (now.getTime() - start.getTime()) /
-                (1000 * 60 * 60 * 24)
-            );
-
-
-        if(elapsed >= cycle){
-
-            /*
-             * Mark the plan as completed.
-             */
-
-            plan.completed = true;
-
-            plan.completedDate =
-                now.toLocaleDateString();
-
-
-            localStorage.setItem(
-                plan.storageKey,
-                JSON.stringify(plan)
-            );
-
-        }
-
-    });
-
-
-    /*
-     * Refresh the active savings display.
-     * The function from the previous step will
-     * read the updated plan information.
-     */
-
-    if(typeof displayActiveSavings === "function"){
-
-        displayActiveSavings();
-
-    }
-
-}
-
-
-updateCompletedSavings();
-
-</script>
-<style>
-.completed-card{
-    border:1px solid #20d69b !important;
-}
-
-.completed-badge{
-    background:#20d69b !important;
-    color:#06231d !important;
-}
-
-.completed-message{
-    margin-top:12px;
-    padding:11px;
-    background:#0b302c;
-    border-radius:10px;
-    color:#20d69b;
-    font-size:13px;
-    font-weight:bold;
-}
-</style>
-
-<script>
-
-function showCorrectPlanStatus(){
-
-    const cards =
-        document.querySelectorAll(".active-plan-card");
-
-    cards.forEach(function(card){
-
-        const title =
-            card.querySelector(".active-plan-title strong");
-
-        if(!title){
-            return;
-        }
-
-        const text =
-            title.textContent.toLowerCase();
-
-        let plan = null;
-
-        if(text.includes("elephant")){
-
-            const saved =
-                localStorage.getItem("activeElephantPlan");
-
-            if(saved){
-                try{
-                    plan = JSON.parse(saved);
-                }catch(error){}
-            }
-
-        }
-
-
-        if(text.includes("tin")){
-
-            const saved =
-                localStorage.getItem("activeTinPlan");
-
-            if(saved){
-                try{
-                    plan = JSON.parse(saved);
-                }catch(error){}
-            }
-
-        }
-
-
-        if(!plan || !plan.completed){
-            return;
-        }
-
-
-        /* Make the card completed */
-
-        card.classList.add("completed-card");
-
-
-        const badge =
-            card.querySelector(".active-badge");
-
-        if(badge){
-
-            badge.textContent =
-                "✓ COMPLETED";
-
-            badge.classList.add(
-                "completed-badge"
-            );
-
-        }
-
-
-        /* Change days remaining */
-
-        const days =
-            card.querySelector(".active-days");
-
-        if(days){
-
-            days.textContent =
-                "Cycle completed";
-
-        }
-
-
-        /* Add completion message */
-
-        if(
-            !card.querySelector(
-                ".completed-message"
-            )
-        ){
-
-            const message =
-                document.createElement("div");
-
-            message.className =
-                "completed-message";
-
-            message.textContent =
-                "🎉 Your saving cycle is complete.";
-
-            card.appendChild(message);
-
-        }
-
-    });
-
-}
-
-
-/* Run after the dashboard loads */
-
-setTimeout(
-    showCorrectPlanStatus,
-    300
-);
-
-
-/* Check again every minute */
-
-setInterval(
-    showCorrectPlanStatus,
-    60000
-);
-
-</script>
-<!-- COMPLETED SAVINGS SECTION -->
-<style>
-.completed-savings-box{
-    width:92%;
-    max-width:650px;
-    margin:25px auto;
-    background:#0b302c;
-    border:1px solid #176e5d;
-    border-radius:22px;
-    padding:20px;
-    color:white;
-}
-
-.completed-savings-box h3{
-    margin:0 0 15px;
-    font-size:19px;
-}
-
-.completed-saving-card{
-    background:#073d34;
-    border-radius:18px;
-    padding:17px;
-    margin-bottom:12px;
-    border:1px solid #20d69b;
-}
-
-.completed-saving-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:12px;
-}
-
-.completed-saving-header strong{
-    font-size:16px;
-}
-
-.completed-status{
-    background:#20d69b;
-    color:#06231d;
-    padding:5px 9px;
-    border-radius:20px;
-    font-size:10px;
-    font-weight:bold;
-}
-
-.completed-saving-info{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    padding:7px 0;
-    font-size:13px;
-    color:#a9c5bf;
-}
-
-.completed-saving-info strong{
-    color:white;
-    text-align:right;
-}
-
-.completed-reward{
-    color:#20d69b !important;
-}
-
-.completed-date{
-    margin-top:12px;
-    padding:10px;
-    background:#0b302c;
-    border-radius:10px;
-    color:#20d69b;
-    font-size:12px;
-}
-
-.no-completed-savings{
-    color:#9dbab4;
-    font-size:14px;
-    line-height:1.5;
-}
-</style>
-
-<div class="completed-savings-box">
-
-    <h3>🎉 Completed Savings</h3>
-
-    <div id="completedSavingsContent">
-
-        <div class="no-completed-savings">
-            You don't have any completed savings cycles yet.
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-
-function displayCompletedSavings(){
-
-    const container =
-        document.getElementById(
-            "completedSavingsContent"
-        );
-
-    if(!container){
-        return;
-    }
-
-    container.innerHTML = "";
-
-    const completedPlans = [];
-
-    /* SAVING ELEPHANT */
-
-    const elephant =
-        localStorage.getItem(
-            "activeElephantPlan"
-        );
-
-    if(elephant){
-
-        try{
-
-            const plan =
-                JSON.parse(elephant);
-
-            if(plan.completed === true){
-
-                plan.planType =
-                    "Saving Elephant";
-
-                completedPlans.push(plan);
-
-            }
-
-        }catch(error){}
-
-    }
-
-
-    /* SAVING TIN */
-
-    const tin =
-        localStorage.getItem(
-            "activeTinPlan"
-        );
-
-    if(tin){
-
-        try{
-
-            const plan =
-                JSON.parse(tin);
-
-            if(plan.completed === true){
-
-                plan.planType =
-                    "Saving Tin";
-
-                completedPlans.push(plan);
-
-            }
-
-        }catch(error){}
-
-    }
-
-
-    if(completedPlans.length === 0){
-
-        container.innerHTML = `
-            <div class="no-completed-savings">
-                You don't have any completed savings cycles yet.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    completedPlans.forEach(function(plan){
-
-        const amount =
-            Number(plan.amount) || 0;
-
-        const reward =
-            Number(plan.reward) || 0;
-
-        const cycle =
-            Number(plan.days) || 0;
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "completed-saving-card";
-
-        card.innerHTML = `
-
-            <div class="completed-saving-header">
-
-                <strong>
-                    ${plan.planType}
-                </strong>
-
-                <span class="completed-status">
-                    ✓ COMPLETED
-                </span>
-
-            </div>
-
-
-            <div class="completed-saving-info">
-
-                <span>Plan</span>
-
-                <strong>
-                    ${plan.name}
-                </strong>
-
-            </div>
-
-
-            <div class="completed-saving-info">
-
-                <span>Amount saved</span>
-
-                <strong>
-                    UGX ${amount.toLocaleString()}
-                </strong>
-
-            </div>
-
-
-            <div class="completed-saving-info">
-
-                <span>Cycle</span>
-
-                <strong>
-                    ${cycle} days
-                </strong>
-
-            </div>
-
-
-            <div class="completed-saving-info">
-
-                <span>Projected earnings</span>
-
-                <strong class="completed-reward">
-                    UGX ${reward.toLocaleString()}
-                </strong>
-
-            </div>
-
-
-            <div class="completed-date">
-
-                🎉 Saving cycle completed on
-                ${plan.completedDate || "Completed"}
-
-            </div>
-
-        `;
-
-        container.appendChild(card);
-
-    });
-
-}
-
-
-displayCompletedSavings();
-
-setInterval(
-    displayCompletedSavings,
-    60000
-);
-
-            </script>
-<script>
-
-/* ==============================
-   OPEN PROFILE PAGE
-============================== */
-
-function openCoProfile(){
-
-    window.location.href =
-        "profile.html";
-
-}
-
-
-/* Find the existing Profile
-   button/card and make it clickable */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        const elements =
-            document.querySelectorAll(
-                "a, button, div"
-            );
-
-        elements.forEach(function(element){
-
-            const text =
-                element.textContent
-                    .trim()
-                    .toLowerCase();
-
-            if(text === "profile"){
-
-                element.style.cursor =
-                    "pointer";
-
-                element.addEventListener(
-                    "click",
-                    function(){
-
-                        openCoProfile();
-
-                    }
-                );
-
-            }
-
-        });
-
-    }
-);
-
-</script>
-<script>
-/* ==============================
-   CO SAVE & EARN BALANCE SYNC
-============================== */
-
-function updateCoDashboardBalance(){
-
-    const balance =
-        Number(localStorage.getItem("coBalance")) || 0;
-
-    const formatted =
-        "UGX " + balance.toLocaleString();
-
-    /* Find common balance elements */
-    const elements =
-        document.querySelectorAll(
-            "[id*='balance' i], [class*='balance' i]"
-        );
-
-    elements.forEach(function(element){
-
-        /* Don't change input fields */
-        if(
-            element.tagName === "INPUT" ||
-            element.tagName === "TEXTAREA"
-        ){
-            return;
-        }
-
-        /* Don't change the Deposit page link */
-        if(
-            element.textContent
-                .trim()
-                .toLowerCase() === "deposit"
-        ){
-            return;
-        }
-
-        element.textContent = formatted;
-
-    });
-
-}
-
-
-/* Update when dashboard opens */
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-        updateCoDashboardBalance();
-    }
-);
-
-
-/* Update if the page becomes visible again */
-document.addEventListener(
-    "visibilitychange",
-    function(){
-
-        if(
-            document.visibilityState === "visible"
-        ){
-            updateCoDashboardBalance();
-        }
-
-    }
-);
-
-
-/* Keep balance synchronized */
-setInterval(
-    updateCoDashboardBalance,
-    1000
-);
-
-</script>
-<style>
-.co-profile-logout{
-    width:100%;
-    margin-top:18px;
-    padding:14px;
-    border:1px solid #7a3030;
-    border-radius:14px;
-    background:#351b1b;
-    color:#ff8d8d;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.co-profile-logout:hover{
-    background:#482020;
-}
-</style>
-
-<button
-    type="button"
-    class="co-profile-logout"
-    onclick="coProfileLogout()">
-
-    🚪 Logout
-
-</button>
-
-<script>
-
-function coProfileLogout(){
-
-    const confirmLogout =
-        confirm(
-            "Are you sure you want to logout?"
-        );
-
-    if(!confirmLogout){
-        return;
-    }
-
-    localStorage.removeItem(
-        "coLoggedIn"
-    );
-
-    window.location.href =
-        "login.html";
-
-}
-
-</script>
-<!-- =====================================================
-     CO SAVE & EARN — COMPLETE MONEY CONNECTION
-     Connects:
-     DEPOSIT → BALANCE → ELEPHANT/TIN → COMPLETION → WITHDRAWAL
-     ===================================================== -->
-
-<style>
-.co-money-status{
-    width:92%;
-    max-width:650px;
-    margin:20px auto;
-    padding:18px;
-    background:#0b302c;
-    border:1px solid #176e5d;
-    border-radius:18px;
-    color:white;
-}
-
-.co-money-status h3{
-    margin:0 0 12px;
-}
-
-.co-money-row{
-    display:flex;
-    justify-content:space-between;
-    padding:8px 0;
-    color:#a9c5bf;
-    font-size:13px;
-}
-
-.co-money-row strong{
-    color:#20d69b;
-}
-</style>
-
-<script>
 
 /* =====================================================
-   1. COMMON MONEY STORAGE
-   ===================================================== */
+   GET ALL ACCOUNTS
+===================================================== */
 
-const CO_MIN_WITHDRAWAL = 20000;
-
-
-/* Get wallet balance */
-
-function coGetBalance(){
-
-    return Number(
-        localStorage.getItem("coBalance")
-    ) || 0;
-
-}
-
-
-/* Save wallet balance */
-
-function coSetBalance(amount){
-
-    localStorage.setItem(
-        "coBalance",
-        String(
-            Math.max(0, Number(amount) || 0)
-        )
-    );
-
-}
-
-
-/* Get transactions */
-
-function coGetTransactions(){
+function getAccounts(){
 
     try{
 
         return JSON.parse(
-            localStorage.getItem(
-                "coTransactions"
-            ) || "[]"
+            localStorage.getItem("coAccounts") || "[]"
         );
 
     }catch(error){
@@ -2155,1183 +1074,995 @@ function coGetTransactions(){
 }
 
 
-/* Save transaction */
+/* =====================================================
+   SAVE ALL ACCOUNTS
+===================================================== */
 
-function coAddTransaction(data){
+function saveAccounts(accounts){
 
-    const transactions =
-        coGetTransactions();
+    localStorage.setItem(
+        "coAccounts",
+        JSON.stringify(accounts)
+    );
 
-    transactions.unshift({
+}
 
-        ...data,
+
+/* =====================================================
+   LOAD CURRENT USER
+===================================================== */
+
+function loadCurrentUser(){
+
+    const userId =
+        localStorage.getItem(
+            "coCurrentUserId"
+        );
+
+
+    if(!userId){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    const accounts =
+        getAccounts();
+
+
+    currentUser =
+        accounts.find(
+            account =>
+            account.id === userId
+        );
+
+
+    if(!currentUser){
+
+        localStorage.removeItem(
+            "coCurrentUserId"
+        );
+
+        localStorage.removeItem(
+            "coLoggedIn"
+        );
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    /*
+       Make sure older accounts have
+       the fields we need.
+    */
+
+    if(typeof currentUser.balance !== "number"){
+        currentUser.balance = 0;
+    }
+
+    if(!Array.isArray(currentUser.transactions)){
+        currentUser.transactions = [];
+    }
+
+    if(!Array.isArray(currentUser.savings)){
+        currentUser.savings = [];
+    }
+
+    if(typeof currentUser.referralCount !== "number"){
+        currentUser.referralCount = 0;
+    }
+
+    if(typeof currentUser.referralRewards !== "number"){
+        currentUser.referralRewards = 0;
+    }
+
+
+    saveCurrentUser();
+
+    return true;
+
+}
+
+
+/* =====================================================
+   SAVE CURRENT USER
+===================================================== */
+
+function saveCurrentUser(){
+
+    if(!currentUser){
+        return;
+    }
+
+
+    const accounts =
+        getAccounts();
+
+
+    const index =
+        accounts.findIndex(
+            account =>
+            account.id === currentUser.id
+        );
+
+
+    if(index !== -1){
+
+        accounts[index] =
+            currentUser;
+
+        saveAccounts(accounts);
+
+    }
+
+}
+
+
+/* =====================================================
+   USER NAME
+===================================================== */
+
+function loadUserName(){
+
+    document.getElementById(
+        "userName"
+    ).textContent =
+        currentUser.name || "User";
+
+}
+
+
+/* =====================================================
+   BALANCE
+===================================================== */
+
+function loadBalance(){
+
+    const balance =
+        Number(
+            currentUser.balance
+        ) || 0;
+
+
+    document.getElementById(
+        "balance"
+    ).textContent =
+        "UGX " +
+        balance.toLocaleString();
+
+}
+
+
+/* =====================================================
+   TRANSACTION
+===================================================== */
+
+function addTransaction(
+    type,
+    amount,
+    description
+){
+
+    if(!Array.isArray(currentUser.transactions)){
+        currentUser.transactions = [];
+    }
+
+
+    currentUser.transactions.unshift({
+
+        type:type,
+
+        amount:Number(amount) || 0,
+
+        description:
+            description || type,
 
         date:
-            new Date()
-            .toLocaleDateString(),
+            new Date().toLocaleDateString(),
 
         time:
-            new Date()
-            .toLocaleTimeString()
+            new Date().toLocaleTimeString()
 
     });
 
-    localStorage.setItem(
-        "coTransactions",
-        JSON.stringify(
-            transactions
+
+    /*
+       Keep the latest 50.
+    */
+
+    currentUser.transactions =
+        currentUser.transactions.slice(0,50);
+
+
+    saveCurrentUser();
+
+}
+
+
+/* =====================================================
+   ACTIVITY
+===================================================== */
+
+function loadActivity(){
+
+    const box =
+        document.getElementById(
+            "activityContent"
+        );
+
+
+    const transactions =
+        currentUser.transactions || [];
+
+
+    if(transactions.length === 0){
+
+        box.innerHTML = `
+            <div class="no-activity">
+                No recent transactions.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML = "";
+
+
+    transactions
+        .slice(0,5)
+        .forEach(function(transaction){
+
+            const row =
+                document.createElement("div");
+
+            row.className =
+                "transaction";
+
+
+            const sign =
+                transaction.type === "Withdrawal"
+                ? "-"
+                : "+";
+
+
+            row.innerHTML = `
+
+                <div>
+
+                    <div class="transaction-name">
+                        ${transaction.type}
+                    </div>
+
+                    <div class="transaction-date">
+                        ${transaction.date || ""}
+                    </div>
+
+                </div>
+
+                <div class="transaction-amount">
+                    ${sign} UGX
+                    ${Number(transaction.amount || 0)
+                        .toLocaleString()}
+                </div>
+
+            `;
+
+
+            box.appendChild(row);
+
+        });
+
+}
+
+
+/* =====================================================
+   PLAN DATA
+===================================================== */
+
+const plans = {
+
+    boxes:{
+
+        title:"Saving Boxes",
+
+        days:5,
+
+        icon:"📦",
+
+        items:[
+
+            {
+                amount:20000,
+                daily:3000,
+                reward:15000,
+                total:35000
+            },
+
+            {
+                amount:30000,
+                daily:5000,
+                reward:25000,
+                total:55000
+            },
+
+            {
+                amount:50000,
+                daily:7000,
+                reward:35000,
+                total:85000
+            },
+
+            {
+                amount:100000,
+                daily:11000,
+                reward:55000,
+                total:155000
+            }
+
+        ]
+
+    },
+
+
+    safes:{
+
+        title:"Saving Safes",
+
+        days:10,
+
+        icon:"🔐",
+
+        items:[
+
+            {
+                amount:20000,
+                daily:3000,
+                reward:30000,
+                total:50000
+            },
+
+            {
+                amount:30000,
+                daily:5000,
+                reward:50000,
+                total:80000
+            },
+
+            {
+                amount:50000,
+                daily:7000,
+                reward:70000,
+                total:120000
+            },
+
+            {
+                amount:100000,
+                daily:11000,
+                reward:110000,
+                total:210000
+            }
+
+        ]
+
+    },
+
+
+    tin:{
+
+        title:"Saving Tin",
+
+        days:20,
+
+        icon:"🪙",
+
+        items:[
+
+            {
+                amount:20000,
+                daily:1750,
+                reward:35000,
+                total:55000
+            },
+
+            {
+                amount:30000,
+                daily:2750,
+                reward:55000,
+                total:85000
+            },
+
+            {
+                amount:50000,
+                daily:4250,
+                reward:85000,
+                total:135000
+            },
+
+            {
+                amount:100000,
+                daily:7750,
+                reward:155000,
+                total:255000
+            }
+
+        ]
+
+    },
+
+
+    elephant:{
+
+        title:"Saving Elephant",
+
+        days:30,
+
+        icon:"🐘",
+
+        items:[
+
+            {
+                amount:20000,
+                daily:1667,
+                reward:50000,
+                total:70000
+            },
+
+            {
+                amount:30000,
+                daily:3000,
+                reward:90000,
+                total:120000
+            },
+
+            {
+                amount:50000,
+                daily:4500,
+                reward:135000,
+                total:185000
+            },
+
+            {
+                amount:100000,
+                daily:7333,
+                reward:220000,
+                total:320000
+            }
+
+        ]
+
+    }
+
+};
+
+
+/*
+ IMPORTANT:
+ The reward figures above are the plan
+ figures discussed for the prototype.
+ They are displayed as projected earnings,
+ not guaranteed returns.
+*/
+
+
+/* =====================================================
+   ACTIVE SAVINGS
+===================================================== */
+
+function getActiveSavings(){
+
+    return Array.isArray(
+        currentUser.savings
+    )
+    ?
+    currentUser.savings
+    :
+    [];
+
+}
+
+
+function loadActiveSavings(){
+
+    const box =
+        document.getElementById(
+            "activeSavings"
+        );
+
+
+    const savings =
+        getActiveSavings()
+        .filter(
+            saving =>
+            saving.status === "active"
+        );
+
+
+    if(savings.length === 0){
+
+        box.innerHTML = `
+            <div class="empty">
+                You don't have an active savings plan yet.
+                Choose a plan above to start saving.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML = "";
+
+
+    savings.forEach(function(plan){
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "plan-card";
+
+
+        const start =
+            new Date(plan.started);
+
+
+        const now =
+            new Date();
+
+
+        let daysPassed =
+            Math.floor(
+                (
+                    now.getTime() -
+                    start.getTime()
+                ) /
+                86400000
+            );
+
+
+        if(daysPassed < 0){
+            daysPassed = 0;
+        }
+
+
+        const days =
+            Number(plan.days) || 0;
+
+
+        if(daysPassed > days){
+            daysPassed = days;
+        }
+
+
+        const remaining =
+            Math.max(
+                0,
+                days - daysPassed
+            );
+
+
+        let progress =
+            days > 0
+            ?
+            (daysPassed / days) * 100
+            :
+            0;
+
+
+        if(progress > 100){
+            progress = 100;
+        }
+
+
+        card.innerHTML = `
+
+            <div class="plan-header">
+
+                <strong>
+                    ${plan.icon || "💰"}
+                    ${plan.name}
+                </strong>
+
+                <span class="badge">
+                    ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Amount saved</span>
+
+                <strong>
+                    UGX ${Number(plan.amount)
+                        .toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Daily projected earnings</span>
+
+                <strong class="green">
+                    UGX ${Number(plan.daily || 0)
+                        .toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Projected earnings</span>
+
+                <strong class="green">
+                    UGX ${Number(plan.reward || 0)
+                        .toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Cycle</span>
+
+                <strong>
+                    ${days} days
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Days remaining</span>
+
+                <strong class="green">
+                    ${remaining} days
+                </strong>
+
+            </div>
+
+
+            <div class="progress">
+
+                <div
+                    class="progress-bar"
+                    style="width:${progress}%">
+                </div>
+
+            </div>
+
+        `;
+
+
+        box.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   COMPLETED SAVINGS
+===================================================== */
+
+function loadCompletedSavings(){
+
+    const box =
+        document.getElementById(
+            "completedSavings"
+        );
+
+
+    const completed =
+        getActiveSavings()
+        .filter(
+            saving =>
+            saving.status === "completed"
+        );
+
+
+    if(completed.length === 0){
+
+        box.innerHTML = `
+            <div class="empty">
+                No completed savings cycles yet.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML = "";
+
+
+    completed.forEach(function(plan){
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "plan-card";
+
+
+        card.innerHTML = `
+
+            <div class="plan-header">
+
+                <strong>
+                    ${plan.icon || "💰"}
+                    ${plan.name}
+                </strong>
+
+                <span class="badge">
+                    ✓ COMPLETED
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Amount saved</span>
+
+                <strong>
+                    UGX ${Number(plan.amount)
+                        .toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Projected earnings</span>
+
+                <strong class="green">
+                    UGX ${Number(plan.reward || 0)
+                        .toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Maturity amount</span>
+
+                <strong class="green">
+                    UGX ${Number(plan.total || 0)
+                        .toLocaleString()}
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Completed</span>
+
+                <strong>
+                    ${plan.completedDate || "Completed"}
+                </strong>
+
+            </div>
+
+        `;
+
+
+        box.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   CHECK PLAN COMPLETION
+===================================================== */
+
+function checkSavingsCompletion(){
+
+    let changed = false;
+
+
+    currentUser.savings =
+        getActiveSavings()
+        .map(function(plan){
+
+            if(
+                plan.status !== "active"
+            ){
+                return plan;
+            }
+
+
+            const started =
+                new Date(plan.started);
+
+
+            const now =
+                new Date();
+
+
+            const elapsed =
+                Math.floor(
+                    (
+                        now.getTime() -
+                        started.getTime()
+                    ) /
+                    86400000
+                );
+
+
+            if(
+                elapsed >=
+                Number(plan.days)
+            ){
+
+                plan.status =
+                    "completed";
+
+                plan.completedDate =
+                    now.toLocaleDateString();
+
+                changed = true;
+
+            }
+
+
+            return plan;
+
+        });
+
+
+    if(changed){
+
+        saveCurrentUser();
+
+    }
+
+}
+
+
+/* =====================================================
+   REFERRAL CODE
+===================================================== */
+
+function getReferralLink(){
+
+    if(!currentUser.referralCode){
+
+        currentUser.referralCode =
+            "CO" +
+            Math.random()
+                .toString(36)
+                .substring(2,8)
+                .toUpperCase();
+
+        saveCurrentUser();
+
+    }
+
+
+    const base =
+        window.location.href
+            .split("dashboard.html")[0];
+
+
+    return (
+        base +
+        "register.html?ref=" +
+        encodeURIComponent(
+            currentUser.referralCode
         )
     );
 
 }
 
 
-/* =====================================================
-   2. FIND ELEPHANT/TIN PLANS
-   ===================================================== */
+function loadReferral(){
 
-function coGetPlan(storageKey){
-
-    const saved =
-        localStorage.getItem(
-            storageKey
-        );
-
-    if(!saved){
-        return null;
-    }
-
-    try{
-
-        return JSON.parse(saved);
-
-    }catch(error){
-
-        return null;
-
-    }
-
-}
+    const link =
+        getReferralLink();
 
 
-/* =====================================================
-   3. CHECK WHETHER A SAVING CYCLE IS COMPLETE
-   ===================================================== */
-
-function coCheckPlan(storageKey){
-
-    const plan =
-        coGetPlan(storageKey);
-
-    if(!plan){
-        return null;
-    }
+    document.getElementById(
+        "referralLink"
+    ).value = link;
 
 
-    const start =
-        new Date(
-            plan.started
-        );
-
-
-    if(
-        !plan.started ||
-        isNaN(start.getTime())
-    ){
-
-        return plan;
-
-    }
-
-
-    const cycleDays =
+    document.getElementById(
+        "referralCount"
+    ).textContent =
         Number(
-            plan.days
-        ) || 0;
-
-
-    const now =
-        new Date();
-
-
-    const elapsed =
-        Math.floor(
-            (
-                now.getTime() -
-                start.getTime()
-            ) /
-            (
-                1000 *
-                60 *
-                60 *
-                24
-            )
+            currentUser.referralCount || 0
         );
-
-
-    if(elapsed >= cycleDays){
-
-        if(!plan.completed){
-
-            plan.completed = true;
-
-            plan.completedDate =
-                now.toLocaleDateString();
-
-
-            localStorage.setItem(
-                storageKey,
-                JSON.stringify(
-                    plan
-                )
-            );
-
-        }
-
-    }
-
-
-    return plan;
 
 }
 
 
 /* =====================================================
-   4. CHECK BOTH SAVINGS PLANS
-   ===================================================== */
+   COPY REFERRAL
+===================================================== */
 
-function coCheckAllSavings(){
+function copyReferral(){
 
-    const elephant =
-        coCheckPlan(
-            "activeElephantPlan"
-        );
+    const link =
+        document.getElementById(
+            "referralLink"
+        ).value;
 
 
-    const tin =
-        coCheckPlan(
-            "activeTinPlan"
-        );
+    if(navigator.clipboard){
 
+        navigator.clipboard
+            .writeText(link)
+            .then(function(){
 
-    return {
-        elephant: elephant,
-        tin: tin
-    };
-
-}
-
-
-/* =====================================================
-   5. IMPORTANT:
-      RELEASE COMPLETED SAVINGS INTO COMMON BALANCE
-   ===================================================== */
-
-function coReleaseCompletedPlan(
-    storageKey,
-    planType
-){
-
-    const plan =
-        coGetPlan(
-            storageKey
-        );
-
-
-    if(!plan){
-        return 0;
-    }
-
-
-    /*
-       Check completion again.
-       This means the user does NOT
-       have to open dashboard first.
-    */
-
-    coCheckPlan(
-        storageKey
-    );
-
-
-    const updatedPlan =
-        coGetPlan(
-            storageKey
-        );
-
-
-    if(
-        !updatedPlan ||
-        !updatedPlan.completed
-    ){
-
-        return 0;
-
-    }
-
-
-    /*
-       Prevent the same plan from
-       being released twice.
-    */
-
-    if(updatedPlan.released){
-
-        return 0;
-
-    }
-
-
-    const amount =
-        Number(
-            updatedPlan.amount
-        ) || 0;
-
-
-    if(amount <= 0){
-
-        localStorage.removeItem(
-            storageKey
-        );
-
-        return 0;
-
-    }
-
-
-    /*
-       Add the saved principal back
-       to the common balance.
-    */
-
-    const oldBalance =
-        coGetBalance();
-
-
-    const newBalance =
-        oldBalance +
-        amount;
-
-
-    coSetBalance(
-        newBalance
-    );
-
-
-    /*
-       Mark the plan as released
-       BEFORE removing it.
-       This prevents duplicate release.
-    */
-
-    updatedPlan.released = true;
-
-    updatedPlan.releasedDate =
-        new Date()
-        .toLocaleDateString();
-
-
-    /*
-       Record the release.
-    */
-
-    coAddTransaction({
-
-        type:
-            "Savings Completed",
-
-        source:
-            planType,
-
-        amount:
-            amount,
-
-        description:
-            planType +
-            " cycle completed and funds released"
-
-    });
-
-
-    /*
-       Remove the active plan because
-       its principal is now in coBalance.
-    */
-
-    localStorage.removeItem(
-        storageKey
-    );
-
-
-    return amount;
-
-}
-
-
-/* =====================================================
-   6. RELEASE ALL COMPLETED SAVINGS
-   ===================================================== */
-
-function coReleaseAllCompletedSavings(){
-
-    let released =
-        0;
-
-
-    released +=
-        coReleaseCompletedPlan(
-            "activeElephantPlan",
-            "Saving Elephant"
-        );
-
-
-    released +=
-        coReleaseCompletedPlan(
-            "activeTinPlan",
-            "Saving Tin"
-        );
-
-
-    return released;
-
-}
-
-
-/* =====================================================
-   7. AUTOMATICALLY CHECK COMPLETION
-   ===================================================== */
-
-function coRunSavingsCheck(){
-
-    coCheckAllSavings();
-
-}
-
-
-/*
-   Check immediately.
-*/
-
-coRunSavingsCheck();
-
-
-/*
-   Check every minute.
-*/
-
-setInterval(
-    coRunSavingsCheck,
-    60000
-);
-
-
-/* =====================================================
-   8. DASHBOARD BALANCE DISPLAY
-   ===================================================== */
-
-function coUpdateBalanceDisplays(){
-
-    const balance =
-        coGetBalance();
-
-
-    const possibleIds = [
-
-        "coBalance",
-
-        "availableBalance",
-
-        "dashboardBalance",
-
-        "currentBalance",
-
-        "walletBalance"
-
-    ];
-
-
-    possibleIds.forEach(
-        function(id){
-
-            const element =
-                document.getElementById(
-                    id
+                alert(
+                    "Referral link copied!"
                 );
 
-
-            if(element){
-
-                element.textContent =
-                    "UGX " +
-                    balance.toLocaleString();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   9. AUTOMATICALLY UPDATE BALANCE
-   ===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        coUpdateBalanceDisplays();
-
-    }
-);
-
-
-/* =====================================================
-   10. WITHDRAWAL FUNCTION
-   ===================================================== */
-
-function coWithdraw(amount){
-
-    amount =
-        Number(amount);
-
-
-    /*
-       Minimum withdrawal.
-    */
-
-    if(
-        !amount ||
-        amount < CO_MIN_WITHDRAWAL
-    ){
-
-        alert(
-            "Minimum withdrawal is UGX 20,000."
-        );
-
-        return false;
-
-    }
-
-
-    /*
-       Release completed Elephant
-       and Tin money first.
-    */
-
-    coReleaseAllCompletedSavings();
-
-
-    /*
-       Get the final available balance.
-    */
-
-    const balance =
-        coGetBalance();
-
-
-    /*
-       Prevent withdrawing money
-       that doesn't exist.
-    */
-
-    if(amount > balance){
-
-        alert(
-            "Insufficient available balance.\n\n" +
-            "Available: UGX " +
-            balance.toLocaleString()
-        );
-
-        return false;
-
-    }
-
-
-    /*
-       Deduct withdrawal.
-    */
-
-    const newBalance =
-        balance -
-        amount;
-
-
-    coSetBalance(
-        newBalance
-    );
-
-
-    /*
-       Record withdrawal.
-    */
-
-    coAddTransaction({
-
-        type:
-            "Withdrawal",
-
-        amount:
-            amount,
-
-        description:
-            "Withdrawal from available Co Save & Earn balance",
-
-        balanceAfter:
-            newBalance
-
-    });
-
-
-    coUpdateBalanceDisplays();
-
-
-    alert(
-        "Withdrawal successful!\n\n" +
-        "Amount: UGX " +
-        amount.toLocaleString() +
-        "\n\n" +
-        "Remaining balance: UGX " +
-        newBalance.toLocaleString()
-    );
-
-
-    return true;
-
-}
-
-
-/* =====================================================
-   11. DEPOSIT FUNCTION
-   ===================================================== */
-
-function coDeposit(amount){
-
-    amount =
-        Number(amount);
-
-
-    if(
-        !amount ||
-        amount < 20000
-    ){
-
-        alert(
-            "Minimum deposit is UGX 20,000."
-        );
-
-        return false;
-
-    }
-
-
-    const oldBalance =
-        coGetBalance();
-
-
-    const newBalance =
-        oldBalance +
-        amount;
-
-
-    coSetBalance(
-        newBalance
-    );
-
-
-    coAddTransaction({
-
-        type:
-            "Deposit",
-
-        amount:
-            amount,
-
-        description:
-            "Money deposited into Co Save & Earn balance",
-
-        balanceAfter:
-            newBalance
-
-    });
-
-
-    coUpdateBalanceDisplays();
-
-
-    return true;
-
-}
-
-
-/* =====================================================
-   12. SAFETY CHECK
-      NEVER LET ACTIVE SAVINGS BE WITHDRAWN
-   ===================================================== */
-
-function coCanWithdrawFromPlan(
-    storageKey
-){
-
-    const plan =
-        coGetPlan(
-            storageKey
-        );
-
-
-    if(!plan){
-
-        return false;
-
-    }
-
-
-    coCheckPlan(
-        storageKey
-    );
-
-
-    const updated =
-        coGetPlan(
-            storageKey
-        );
-
-
-    if(
-        !updated ||
-        !updated.completed
-    ){
-
-        return false;
-
-    }
-
-
-    return true;
-
-}
-
-
-/* =====================================================
-   13. SHOW MONEY STATUS IF ELEMENT EXISTS
-   ===================================================== */
-
-function coShowMoneyStatus(){
-
-    const container =
-        document.getElementById(
-            "coMoneyStatus"
-        );
-
-
-    if(!container){
-        return;
-    }
-
-
-    const balance =
-        coGetBalance();
-
-
-    const elephant =
-        coGetPlan(
-            "activeElephantPlan"
-        );
-
-
-    const tin =
-        coGetPlan(
-            "activeTinPlan"
-        );
-
-
-    container.innerHTML = `
-
-        <div class="co-money-status">
-
-            <h3>
-                💰 Money Summary
-            </h3>
-
-            <div class="co-money-row">
-                <span>Available Balance</span>
-                <strong>
-                    UGX ${balance.toLocaleString()}
-                </strong>
-            </div>
-
-            <div class="co-money-row">
-                <span>Saving Elephant</span>
-                <strong>
-                    ${
-                        elephant
-                        ?
-                        "Active"
-                        :
-                        "None"
-                    }
-                </strong>
-            </div>
-
-            <div class="co-money-row">
-                <span>Saving Tin</span>
-                <strong>
-                    ${
-                        tin
-                        ?
-                        "Active"
-                        :
-                        "None"
-                    }
-                </strong>
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =====================================================
-   14. RUN STATUS
-   ===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        coShowMoneyStatus();
-
-    }
-);
-
-    </script>
-<!-- PROFILE BUTTON CONNECTION -->
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-
-    const profileElements = document.querySelectorAll("a, button, div");
-
-    profileElements.forEach(function(element){
-
-        const text = element.textContent.trim().toLowerCase();
-
-        if(text === "profile"){
-            element.style.cursor = "pointer";
-
-            element.addEventListener("click", function(){
-                window.location.href = "profile.html";
             });
-        }
 
-    });
+    }else{
 
-});
-</script>
-<!-- FIX PROFILE BUTTON -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const elements = document.querySelectorAll("a, button, div");
-
-    elements.forEach(function (element) {
-
-        const text = element.textContent.trim().toLowerCase();
-
-        if (text === "profile") {
-
-            /* Remove old click handlers by replacing the element */
-            const newElement = element.cloneNode(true);
-
-            element.parentNode.replaceChild(newElement, element);
-
-            newElement.style.cursor = "pointer";
-
-            newElement.onclick = function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-                window.location.href = "profile.html";
-            };
-        }
-
-    });
-
-});
-</script>
-<!-- ENABLE PROFILE BUTTON -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const allElements = document.querySelectorAll("*");
-
-    allElements.forEach(function (element) {
-
-        const text = element.textContent.trim().toLowerCase();
-
-        if (text === "profile") {
-
-            element.style.cursor = "pointer";
-
-            element.addEventListener("click", function (event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                window.location.href = "profile.html";
-
-            }, true);
-        }
-
-    });
-
-});
-</script>
-<!-- REFERRAL / INVITE & EARN -->
-<style>
-.co-referral-box{
-    width:92%;
-    max-width:650px;
-    margin:20px auto;
-    padding:20px;
-    background:#0b302c;
-    border:1px solid #176e5d;
-    border-radius:22px;
-    color:white;
-}
-
-.co-referral-title{
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:7px;
-}
-
-.co-referral-subtitle{
-    color:#9dbab4;
-    font-size:13px;
-    line-height:1.5;
-    margin-bottom:18px;
-}
-
-.co-referral-link{
-    width:100%;
-    padding:13px;
-    border-radius:12px;
-    border:1px solid #176e5d;
-    background:#062b25;
-    color:#20d69b;
-    font-size:12px;
-    outline:none;
-    margin-bottom:10px;
-}
-
-.co-referral-buttons{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-}
-
-.co-referral-btn{
-    flex:1;
-    padding:13px;
-    border:none;
-    border-radius:12px;
-    background:#20d69b;
-    color:#06231d;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.co-referral-btn.secondary{
-    background:#073d34;
-    border:1px solid #176e5d;
-    color:white;
-}
-
-.co-referral-count{
-    background:#073d34;
-    border-radius:16px;
-    padding:17px;
-    margin-bottom:15px;
-}
-
-.co-referral-count-label{
-    color:#9dbab4;
-    font-size:12px;
-}
-
-.co-referral-number{
-    color:#20d69b;
-    font-size:30px;
-    font-weight:bold;
-    margin-top:5px;
-}
-
-.co-referral-rewards{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.co-referral-reward{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:13px;
-    background:#062b25;
-    border-radius:12px;
-    border:1px solid #17463e;
-}
-
-.co-referral-reward span:first-child{
-    color:#a9c5bf;
-    font-size:13px;
-}
-
-.co-referral-reward span:last-child{
-    color:#20d69b;
-    font-weight:bold;
-}
-
-.co-referral-status{
-    margin-top:15px;
-    padding:12px;
-    border-radius:12px;
-    background:#062b25;
-    color:#a9c5bf;
-    font-size:12px;
-    text-align:center;
-}
-</style>
-
-<div class="co-referral-box">
-
-    <div class="co-referral-title">
-        🎁 Invite & Earn
-    </div>
-
-    <div class="co-referral-subtitle">
-        Invite people to join Co Save & Earn using your personal referral link.
-    </div>
-
-    <input
-        type="text"
-        id="coReferralLink"
-        class="co-referral-link"
-        readonly
-    >
-
-    <div class="co-referral-buttons">
-
-        <button
-            type="button"
-            class="co-referral-btn"
-            onclick="coCopyReferralLink()"
-        >
-            📋 Copy Link
-        </button>
-
-        <button
-            type="button"
-            class="co-referral-btn secondary"
-            onclick="coShareReferralLink()"
-        >
-            📤 Share
-        </button>
-
-    </div>
-
-    <div class="co-referral-count">
-
-        <div class="co-referral-count-label">
-            People Invited
-        </div>
-
-        <div
-            class="co-referral-number"
-            id="coReferralCount"
-        >
-            0
-        </div>
-
-    </div>
-
-    <div class="co-referral-rewards">
-
-        <div class="co-referral-reward">
-            <span>10 referrals</span>
-            <span>UGX 20,000</span>
-        </div>
-
-        <div class="co-referral-reward">
-            <span>50 referrals</span>
-            <span>UGX 80,000</span>
-        </div>
-
-        <div class="co-referral-reward">
-            <span>100 referrals</span>
-            <span>UGX 130,000</span>
-        </div>
-
-    </div>
-
-    <div
-        class="co-referral-status"
-        id="coReferralStatus"
-    >
-        Invite your friends to start earning rewards.
-    </div>
-
-</div>
-
-<script>
-
-function coGetReferralCode(){
-
-    let code = localStorage.getItem("coReferralCode");
-
-    if(!code){
-
-        const username =
-            localStorage.getItem("coUsername") ||
-            localStorage.getItem("coUserName") ||
-            "user";
-
-        const random =
-            Math.random()
-            .toString(36)
-            .substring(2,8)
-            .toUpperCase();
-
-        code =
-            username
-            .replace(/[^a-zA-Z0-9]/g,"")
-            .substring(0,6)
-            .toUpperCase()
-            + random;
-
-        localStorage.setItem(
-            "coReferralCode",
-            code
+        alert(
+            "Copy the referral link manually."
         );
+
     }
 
-    return code;
 }
 
 
-function coGetReferralLink(){
+/* =====================================================
+   SHARE REFERRAL
+===================================================== */
 
-    const code = coGetReferralCode();
-
-    return window.location.origin +
-        window.location.pathname.replace(
-            "dashboard.html",
-            "register.html"
-        ) +
-        "?ref=" +
-        encodeURIComponent(code);
-}
-
-
-function coLoadReferral(){
-
-    const link = coGetReferralLink();
-
-    const linkBox =
-        document.getElementById("coReferralLink");
-
-    if(linkBox){
-        linkBox.value = link;
-    }
-
-    const count =
-        Number(
-            localStorage.getItem("coReferralCount")
-        ) || 0;
-
-    const countBox =
-        document.getElementById("coReferralCount");
-
-    if(countBox){
-        countBox.textContent = count;
-    }
-
-    const status =
-        document.getElementById("coReferralStatus");
-
-    if(status){
-
-        if(count >= 100){
-
-            status.textContent =
-                "🎉 You have reached 100 referrals.";
-
-        }else if(count >= 50){
-
-            status.textContent =
-                "🎁 You have reached 50 referrals. Next target: 100.";
-
-        }else if(count >= 10){
-
-            status.textContent =
-                "🎁 You have reached 10 referrals. Next target: 50.";
-
-        }else{
-
-            status.textContent =
-                "Invite " +
-                (10 - count) +
-                " more people to reach your first reward.";
-
-        }
-    }
-}
-
-
-function coCopyReferralLink(){
+function shareReferral(){
 
     const link =
         document.getElementById(
-            "coReferralLink"
+            "referralLink"
         ).value;
 
-    navigator.clipboard.writeText(link)
-        .then(function(){
-
-            alert(
-                "Your referral link has been copied!"
-            );
-
-        })
-        .catch(function(){
-
-            alert(
-                "Please copy your referral link manually."
-            );
-
-        });
-}
-
-
-function coShareReferralLink(){
-
-    const link =
-        document.getElementById(
-            "coReferralLink"
-        ).value;
 
     const message =
         "Join me on Co Save & Earn! Sign up using my referral link: " +
         link;
 
+
     if(navigator.share){
 
         navigator.share({
+
             title:"Co Save & Earn",
+
             text:message,
+
             url:link
+
         });
 
     }else{
@@ -3343,588 +2074,215 @@ function coShareReferralLink(){
         );
 
     }
+
 }
 
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
-        coLoadReferral();
+function goDeposit(){
 
-    }
-);
+    window.location.href =
+        "deposit.html";
 
-        </script>
-<!-- REFERRAL REWARDS -->
-<style>
-.co-reward-box{
-    width:92%;
-    max-width:650px;
-    margin:20px auto;
-    padding:20px;
-    background:#0b302c;
-    border:1px solid #176e5d;
-    border-radius:22px;
-    color:white;
 }
 
-.co-reward-title{
-    font-size:19px;
-    font-weight:bold;
-    margin-bottom:6px;
+
+function goWithdraw(){
+
+    window.location.href =
+        "withdraw.html";
+
 }
 
-.co-reward-subtitle{
-    color:#9dbab4;
-    font-size:13px;
-    margin-bottom:18px;
+
+function goSavings(){
+
+    window.location.href =
+        "saving-banks.html";
+
 }
 
-.co-reward-progress{
-    background:#062b25;
-    border-radius:12px;
-    height:12px;
-    overflow:hidden;
-    margin:10px 0 8px;
+
+function openBoxes(){
+
+    window.location.href =
+        "saving-boxes.html";
+
 }
 
-.co-reward-progress-bar{
-    height:100%;
-    width:0%;
-    background:#20d69b;
-    border-radius:12px;
-    transition:width .4s ease;
+
+function openSafes(){
+
+    window.location.href =
+        "saving-safes.html";
+
 }
 
-.co-reward-next{
-    color:#a9c5bf;
-    font-size:12px;
-    margin-bottom:18px;
+
+function openTin(){
+
+    window.location.href =
+        "saving-tin.html";
+
 }
 
-.co-reward-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+
+function openElephant(){
+
+    window.location.href =
+        "saving-elephant.html";
+
 }
 
-.co-reward-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:14px;
-    background:#062b25;
-    border:1px solid #17463e;
-    border-radius:13px;
+
+function goActivity(){
+
+    window.location.href =
+        "money-summary.html";
+
 }
 
-.co-reward-left{
-    display:flex;
-    flex-direction:column;
-    gap:4px;
+
+function openProfile(){
+
+    window.location.href =
+        "profile.html";
+
 }
 
-.co-reward-people{
-    color:#a9c5bf;
-    font-size:13px;
+
+function goHome(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
 }
 
-.co-reward-amount{
-    color:#20d69b;
-    font-weight:bold;
-}
 
-.co-reward-status{
-    font-size:11px;
-    font-weight:bold;
-}
+function goEarn(){
 
-.co-reward-status.available{
-    color:#20d69b;
-}
-
-.co-reward-status.locked{
-    color:#78938e;
-}
-</style>
-
-<div class="co-reward-box">
-
-    <div class="co-reward-title">
-        🎁 Referral Rewards
-    </div>
-
-    <div class="co-reward-subtitle">
-        Invite more people and reach the reward milestones.
-    </div>
-
-    <div class="co-reward-next" id="coRewardNext">
-        Checking your progress...
-    </div>
-
-    <div class="co-reward-progress">
-        <div
-            class="co-reward-progress-bar"
-            id="coRewardProgressBar"
-        ></div>
-    </div>
-
-    <div class="co-reward-next" id="coRewardProgressText">
-        0 referrals
-    </div>
-
-    <div class="co-reward-list">
-
-        <div class="co-reward-item">
-
-            <div class="co-reward-left">
-                <span class="co-reward-people">
-                    10 Referrals
-                </span>
-
-                <span class="co-reward-amount">
-                    UGX 20,000
-                </span>
-            </div>
-
-            <span
-                class="co-reward-status locked"
-                id="reward10"
-            >
-                🔒 Locked
-            </span>
-
-        </div>
-
-
-        <div class="co-reward-item">
-
-            <div class="co-reward-left">
-                <span class="co-reward-people">
-                    50 Referrals
-                </span>
-
-                <span class="co-reward-amount">
-                    UGX 80,000
-                </span>
-            </div>
-
-            <span
-                class="co-reward-status locked"
-                id="reward50"
-            >
-                🔒 Locked
-            </span>
-
-        </div>
-
-
-        <div class="co-reward-item">
-
-            <div class="co-reward-left">
-                <span class="co-reward-people">
-                    100 Referrals
-                </span>
-
-                <span class="co-reward-amount">
-                    UGX 130,000
-                </span>
-            </div>
-
-            <span
-                class="co-reward-status locked"
-                id="reward100"
-            >
-                🔒 Locked
-            </span>
-
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-
-function updateCoReferralRewards(){
-
-    const count =
-        Number(
-            localStorage.getItem("coReferralCount")
-        ) || 0;
-
-
-    const reward10 =
-        document.getElementById("reward10");
-
-    const reward50 =
-        document.getElementById("reward50");
-
-    const reward100 =
-        document.getElementById("reward100");
-
-
-    /* 10 REFERRALS */
-
-    if(count >= 10){
-
-        reward10.textContent =
-            "✓ Reached";
-
-        reward10.className =
-            "co-reward-status available";
-
-    }else{
-
-        reward10.textContent =
-            "🔒 Locked";
-
-        reward10.className =
-            "co-reward-status locked";
-    }
-
-
-    /* 50 REFERRALS */
-
-    if(count >= 50){
-
-        reward50.textContent =
-            "✓ Reached";
-
-        reward50.className =
-            "co-reward-status available";
-
-    }else{
-
-        reward50.textContent =
-            "🔒 Locked";
-
-        reward50.className =
-            "co-reward-status locked";
-    }
-
-
-    /* 100 REFERRALS */
-
-    if(count >= 100){
-
-        reward100.textContent =
-            "✓ Reached";
-
-        reward100.className =
-            "co-reward-status available";
-
-    }else{
-
-        reward100.textContent =
-            "🔒 Locked";
-
-        reward100.className =
-            "co-reward-status locked";
-    }
-
-
-    /* NEXT TARGET */
-
-    const nextBox =
-        document.getElementById("coRewardNext");
-
-    const progressText =
-        document.getElementById(
-            "coRewardProgressText"
+    const referral =
+        document.querySelector(
+            ".referral-box"
         );
 
-    const progressBar =
-        document.getElementById(
-            "coRewardProgressBar"
-        );
+    if(referral){
 
-
-    let target;
-
-    if(count < 10){
-
-        target = 10;
-
-    }else if(count < 50){
-
-        target = 50;
-
-    }else if(count < 100){
-
-        target = 100;
-
-    }else{
-
-        target = 100;
-    }
-
-
-    if(count < 100){
-
-        nextBox.textContent =
-            (target - count) +
-            " more referrals to reach your next reward.";
-
-    }else{
-
-        nextBox.textContent =
-            "🎉 You have reached all referral milestones.";
+        referral.scrollIntoView({
+            behavior:"smooth"
+        });
 
     }
 
-
-    progressText.textContent =
-        count + " / " + target + " referrals";
-
-
-    let progress =
-        (count / target) * 100;
-
-    if(progress > 100){
-        progress = 100;
-    }
-
-    progressBar.style.width =
-        progress + "%";
 }
 
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        updateCoReferralRewards();
-
-    }
-);
-
-                    </script>
-<!-- CLAIM REFERRAL REWARDS -->
-<script>
-
-function coClaimReferralReward(){
-
-    const count =
-        Number(localStorage.getItem("coReferralCount")) || 0;
-
-    let reward = 0;
-    let milestone = 0;
-
-    if(count >= 100){
-
-        milestone = 100;
-        reward = 130000;
-
-    }else if(count >= 50){
-
-        milestone = 50;
-        reward = 80000;
-
-    }else if(count >= 10){
-
-        milestone = 10;
-        reward = 20000;
-
-    }else{
-
-        alert(
-            "You have not reached a referral reward yet."
-        );
-
-        return;
-    }
-
-
-    const claimed =
-        JSON.parse(
-            localStorage.getItem(
-                "coClaimedReferralRewards"
-            ) || "[]"
-        );
-
-
-    if(claimed.includes(milestone)){
-
-        alert(
-            "You have already claimed the " +
-            milestone +
-            " referral reward."
-        );
-
-        return;
-    }
-
-
-    const confirmClaim =
-        confirm(
-            "Claim UGX " +
-            reward.toLocaleString() +
-            " for reaching " +
-            milestone +
-            " referrals?"
-        );
-
-
-    if(!confirmClaim){
-        return;
-    }
-
-
-    claimed.push(milestone);
-
-    localStorage.setItem(
-        "coClaimedReferralRewards",
-        JSON.stringify(claimed)
-    );
-
+function goHowItWorks(){
 
     alert(
-        "Reward recorded successfully!\n\n" +
-        "UGX " +
-        reward.toLocaleString() +
-        "\n" +
-        milestone +
-        " referrals"
+        "Choose a saving plan, deposit the required amount, and your selected cycle will track until maturity."
+    );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    if(
+        !confirm(
+            "Are you sure you want to logout?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    /*
+       Remove ONLY the login session.
+       The user's account remains saved.
+    */
+
+    localStorage.removeItem(
+        "coCurrentUserId"
+    );
+
+    localStorage.removeItem(
+        "coLoggedIn"
     );
 
 
-    updateCoReferralRewards();
+    window.location.href =
+        "login.html";
+
 }
 
-</script>
-<!-- CLAIM REWARD BUTTON -->
-<style>
-.co-claim-reward-btn{
-    width:100%;
-    margin-top:18px;
-    padding:14px;
-    border:none;
-    border-radius:14px;
-    background:#20d69b;
-    color:#06231d;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-}
 
-.co-claim-reward-btn:hover{
-    opacity:.9;
-}
-</style>
+/* =====================================================
+   START DASHBOARD
+===================================================== */
 
-<div id="coClaimRewardContainer"
-     style="width:92%;max-width:650px;margin:0 auto 20px;">
-</div>
+function startDashboard(){
 
-<script>
-
-function showCoClaimRewardButton(){
-
-    const container =
-        document.getElementById(
-            "coClaimRewardContainer"
-        );
-
-    if(!container){
+    if(!loadCurrentUser()){
         return;
     }
 
-    const count =
-        Number(
-            localStorage.getItem("coReferralCount")
-        ) || 0;
 
-    let milestone = 0;
+    checkSavingsCompletion();
 
-    if(count >= 100){
-        milestone = 100;
-    }
-    else if(count >= 50){
-        milestone = 50;
-    }
-    else if(count >= 10){
-        milestone = 10;
-    }
+    loadUserName();
 
-    if(!milestone){
-        container.innerHTML = "";
-        return;
-    }
+    loadBalance();
 
-    const claimed =
-        JSON.parse(
-            localStorage.getItem(
-                "coClaimedReferralRewards"
-            ) || "[]"
-        );
+    loadActiveSavings();
 
-    if(claimed.includes(milestone)){
+    loadCompletedSavings();
 
-        container.innerHTML =
-            '<div style="padding:13px;background:#073d34;border:1px solid #176e5d;border-radius:13px;color:#20d69b;text-align:center;font-size:13px;">✓ Reward already claimed</div>';
+    loadActivity();
 
-        return;
-    }
+    loadReferral();
 
-    container.innerHTML =
-        '<button type="button" class="co-claim-reward-btn" onclick="coClaimReferralReward()">🎁 Claim Referral Reward</button>';
 }
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-        showCoClaimRewardButton();
-    }
-);
 
-</script>
-<!-- FINAL PROFILE BUTTON FIX -->
-<script>
-document.addEventListener("click", function(event){
+/* =====================================================
+   REFRESH
+===================================================== */
 
-    let element = event.target;
+startDashboard();
 
-    while(element && element !== document.body){
 
-        const text = element.textContent.trim().toLowerCase();
+setInterval(function(){
 
-        if(text === "profile"){
-
-            event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
-
-            window.location.href = "profile.html";
-
-            return;
-        }
-
-        element = element.parentElement;
+    if(!currentUser){
+        return;
     }
 
-}, true);
+
+    checkSavingsCompletion();
+
+    loadBalance();
+
+    loadActiveSavings();
+
+    loadCompletedSavings();
+
+    loadActivity();
+
+},60000);
+
 </script>
-<!-- FINAL PROFILE ALERT FIX -->
-<script>
-(function () {
 
-    const originalAlert = window.alert;
-
-    window.alert = function (message) {
-
-        if (
-            String(message).toLowerCase().includes(
-                "your profile section will be added next"
-            )
-        ) {
-            window.location.href = "profile.html";
-            return;
-        }
-
-        originalAlert.call(window, message);
-    };
-
-})();
-</script>
+</body>
+    </html>
